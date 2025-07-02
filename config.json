@@ -3,7 +3,7 @@
   "platforms": {
     "css": {
       "transformGroup": "css",
-      "buildPath": "build/css/",
+      "buildPath": "generated/css/",
       "files": [
         {
           "destination": "_variables.css",
@@ -13,7 +13,7 @@
     },
     "scss": {
       "transformGroup": "scss",
-      "buildPath": "build/scss/",
+      "buildPath": "generated/scss/",
       "files": [
         {
           "destination": "_variables.scss",
@@ -21,67 +21,13 @@
         }
       ]
     },
-    "android": {
-      "transformGroup": "android",
-      "buildPath": "build/android/",
+    "react-native": {
+      "transformGroup": "react-native",
+      "buildPath": "generated/react-native/",
       "files": [
         {
-          "destination": "font_dimens.xml",
-          "format": "android/fontDimens"
-        },
-        {
-          "destination": "colors.xml",
-          "format": "android/colors"
-        }
-      ]
-    },
-    "ios": {
-      "transformGroup": "ios",
-      "buildPath": "build/ios/",
-      "files": [
-        {
-          "destination": "StyleDictionaryColor.h",
-          "format": "ios/colors.h",
-          "options": {
-            "className": "StyleDictionaryColor",
-            "type": "StyleDictionaryColorName"
-          },
-          "filter": {
-            "$type": "color"
-          }
-        },
-        {
-          "destination": "StyleDictionaryColor.m",
-          "format": "ios/colors.m",
-          "options": {
-            "className": "StyleDictionaryColor",
-            "type": "StyleDictionaryColorName"
-          },
-          "filter": {
-            "$type": "color"
-          }
-        },
-        {
-          "destination": "StyleDictionarySize.h",
-          "format": "ios/static.h",
-          "options": {
-            "className": "StyleDictionarySize",
-            "type": "float"
-          },
-          "filter": {
-            "$type": "dimension"
-          }
-        },
-        {
-          "destination": "StyleDictionarySize.m",
-          "format": "ios/static.m",
-          "options": {
-            "className": "StyleDictionarySize",
-            "type": "float"
-          },
-          "filter": {
-            "$type": "dimension"
-          }
+          "destination": "variables.js",
+          "format": "javascript/es6"
         }
       ]
     }
