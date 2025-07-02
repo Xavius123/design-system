@@ -36,7 +36,7 @@
       "buildPath": "generated/tailwind/",
       "files": [
         {
-          "destination": "tokens.tailwind.json",
+          "destination": "variables.json",
           "format": "json/flat"
         }
       ]
