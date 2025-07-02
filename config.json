@@ -30,6 +30,16 @@
           "format": "javascript/es6"
         }
       ]
+    },
+    "tailwind": {
+      "transformGroup": "js",
+      "buildPath": "generated/tailwind/",
+      "files": [
+        {
+          "destination": "tokens.tailwind.json",
+          "format": "json/flat"
+        }
+      ]
     }
   }
 }
