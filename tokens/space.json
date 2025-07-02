@@ -1,0 +1,12 @@
+{
+  "Spacing": {
+    "Sm": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+     "Md": {
+      "$type": "dimension",
+      "$value": "8px"
+    }
+  }
+}
