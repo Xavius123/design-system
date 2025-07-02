@@ -34,6 +34,5 @@ Output formatted tokens:
 Adding/Altering token build:
 
     The token builds are dictated by the "platforms" object in config.json.
-    New objects can be added for export to different output formats.
 
     for further information please refere to style dicitonary config docs: https://styledictionary.com/reference/config/
