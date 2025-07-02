@@ -6,7 +6,7 @@
       "buildPath": "generated/css/",
       "files": [
         {
-          "destination": "_variables.css",
+          "destination": "variables.css",
           "format": "css/variables"
         }
       ]
@@ -16,7 +16,7 @@
       "buildPath": "generated/scss/",
       "files": [
         {
-          "destination": "_variables.scss",
+          "destination": "variables.scss",
           "format": "scss/variables"
         }
       ]
