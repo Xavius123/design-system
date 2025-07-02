@@ -2,22 +2,7 @@ This project implements Style Dictionary, a tool for managing and transforming d
 
 Project structure:
 
-NAF-DESIGN-SYSTEM/
-├── tokens/
-│ ├── source.json -- json exported from figma token studio
-│ ├── colors.json -- json exported from figma token studio
-│ ├── shadows.json -- json exported from figma token studio
-│ ├── spaces.json -- json exported from figma token studio
-├── generated/
-│ ├── css/
-│ ├── react-native/
-│ └── scss/
-├── config/
-│ └── config.json
-├── transformers/
-│ └── shadow-transform.js
-├── README.md
-└── package.json
+<pre><code>```text DESIGN-SYSTEM/ ├── tokens/ │ ├── source.json -- json exported from figma token studio │ ├── colors.json -- json exported from figma token studio │ ├── shadows.json -- json exported from figma token studio │ ├── spaces.json -- json exported from figma token studio ├── generated/ │ ├── css/ │ ├── react-native/ │ └── scss/ ├── config/ │ └── config.json ├── transformers/ │ └── shadow-transform.js ├── README.md └── package.json ```</code></pre>
 
 Getting Staretd:
 
