@@ -1,15 +1,39 @@
-# Basic Style Dictionary
+This project implements Style Dictionary, a tool for managing and transforming design tokens across platforms. It provides a centralized system to define, maintain, and export design tokens such as colors, typography, spacing, and more to multiple platforms like web, iOS, and Android.
 
-This example code is bare-bones to show you what this framework can do. If you have the style-dictionary module installed globally, you can `cd` into this directory and run:
+Project structure:
 
-```bash
-npx style-dictionary build
-```
+NAF-DESIGN-SYSTEM/
+├── tokens/
+│ ├── source.json -- json exported from figma token studio
+│ ├── colors.json -- json exported from figma token studio
+│ ├── shadows.json -- json exported from figma token studio
+│ ├── spaces.json -- json exported from figma token studio
+├── generated/
+│ ├── css/
+│ ├── react-native/
+│ └── scss/
+├── config/
+│ └── config.json
+├── transformations/
+│ └── shadow-transform.js
+├── README.md
+└── package.json
 
-Otherwise, install Style Dictionary locally for this project first, `cd` into this directory and run:
+Getting Staretd:
 
-```bash
-npm init -y && npm install style-dictionary
-```
+    - git clone https://github.com/Xavius123/design-system
 
-and then run the above command.
+    - cd design-system/
+
+    - npm install
+
+Output formatted tokens:
+
+    - npm run build
+
+Adding/Altering token build:
+
+    The token builds are dictated by the "platforms" object in config.json.
+    New objects can be added for export to different output formats.
+
+    for further information please refere to style dicitonary config docs: https://styledictionary.com/reference/config/
