@@ -14,7 +14,7 @@ NAF-DESIGN-SYSTEM/
 │ └── scss/
 ├── config/
 │ └── config.json
-├── transformations/
+├── transformers/
 │ └── shadow-transform.js
 ├── README.md
 └── package.json
