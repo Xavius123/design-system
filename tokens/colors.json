@@ -1,87 +1,40 @@
 {
-  "Color": {
-    "Shades": {
-      "100": {
-        "$type": "color",
-        "$value": "#000000"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#ffffff"
-      }
-    }
-  },
-  "Shadow": {
-    "Drop-Shadows (Light Mode)": {
-      "Sm": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "#0000001a",
-          "type": "dropShadow",
-          "x": 0,
-          "y": 1,
-          "blur": 4,
-          "spread": 0
-        }
-      },
-      "B": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "#0000001a",
-          "type": "dropShadow",
-          "x": 0,
-          "y": 4,
-          "blur": 8,
-          "spread": 0
-        }
-      },
-      "M": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "#0000001a",
-          "type": "dropShadow",
-          "x": 0,
-          "y": 8,
-          "blur": 16,
-          "spread": 0
-        }
-      },
-      "L": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "#0000001a",
-          "type": "dropShadow",
-          "x": 0,
-          "y": 12,
-          "blur": 24,
-          "spread": 0
-        }
-      },
-      "XL": {
-        "$type": "boxShadow",
-        "$value": {
-          "color": "#0000001a",
-          "type": "dropShadow",
-          "x": 0,
-          "y": 16,
-          "blur": 32,
-           "spread": 0
-        }
-      }
-    }
-  },
-  "Spacing": {
-    "Sm": {
-      "$type": "dimension",
-      "$value": "4px"
+  "colors": {
+    "$type": "color",
+    "black": {
+      "$value": "#000000"
     },
-    "Md": {
-      "$type": "dimension",
-      "$value": "8px"
+    "white": {
+      "$value": "#ffffff"
+    },
+    "orange": {
+      "100": {
+        "$value": "#fffaf0"
+      },
+      "200": {
+        "$value": "#feebc8"
+      },
+      "300": {
+        "$value": "#fbd38d"
+      },
+      "400": {
+        "$value": "#f6ad55"
+      },
+      "500": {
+        "$value": "#ed8936"
+      },
+      "600": {
+        "$value": "#dd6b20"
+      },
+      "700": {
+        "$value": "#c05621"
+      },
+      "800": {
+        "$value": "#9c4221"
+      },
+      "900": {
+        "$value": "#7b341e"
+      }
     }
-  },
-  "String": {
-    "$type": "text",
-    "$value": "String value"
   }
 }
