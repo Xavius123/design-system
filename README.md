@@ -23,7 +23,7 @@ Getting Staretd:
 
     - git clone https://github.com/Xavius123/design-system
 
-    - cd design-system/
+    - cd design-system
 
     - npm install
 
