@@ -1,0 +1,7 @@
+{
+  "color": {
+    "background": { "value": "#ffffff" },
+    "text": { "value": "#000000" },
+    "primary": { "value": "#3b6ccf" }
+  }
+}

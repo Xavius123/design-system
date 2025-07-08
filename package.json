@@ -7,7 +7,8 @@
     "style-dictionary": "^5.0.0"
   },
   "scripts": {
-    "build": "style-dictionary build"
+    "build:old": "style-dictionary build",
+    "build": "node scripts/build-tokens.js"
   },
   "keywords": [],
   "author": "",
