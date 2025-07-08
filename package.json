@@ -8,9 +8,7 @@
     "style-dictionary": "^5.0.0"
   },
   "scripts": {
-    "build": "npm run build",
-    "build:tokens": "node scripts/build-tokens.js",
-    "build: verbose": "npx style-dictionary build --config config/style-dictionary.config.js --verbose"
+    "build:tokens": "node scripts/build-tokens.js"
   },
   "keywords": [],
   "author": "",

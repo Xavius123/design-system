@@ -1,0 +1,100 @@
+{
+  "Color": {
+    "Shades": {
+      "100": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#ffffff"
+      }
+    },
+    "Neutral": {
+      "100": {
+        "$type": "color",
+        "$value": "#fafafa"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#f5f5f5"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#e5e5e5"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#d4d4d4"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#a3a3a3"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#737373"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#5d5d62"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#4c4d53"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#2c2e37"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#1d1f2a"
+      }
+    },
+    "Opacity-Black": {
+      "16": {
+        "$type": "color",
+        "$value": "#00000029"
+      },
+      "32": {
+        "$type": "color",
+        "$value": "#00000052"
+      },
+      "48": {
+        "$type": "color",
+        "$value": "#0000007a"
+      },
+      "64": {
+        "$type": "color",
+        "$value": "#000000a3"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#000000cc"
+      }
+    },
+    "Opacity-Blue": {
+      "16": {
+        "$type": "color",
+        "$value": "#3b6ccf29"
+      },
+      "32": {
+        "$type": "color",
+        "$value": "#3b6ccf52"
+      },
+      "48": {
+        "$type": "color",
+        "$value": "#3b6ccf7a"
+      },
+      "64": {
+        "$type": "color",
+        "$value": "#3b6ccfa3"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#3b6ccfcc"
+      }
+    }
+  }
+}
