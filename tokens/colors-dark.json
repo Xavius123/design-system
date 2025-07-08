@@ -1,5 +1,5 @@
 {
-  "color": {
+  "colors-dark": {
     "background": { "value": "#000000" },
     "text": { "value": "#ffffff" },
     "primary": { "value": "#8898d8" }

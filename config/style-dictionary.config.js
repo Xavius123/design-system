@@ -1,24 +1,26 @@
+import { formats, transformGroups } from 'style-dictionary/enums';
+
 export default {
-  source: ['tokens/colors-*.json'],
+  source: ['tokens/*.json'],
   platforms: {
-    light: {
+    scssLight: {
+      transformGroup: transformGroups.scss,
       buildPath: 'build/scss/',
-      transformGroup: 'scss',
       files: [
         {
           destination: '_variables-light.scss',
-          format: 'scss/theme-variables',
+          format: 'scss/variables',
           filter: (token) => token.filePath.includes('colors-light'),
         },
       ],
     },
-    dark: {
+    scssDark: {
+      transformGroup: transformGroups.scss,
       buildPath: 'build/scss/',
-      transformGroup: 'scss',
       files: [
         {
           destination: '_variables-dark.scss',
-          format: 'scss/theme-variables',
+          format: 'scss/variables',
           filter: (token) => token.filePath.includes('colors-dark'),
         },
       ],
