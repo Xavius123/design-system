@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "style-dictionary": "^5.0.0"
+    "prettier": "^3.6.2"
   },
   "scripts": {
-    "build": "style-dictionary build"
+    "build": "node scripts/build-tokens.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "style-dictionary": "^4.4.0"
+  }
 }
