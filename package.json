@@ -2,11 +2,13 @@
   "name": "design-system",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "prettier": "^3.6.2",
     "style-dictionary": "^5.0.0"
   },
   "scripts": {
+    "build:token": "node scripts/build-tokens.js",
     "build": "style-dictionary build"
   },
   "keywords": [],

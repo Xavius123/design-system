@@ -9,11 +9,6 @@ export default {
       buildPath: 'build/scss/',
       files: [
         {
-          destination: transformGroups.scss,
-          format: 'scss/variables',
-          filter: (token) => token.filePath.includes('colors') && !token.filePath.includes('colors-light') && !token.filePath.includes('colors-dark'),
-        },
-        {
           destination: 'theme/variables-light.scss',
           format: 'scss/variables',
           filter: (token) => token.filePath.includes('colors-light'),
@@ -24,9 +19,11 @@ export default {
           filter: (token) => token.filePath.includes('colors-dark'),
         },
         {
-          destination: 'theme/getters.scss',
+          destination: 'theme/themes.scss',
           format: 'scss/getters',
-          filter: (token) => token.filePath.includes('colors-light') || token.filePath.includes('colors-dark'),
+          filter: (token) =>
+            token.filePath.includes('colors-light') ||
+            token.filePath.includes('colors-dark'),
         },
       ],
     },
