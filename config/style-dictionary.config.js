@@ -9,7 +9,7 @@ export default {
       buildPath: 'build/scss/',
       files: [
         {
-          destination: 'variables.scss',
+          destination: transformGroups.scss,
           format: 'scss/variables',
           filter: (token) => token.filePath.includes('colors') && !token.filePath.includes('colors-light') && !token.filePath.includes('colors-dark'),
         },
