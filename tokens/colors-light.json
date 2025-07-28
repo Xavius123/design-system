@@ -1,0 +1,76 @@
+{
+  "Color": {
+    "Light": {
+      "Background": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "#fafafa"
+        },
+        "Tertiary": {
+          "$type": "color",
+          "$value": "#f5f5f5"
+        }
+      },
+      "Surface": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "#fafafa"
+        },
+        "Tertiary": {
+          "$type": "color",
+          "$value": "#f5f5f5"
+        }
+      },
+      "Text": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#1d1f2a"
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "#4c4d53"
+        },
+        "Tertiary": {
+          "$type": "color",
+          "$value": "#737373"
+        },
+        "Inverse": {
+          "$type": "color",
+          "$value": "#ffffff"
+        }
+      },
+      "Border": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#e5e5e5"
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "#d4d4d4"
+        },
+        "Focus": {
+          "$type": "color",
+          "$value": "#3b6ccf"
+        }
+      },
+      "Accent": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#3b6ccf"
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "#5d5d62"
+        }
+      }
+    }
+  }
+}
