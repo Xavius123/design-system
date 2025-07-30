@@ -9,6 +9,8 @@ A comprehensive design system that generates CSS variables for dark/light themes
 - 🔧 **SCSS Functions**: Convenient getter functions for theme colors
 - 📦 **Modular Output**: Separate files for different use cases
 - 🚀 **Easy Integration**: Simple import and usage
+- ⚛️ **React Components**: Reusable React components with Tailwind CSS
+- 🎨 **Tailwind Integration**: Design tokens integrated with Tailwind CSS
 
 ## Quick Start
 
@@ -22,10 +24,20 @@ A comprehensive design system that generates CSS variables for dark/light themes
    npm run build:tokens
    ```
 
-3. **Use in your project**:
+3. **Build CSS** (for React components):
+   ```bash
+   npm run build:css
+   ```
+
+4. **Use in your project**:
    ```scss
    // Import the main SCSS file
    @import 'build/scss/main.scss';
+   ```
+   
+   ```jsx
+   // Import React components
+   import { Button } from './components';
    ```
 
 ## Generated Files
@@ -42,8 +54,51 @@ After building, you'll get:
 ### CSS Files
 - `build/css/variables-light.css` - Light theme CSS variables
 - `build/css/variables-dark.css` - Dark theme CSS variables
+- `build/css/tailwind.css` - Tailwind CSS with design system integration
 
 ## Usage
+
+### React Components
+
+The design system includes React components built with Tailwind CSS:
+
+```jsx
+import { Button } from './components';
+
+// Basic usage
+<Button>Click me</Button>
+
+// With variants
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="outline">Outline</Button>
+
+// With sizes
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+
+// With custom styling
+<Button 
+  variant="primary" 
+  className="shadow-lg transform hover:scale-105"
+  onClick={() => console.log('Clicked!')}
+>
+  Custom Button
+</Button>
+```
+
+#### Button Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'outline'` | `'primary'` | Button style variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | `''` | Additional CSS classes |
+| `onClick` | `function` | - | Click handler |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Button type |
 
 ### SCSS Functions
 
@@ -152,10 +207,20 @@ Tokens follow the Style Dictionary format:
 ### Project Structure
 ```
 design-system/
+├── components/
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   └── index.js
+│   └── index.js
 ├── config/
 │   ├── style-dictionary.config.js
 │   └── formats/
 │       └── scss-getters.js
+├── examples/
+│   └── ButtonDemo.jsx
+├── src/
+│   └── styles/
+│       └── input.css
 ├── tokens/
 │   ├── colors.json
 │   ├── colors-light.json
@@ -164,9 +229,11 @@ design-system/
 │   └── spaces.json
 ├── scripts/
 │   └── build-tokens.js
-└── build/
-    ├── scss/
-    └── css/
+├── build/
+│   ├── scss/
+│   └── css/
+├── tailwind.config.js
+└── postcss.config.js
 ```
 
 ### Adding New Token Types
