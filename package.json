@@ -19,7 +19,8 @@
   "scripts": {
     "build:token": "node scripts/build-tokens.js",
     "build": "style-dictionary build",
-    "build:css": "tailwindcss -i ./src/styles/input.css -o ./build/css/tailwind.css --watch"
+    "build:css": "tailwindcss -i ./src/styles/input.css -o ./build/css/tailwind.css --watch",
+    "build:typescript": "node scripts/build-typescript.js"
   },
   "keywords": [],
   "author": "",
