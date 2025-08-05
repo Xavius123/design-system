@@ -1,0 +1,186 @@
+trigger:
+  - main
+
+schedules:
+- cron: "0 9 * * 1-5"  # Run at 9 AM on weekdays
+  displayName: Daily token sync
+  branches:
+    include:
+    - main
+  always: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - name: FIGMA_ACCESS_TOKEN
+    secret: true
+  - name: FIGMA_FILE_KEY
+    value: 'your-figma-file-key-here'  # Replace with your actual Figma file key
+  - name: BRANCH_NAME
+    value: 'update-design-tokens-$(Build.BuildId)'
+  - name: COMMIT_MESSAGE
+    value: 'feat: sync design tokens from Figma - Build $(Build.BuildId)'
+  - name: PR_TITLE
+    value: '🔄 Sync Design Tokens from Figma - $(Build.BuildNumber)'
+  - name: PR_BODY
+    value: |
+      This PR automatically syncs design tokens from Figma using Token Studio format.
+      
+      **Build Details:**
+      - Build ID: $(Build.BuildId)
+      - Build Number: $(Build.BuildNumber)
+      - Triggered by: $(Build.TriggeredBy)
+      - Commit: $(Build.SourceVersion)
+      
+      **Changes:**
+      - Updated color tokens (Token Studio format)
+      - Updated spacing tokens (Token Studio format)
+      - Updated shadow tokens (Token Studio format)
+      - Updated typography tokens (Token Studio format)
+      
+      **Generated Outputs:**
+      - CSS variables for light/dark themes
+      - SCSS variables with getter functions
+      - TypeScript definitions
+      
+      Please review the changes and merge if approved.
+
+stages:
+- stage: FetchAndUpdate
+  displayName: 'Fetch Tokens and Update PR'
+  jobs:
+  - job: UpdateTokens
+    displayName: 'Update Design Tokens'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+      displayName: 'Install Dependencies'
+
+    - script: |
+        node scripts/fetch-figma-tokens.js
+      displayName: 'Fetch Tokens from Figma'
+      env:
+        FIGMA_ACCESS_TOKEN: $(FIGMA_ACCESS_TOKEN)
+        FIGMA_FILE_KEY: $(FIGMA_FILE_KEY)
+
+    - script: |
+        npm run build:token
+      displayName: 'Build Design Tokens with Style Dictionary'
+
+    - script: |
+        node scripts/build-typescript.js
+      displayName: 'Build TypeScript Files'
+
+    - task: GitVersion@5
+      inputs:
+        versionSpec: '5.x'
+      displayName: 'Setup Git'
+
+    - script: |
+        git config --global user.email "azure-pipeline@your-company.com"
+        git config --global user.name "Azure Pipeline"
+      displayName: 'Configure Git'
+
+    - script: |
+        node scripts/update-pr.js
+      displayName: 'Update PR with New Tokens'
+      env:
+        BRANCH_NAME: $(BRANCH_NAME)
+        COMMIT_MESSAGE: $(COMMIT_MESSAGE)
+        PR_TITLE: $(PR_TITLE)
+        PR_BODY: $(PR_BODY)
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: 'build'
+        artifactName: 'design-tokens'
+      displayName: 'Publish Build Artifacts'
+
+- stage: Validate
+  displayName: 'Validate Changes'
+  dependsOn: FetchAndUpdate
+  condition: succeeded()
+  jobs:
+  - job: ValidateTokens
+    displayName: 'Validate Design Tokens'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+      displayName: 'Install Dependencies'
+
+    - script: |
+        # Validate token files exist and are valid Token Studio JSON
+        node -e "
+          const fs = require('fs');
+          const path = require('path');
+          
+          const tokenFiles = ['colors.json', 'spaces.json', 'shadows.json', 'typography.json'];
+          let hasErrors = false;
+          
+          tokenFiles.forEach(file => {
+            try {
+              const filePath = path.join('tokens', file);
+              if (fs.existsSync(filePath)) {
+                const content = fs.readFileSync(filePath, 'utf8');
+                const parsed = JSON.parse(content);
+                
+                // Validate Token Studio format
+                const hasValidStructure = Object.keys(parsed).some(key => {
+                  const category = parsed[key];
+                  return typeof category === 'object' && 
+                         Object.values(category).some(token => 
+                           token && typeof token === 'object' && 
+                           token.\$type && token.\$value
+                         );
+                });
+                
+                if (hasValidStructure) {
+                  console.log('✅ Validated Token Studio format:', file);
+                } else {
+                  console.error('❌ Invalid Token Studio format in:', file);
+                  hasErrors = true;
+                }
+              } else {
+                console.log('ℹ️ Skipping (file not found):', file);
+              }
+            } catch (error) {
+              console.error('❌ Invalid JSON in:', file, error.message);
+              hasErrors = true;
+            }
+          });
+          
+          if (hasErrors) {
+            process.exit(1);
+          }
+        "
+      displayName: 'Validate Token Studio Files'
+
+    - script: |
+        # Test that Style Dictionary can build tokens
+        npm run build:token
+      displayName: 'Test Style Dictionary Build'
+
+    - script: |
+        # Test that TypeScript files can be built
+        node scripts/build-typescript.js
+      displayName: 'Test TypeScript Build'
+
+    - script: |
+        # Run any existing tests
+        if [ -f "package.json" ] && grep -q '"test"' package.json; then
+          npm test
+        else
+          echo "No tests configured, skipping test execution"
+        fi
+      displayName: 'Run Tests' 
