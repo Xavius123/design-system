@@ -1,0 +1,37 @@
+<button
+  [class]="buttonClasses"
+  [disabled]="isDisabled"
+  [type]="type"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-describedby]="ariaDescribedby"
+  [attr.aria-pressed]="ariaPressed"
+  [attr.aria-expanded]="ariaExpanded"
+  [attr.aria-haspopup]="ariaHaspopup"
+  [attr.aria-controls]="ariaControls"
+  [attr.aria-current]="ariaCurrent"
+  [attr.aria-live]="ariaLive"
+  [attr.aria-atomic]="ariaAtomic"
+  [attr.aria-relevant]="ariaRelevant"
+  [attr.aria-busy]="loading ? 'true' : null"
+  [attr.aria-disabled]="disabled ? 'true' : null"
+  (click)="onClick($event)"
+  (focus)="onFocus($event)"
+  (blur)="onBlur($event)"
+  (mouseenter)="onMouseEnter($event)"
+  (mouseleave)="onMouseLeave($event)">
+  
+  <!-- Loading spinner -->
+  <span *ngIf="loading" class="ds-button__spinner" aria-hidden="true">
+    <svg class="ds-button__spinner-icon" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+        <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </span>
+
+  <!-- Button content -->
+  <span class="ds-button__content" [class.ds-button__content--loading]="loading">
+    <ng-content></ng-content>
+  </span>
+</button> 
