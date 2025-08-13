@@ -10,7 +10,7 @@
       "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "build/react-lib"
+        "outputPath": "dist/react-lib"
       }
     },
     "test": {
@@ -34,7 +34,7 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "build/storybook/react",
+        "outputPath": "dist/storybook/react-lib",
         "configDir": "react-lib/.storybook"
       }
     }

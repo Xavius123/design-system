@@ -89,10 +89,10 @@
     "build:typescript": "node scripts/build-typescript.js",
     "sb:react": "nx storybook react-lib --port=6006",
     "sb:angular": "nx storybook angular-lib --port=6007",
-    "sb:build:react": "nx run react-lib:build-storybook --output-dir=dist/storybook/react",
-    "sb:build:angular": "nx run angular-lib:build-storybook --output-dir=dist/storybook/angular",
-    "serve:react": "http-server dist/storybook/react --port=5001",
-    "serve:angular": "http-server dist/storybook/angular --port=5002"
+    "sb:build:react": "nx run react-lib:build-storybook --output-dir=dist/storybook/react-lib",
+    "sb:build:angular": "nx run angular-lib:build-storybook --output-dir=dist/storybook/angular-lib",
+    "serve:react": "http-server dist/storybook/react-lib --port=5001",
+    "serve:angular": "http-server dist/storybook/angular-lib --port=5002"
   },
   "keywords": [],
   "author": "",

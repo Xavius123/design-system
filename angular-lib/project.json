@@ -8,10 +8,9 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "angular-lib/ng-package.json",
-        "outputPath": "build/angular-lib"
+        "project": "angular-lib/ng-package.json"
       },
       "configurations": {
         "production": {
@@ -44,7 +43,7 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "build/storybook/angular",
+        "outputPath": "dist/storybook/angular-lib",
         "configDir": "angular-lib/.storybook"
       }
     }
