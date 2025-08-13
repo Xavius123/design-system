@@ -1,0 +1,17 @@
+.ds-button {
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem; /* or var(--space-3) if you have spacing vars */
+  font-weight: var(--font-weight-semibold);
+
+  &.primary {
+    background: var(--color-primary);
+    color: var(--color-on-primary, #fff); /* optional fallback */
+    border: none;
+  }
+
+  &.ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+}
