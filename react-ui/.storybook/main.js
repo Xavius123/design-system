@@ -24,6 +24,11 @@ const config = {
           '@tokens': resolve(__dirname, '../../tokens/dist/css'),
         },
       },
+      css: {
+        modules: {
+          localsConvention: 'camelCase',
+        },
+      },
     });
   },
 };

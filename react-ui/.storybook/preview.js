@@ -1,3 +1,4 @@
+import React from 'react';
 import '../src/styles/global.css';
 import { initTheme } from '../src/utils/theme';
 
@@ -23,7 +24,7 @@ const preview = {
       if (typeof window !== 'undefined') {
         initTheme();
       }
-      return <Story />;
+      return React.createElement(Story);
     },
   ],
 };

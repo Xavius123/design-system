@@ -41,6 +41,7 @@ export default defineConfig({
           );
           
            // Replace imports with actual content (supports both alias and relative paths)
+           // Handle alias paths
            globalCss = globalCss.replace(
              /@import\s+['"]@tokens\/light\.css['"];?\s*/g,
              lightCss + '\n'
@@ -49,7 +50,7 @@ export default defineConfig({
              /@import\s+['"]@tokens\/dark\.css['"];?\s*/g,
              darkCss + '\n'
            );
-           // Also handle relative paths for compatibility
+           // Handle relative paths (for Storybook compatibility)
            globalCss = globalCss.replace(
              /@import\s+['"].*tokens\/dist\/css\/light\.css['"];?\s*/g,
              lightCss + '\n'
