@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@tokens/*": ["../../tokens/dist/css/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
+

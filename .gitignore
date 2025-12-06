@@ -1,19 +1,37 @@
-# Node.js modules
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
 
-# Environment variables
-.env
+# Testing
+coverage/
 
-# Build outputs
+# Production
+dist/
 build/
-tokens/dist/
-react-ui/dist/
-storybook-static/
-
-# Logs
 *.log
-npm-debug.log*
 
-# OS files
+# Storybook
+storybook-static/
+react-ui/storybook-static/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Token build output (keep dist in tokens/)
+!tokens/dist/

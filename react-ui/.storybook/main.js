@@ -1,3 +1,6 @@
+import { mergeConfig } from 'vite';
+import { resolve } from 'path';
+
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: ['../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -13,7 +16,16 @@ const config = {
   docs: {
     autodocs: 'tag',
   },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, '../src'),
+          '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+        },
+      },
+    });
+  },
 };
 
 export default config;
-

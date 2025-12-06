@@ -5,6 +5,12 @@ import dts from 'vite-plugin-dts';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+    },
+  },
   plugins: [
     react(),
     dts({
@@ -34,15 +40,24 @@ export default defineConfig({
             'utf8'
           );
           
-          // Replace imports with actual content
-          globalCss = globalCss.replace(
-            /@import\s+['"]\.\.\/\.\.\/\.\.\/\.\.\/tokens\/dist\/css\/light\.css['"];?\s*/g,
-            lightCss + '\n'
-          );
-          globalCss = globalCss.replace(
-            /@import\s+['"]\.\.\/\.\.\/\.\.\/\.\.\/tokens\/dist\/css\/dark\.css['"];?\s*/g,
-            darkCss + '\n'
-          );
+           // Replace imports with actual content (supports both alias and relative paths)
+           globalCss = globalCss.replace(
+             /@import\s+['"]@tokens\/light\.css['"];?\s*/g,
+             lightCss + '\n'
+           );
+           globalCss = globalCss.replace(
+             /@import\s+['"]@tokens\/dark\.css['"];?\s*/g,
+             darkCss + '\n'
+           );
+           // Also handle relative paths for compatibility
+           globalCss = globalCss.replace(
+             /@import\s+['"].*tokens\/dist\/css\/light\.css['"];?\s*/g,
+             lightCss + '\n'
+           );
+           globalCss = globalCss.replace(
+             /@import\s+['"].*tokens\/dist\/css\/dark\.css['"];?\s*/g,
+             darkCss + '\n'
+           );
           
           // Write bundled CSS
           writeFileSync(
