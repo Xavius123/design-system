@@ -6,11 +6,11 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 
 export default defineConfig({
   resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src'),
-              '@tokens': resolve(__dirname, '../../tokens/dist/css'),
-              '@toyota/design-tokens': resolve(__dirname, '../../tokens'),
-    },
+      alias: {
+        '@': resolve(__dirname, 'src'),
+        '@tokens': resolve(__dirname, '../tokens/dist/css'),
+        '@toyota/design-tokens': resolve(__dirname, '../tokens'),
+      },
   },
   plugins: [
     react(),
@@ -27,11 +27,11 @@ export default defineConfig({
           
                   // Read token CSS files from tokens package
                   const lightCss = readFileSync(
-                    resolve(__dirname, '../../tokens/dist/css/light.css'),
+                    resolve(__dirname, '../tokens/dist/css/light.css'),
                     'utf8'
                   );
                   const darkCss = readFileSync(
-                    resolve(__dirname, '../../tokens/dist/css/dark.css'),
+                    resolve(__dirname, '../tokens/dist/css/dark.css'),
                     'utf8'
                   );
           

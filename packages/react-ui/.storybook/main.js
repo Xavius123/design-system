@@ -22,7 +22,7 @@ const config = {
       resolve: {
         alias: {
           '@': resolve(__dirname, '../src'),
-          '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+          '@tokens': resolve(__dirname, '../../../packages/tokens/dist/css'),
         },
       },
       css: {

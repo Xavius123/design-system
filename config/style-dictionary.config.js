@@ -1,11 +1,11 @@
 import { transformGroups } from 'style-dictionary/enums';
 
 export default {
-  source: ['tokens/*.json'],
+  source: ['packages/tokens/*.json'],
   platforms: {
     css: {
       transformGroup: transformGroups.css,
-      buildPath: 'tokens/dist/css/',
+      buildPath: 'packages/tokens/dist/css/',
       files: [
         {
           destination: 'light.css',
@@ -27,7 +27,7 @@ export default {
     },
     javascript: {
       transformGroup: 'js',
-      buildPath: 'tokens/dist/js/',
+      buildPath: 'packages/tokens/dist/js/',
       files: [
         {
           destination: 'light.js',

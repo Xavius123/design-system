@@ -14,7 +14,7 @@
     "./js/dark": "./dist/js/dark.js"
   },
   "scripts": {
-    "build": "node ../scripts/build-tokens.js"
+    "build": "node ../../scripts/build-tokens.js"
   },
   "keywords": [
     "design-tokens",

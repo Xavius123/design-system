@@ -6,15 +6,19 @@ Toyota-branded design system with design tokens and React UI components.
 
 ```
 design-system/
-├── tokens/              # Design tokens (colors, typography, spacing, etc.)
-│   ├── *.json          # Token definitions
-│   └── dist/css/       # Generated CSS variables
-├── react-ui/           # React UI component library (npm package)
-│   ├── src/
-│   │   ├── components/ # React components
-│   │   └── styles/     # Global styles
-│   ├── dist/           # Built package (generated)
-│   └── .storybook/     # Storybook configuration
+├── packages/
+│   ├── tokens/              # Design tokens (colors, typography, spacing, etc.)
+│   │   ├── *.json          # Token definitions
+│   │   └── dist/           # Generated outputs (css/, js/)
+│   ├── react-ui/           # React UI component library (npm package)
+│   │   ├── src/
+│   │   │   ├── components/ # React components
+│   │   │   └── styles/     # Global styles
+│   │   ├── dist/           # Built package (generated)
+│   │   └── .storybook/     # Storybook configuration
+│   └── react-native-ui/    # React Native UI component library (npm package)
+│       └── src/
+│           └── components/ # React Native components
 ├── config/             # Style Dictionary configuration
 ├── scripts/            # Build and utility scripts
 └── docs/               # Documentation

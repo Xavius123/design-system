@@ -1,8 +1,8 @@
 /* Import design system CSS variables */
 /* These will be inlined during build */
 /* Tokens are imported from @toyota/design-tokens package */
-@import '../../../tokens/dist/css/light.css';
-@import '../../../tokens/dist/css/dark.css';
+@import '../../tokens/dist/css/light.css';
+@import '../../tokens/dist/css/dark.css';
 
 /* Base theme setup */
 :root {

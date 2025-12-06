@@ -6,8 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(__filename, '..');
 
 const requiredTokenFiles = [
-  'tokens/dist/css/light.css',
-  'tokens/dist/css/dark.css',
+  'packages/tokens/dist/css/light.css',
+  'packages/tokens/dist/css/dark.css',
 ];
 
 const requiredTokenFilesExist = requiredTokenFiles.every((file) => {

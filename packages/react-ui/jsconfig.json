@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@tokens/*": ["../../tokens/dist/css/*"]
+      "@tokens/*": ["../tokens/dist/css/*"]
     }
   },
   "include": ["src/**/*"]
