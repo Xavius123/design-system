@@ -1,0 +1,99 @@
+/* Input Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wrapperFullWidth {
+  width: 100%;
+}
+
+/* Label */
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-light-text-primary);
+  margin-bottom: 4px;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 4px;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--color-light-border-primary);
+  background-color: var(--color-light-background-primary);
+  color: var(--color-light-text-primary);
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--color-light-text-tertiary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-light-border-focus);
+  box-shadow: 0 0 0 2px var(--color-light-border-focus);
+  box-shadow: 0 0 0 2px rgba(59, 108, 207, 0.2);
+}
+
+.input:disabled {
+  background-color: var(--color-light-surface-secondary);
+  color: var(--color-light-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.small {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.medium {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.large {
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+/* States */
+.error {
+  border-color: #ef4444;
+}
+
+.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.errorMessage {
+  font-size: 14px;
+  color: #ef4444;
+  margin-top: 4px;
+}
+
+.helperText {
+  font-size: 14px;
+  color: var(--color-light-text-secondary);
+  margin-top: 4px;
+}
+

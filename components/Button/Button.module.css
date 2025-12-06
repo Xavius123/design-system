@@ -1,0 +1,82 @@
+/* Button Base Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 108, 207, 0.2);
+}
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-light-accent-primary);
+  color: var(--color-light-text-inverse);
+}
+
+.primary:hover {
+  background-color: var(--color-light-accent-secondary);
+}
+
+.secondary {
+  background-color: var(--color-light-surface-secondary);
+  color: var(--color-light-text-primary);
+  border: 1px solid var(--color-light-border-primary);
+}
+
+.secondary:hover {
+  background-color: var(--color-light-surface-tertiary);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-light-text-primary);
+}
+
+.ghost:hover {
+  background-color: var(--color-light-surface-secondary);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-light-text-primary);
+  border: 1px solid var(--color-light-border-primary);
+}
+
+.outline:hover {
+  background-color: var(--color-light-surface-secondary);
+}
+
+/* Sizes */
+.small {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.medium {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.large {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 16px;
+}
+

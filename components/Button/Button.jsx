@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as Slot from '@radix-ui/react-slot';
+import styles from './Button.module.css';
 
-const Button = ({
+const Button = React.forwardRef(({
   children,
   variant = 'primary',
   size = 'md',
@@ -9,42 +11,46 @@ const Button = ({
   className = '',
   onClick,
   type = 'button',
+  asChild = false,
   ...props
-}) => {
-  const baseClasses = 'btn';
-  
+}, ref) => {
   const variantClasses = {
-    primary: 'btn-primary',
-    secondary: 'btn-secondary',
-    ghost: 'btn-ghost',
-    outline: 'btn-outline',
+    primary: styles.primary,
+    secondary: styles.secondary,
+    ghost: styles.ghost,
+    outline: styles.outline,
   };
   
   const sizeClasses = {
-    sm: 'btn-sm',
-    md: 'btn-md',
-    lg: 'btn-lg',
+    sm: styles.small,
+    md: styles.medium,
+    lg: styles.large,
   };
   
   const classes = [
-    baseClasses,
+    styles.button,
     variantClasses[variant],
     sizeClasses[size],
     className
   ].filter(Boolean).join(' ');
   
+  const Comp = asChild ? Slot.Root : 'button';
+  
   return (
-    <button
-      type={type}
+    <Comp
+      ref={ref}
+      type={asChild ? undefined : type}
       className={classes}
       disabled={disabled}
       onClick={onClick}
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
-};
+});
+
+Button.displayName = 'Button';
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -54,6 +60,7 @@ Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  asChild: PropTypes.bool,
 };
 
 export default Button; 

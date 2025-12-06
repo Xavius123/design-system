@@ -5,57 +5,21 @@ import './formats/typescript-colors.js';
 export default {
   source: ['tokens/*.json'],
   platforms: {
-    scss: {
-      transformGroup: 'scss',
-      buildPath: 'build/scss/',
-      files: [
-        {
-          destination: 'theme/variables-light.scss',
-          format: 'scss/variables',
-          filter: (token) => token.filePath.includes('colors-light'),
-        },
-        {
-          destination: 'theme/variables-dark.scss',
-          format: 'scss/variables',
-          filter: (token) => token.filePath.includes('colors-dark'),
-        },
-        {
-          destination: 'theme/themes.scss',
-          format: 'scss/getters',
-          filter: (token) =>
-            token.filePath.includes('colors-light') ||
-            token.filePath.includes('colors-dark'),
-        },
-      ],
-    },
     css: {
       transformGroup: transformGroups.css,
       buildPath: 'build/css/',
       files: [
         {
-          destination: 'variables-light.css',
+          destination: 'light.css',
           format: 'css/variables',
           selector: ':root[data-theme="light"]',
           filter: (token) => token.filePath.includes('colors-light'),
         },
         {
-          destination: 'variables-dark.css',
+          destination: 'dark.css',
           format: 'css/variables',
           selector: ':root[data-theme="dark"]',
           filter: (token) => token.filePath.includes('colors-dark'),
-        },
-      ],
-    },
-    typescript: {
-      transformGroup: transformGroups.css,
-      buildPath: 'build/typescript/',
-      files: [
-        {
-          destination: 'colors.ts',
-          format: 'typescript/colors',
-          filter: (token) =>
-            token.filePath.includes('colors-light') ||
-            token.filePath.includes('colors-dark'),
         },
       ],
     },

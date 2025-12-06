@@ -1,7 +1,3 @@
-import { mergeConfig } from 'vite';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
-
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: ['../components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -16,15 +12,6 @@ const config = {
   },
   docs: {
     autodocs: 'tag',
-  },
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      css: {
-        postcss: {
-          plugins: [tailwindcss(), autoprefixer()],
-        },
-      },
-    });
   },
 };
 

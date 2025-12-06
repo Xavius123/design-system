@@ -30,9 +30,10 @@ A comprehensive design system that generates CSS variables for dark/light themes
    ```
 
 4. **Use in your project**:
-   ```scss
-   // Import the main SCSS file
-   @import 'build/scss/main.scss';
+   ```css
+   /* Import CSS variables */
+   @import 'build/css/light.css';
+   @import 'build/css/dark.css';
    ```
    
    ```jsx
@@ -44,17 +45,9 @@ A comprehensive design system that generates CSS variables for dark/light themes
 
 After building, you'll get:
 
-### SCSS Files
-- `build/scss/variables.scss` - Base design tokens
-- `build/scss/theme/variables-light.scss` - Light theme SCSS variables
-- `build/scss/theme/variables-dark.scss` - Dark theme SCSS variables
-- `build/scss/theme/getters.scss` - SCSS getter functions
-- `build/scss/main.scss` - Main file that imports everything
-
 ### CSS Files
-- `build/css/variables-light.css` - Light theme CSS variables
-- `build/css/variables-dark.css` - Dark theme CSS variables
-- `build/css/tailwind.css` - Tailwind CSS with design system integration
+- `build/css/light.css` - Light theme CSS variables
+- `build/css/dark.css` - Dark theme CSS variables
 
 ## Usage
 
