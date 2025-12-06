@@ -92,7 +92,7 @@ stages:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathToPublish: 'build'
+        pathToPublish: 'tokens/dist'
         artifactName: 'design-tokens'
       displayName: 'Publish Build Artifacts'
 

@@ -3,15 +3,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--token-light-border-radius-button);
-  font-size: var(--token-light-typography-font-size-small);
-  font-weight: var(--token-light-typography-font-weight-button);
-  font-family: var(--token-light-typography-font-family-body);
-  line-height: var(--token-light-typography-line-height-body);
+  border-radius: var(--token-light-border-radius-button, 6px);
+  font-size: var(--token-light-typography-font-size-small, 14px);
+  font-weight: var(--token-light-typography-font-weight-button, 500);
+  font-family: var(--token-light-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-light-typography-line-height-body, 1.5);
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  box-shadow: var(--token-light-shadow-button);
+  box-shadow: var(--token-light-shadow-button, none);
 }
 
 .button:focus-visible {
@@ -84,5 +84,59 @@
   height: calc(var(--token-light-spacing-lg) * 2);
   padding: 0 var(--token-light-spacing-lg);
   font-size: var(--token-light-typography-font-size-body);
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .button {
+  border-radius: var(--token-dark-border-radius-button);
+  font-size: var(--token-dark-typography-font-size-small);
+  font-weight: var(--token-dark-typography-font-weight-button);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  box-shadow: var(--token-dark-shadow-button);
+}
+
+[data-theme="dark"] .button:focus-visible {
+  box-shadow: var(--token-dark-shadow-focus);
+}
+
+[data-theme="dark"] .primary {
+  background-color: var(--color-dark-accent-primary);
+  color: var(--color-dark-text-inverse);
+}
+
+[data-theme="dark"] .primary:hover {
+  background-color: var(--color-dark-accent-hover);
+}
+
+[data-theme="dark"] .primary:active {
+  background-color: var(--color-dark-accent-active);
+}
+
+[data-theme="dark"] .secondary {
+  background-color: var(--color-dark-surface-secondary);
+  color: var(--color-dark-text-primary);
+  border-color: var(--color-dark-border-primary);
+}
+
+[data-theme="dark"] .secondary:hover {
+  background-color: var(--color-dark-surface-tertiary);
+}
+
+[data-theme="dark"] .ghost {
+  color: var(--color-dark-text-primary);
+}
+
+[data-theme="dark"] .ghost:hover {
+  background-color: var(--color-dark-surface-secondary);
+}
+
+[data-theme="dark"] .outline {
+  color: var(--color-dark-text-primary);
+  border-color: var(--color-dark-border-primary);
+}
+
+[data-theme="dark"] .outline:hover {
+  background-color: var(--color-dark-surface-secondary);
 }
 

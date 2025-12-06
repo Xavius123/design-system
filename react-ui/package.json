@@ -25,10 +25,17 @@
     "dist/index.css"
   ],
   "scripts": {
+    "prebuild": "node ../../scripts/validate-tokens.js",
     "build": "vite build",
     "build:storybook": "storybook build",
     "storybook": "storybook dev -p 6006",
-    "dev": "vite build --watch"
+    "dev": "vite build --watch",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css,json}\"",
+    "analyze": "vite build --mode analyze",
+    "size-check": "npm run build && node scripts/check-bundle-size.js"
   },
   "keywords": [
     "design-system",
@@ -39,11 +46,11 @@
     "radix-ui",
     "css-modules"
   ],
-  "author": "",
+  "author": "Toyota Design System Team",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/design-system.git",
+    "url": "https://github.com/toyota/design-system.git",
     "directory": "react-ui"
   },
   "peerDependencies": {
@@ -67,12 +74,14 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^8.4.7",
     "vite": "^6.0.0",
+    "vite-bundle-visualizer": "^0.10.0",
     "vite-plugin-dts": "^4.5.0"
   }
 }
-
-

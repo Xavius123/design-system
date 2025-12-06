@@ -1,4 +1,5 @@
 import Button from './Button';
+import styles from './Button.stories.module.css';
 
 export default {
   title: 'Components/Button',
@@ -80,14 +81,14 @@ export const Disabled = {
 };
 
 export const AllVariants = () => (
-  <div className="flex flex-col gap-4">
-    <div className="flex gap-2">
+  <div className={styles.container}>
+    <div className={styles.row}>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="outline">Outline</Button>
     </div>
-    <div className="flex gap-2">
+    <div className={styles.row}>
       <Button variant="primary" size="sm">Small</Button>
       <Button variant="primary" size="md">Medium</Button>
       <Button variant="primary" size="lg">Large</Button>

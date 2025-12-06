@@ -219,9 +219,12 @@ async function updateTokenFiles(tokens) {
   console.log('✅ All token files updated in Token Studio format');
 }
 
-// Run the script
-if (import.meta.url === `file://${process.argv[1]}`) {
-  fetchFigmaTokens().catch(process.exit);
+// Run the script if executed directly
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('fetch-figma-tokens.js')) {
+  fetchFigmaTokens().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 }
 
 export { fetchFigmaTokens }; 

@@ -66,6 +66,7 @@ export default defineConfig({
           );
         } catch (err) {
           console.error('Error bundling CSS:', err);
+          throw err;
         }
       },
     },

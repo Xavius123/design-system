@@ -13,11 +13,11 @@
 
 /* Checkbox Root */
 .checkbox {
-  width: var(--token-light-spacing-md);
-  height: var(--token-light-spacing-md);
-  border-radius: var(--token-light-border-radius-checkbox);
-  border: 2px solid var(--color-light-border-primary);
-  background-color: var(--color-light-background-primary);
+  width: var(--token-light-spacing-md, 16px);
+  height: var(--token-light-spacing-md, 16px);
+  border-radius: var(--token-light-border-radius-checkbox, 4px);
+  border: 2px solid var(--color-light-border-primary, #e5e5e5);
+  background-color: var(--color-light-background-primary, #ffffff);
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -86,7 +86,7 @@
 
 .required {
   color: var(--color-light-error-primary);
-  margin-left: 4px;
+  margin-left: var(--token-light-spacing-xs);
 }
 
 /* Indicator */
@@ -100,18 +100,18 @@
 }
 
 .indicator svg {
-  width: 12px;
-  height: 12px;
+  width: var(--token-light-spacing-sm);
+  height: var(--token-light-spacing-sm);
 }
 
 .small .indicator svg {
-  width: 10px;
-  height: 10px;
+  width: var(--token-light-spacing-xs);
+  height: var(--token-light-spacing-xs);
 }
 
 .large .indicator svg {
-  width: 16px;
-  height: 16px;
+  width: var(--token-light-spacing-md);
+  height: var(--token-light-spacing-md);
 }
 
 /* Error Message */
@@ -122,5 +122,50 @@
   color: var(--color-light-error-primary);
   margin-top: var(--token-light-spacing-xs);
   margin-left: var(--token-light-spacing-lg);
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .checkbox {
+  border-radius: var(--token-dark-border-radius-checkbox);
+  border-color: var(--color-dark-border-primary);
+  background-color: var(--color-dark-background-primary);
+}
+
+[data-theme="dark"] .checkbox:focus {
+  border-color: var(--color-dark-border-focus);
+  box-shadow: var(--token-dark-shadow-focus);
+}
+
+[data-theme="dark"] .checkbox[data-state="checked"] {
+  background-color: var(--color-dark-accent-primary);
+  border-color: var(--color-dark-accent-primary);
+  color: var(--color-dark-text-inverse);
+}
+
+[data-theme="dark"] .error {
+  border-color: var(--color-dark-error-primary);
+}
+
+[data-theme="dark"] .error:focus {
+  border-color: var(--color-dark-error-primary);
+  box-shadow: 0 0 0 2px var(--color-dark-error-background);
+}
+
+[data-theme="dark"] .label {
+  font-size: var(--token-dark-typography-font-size-small);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  color: var(--color-dark-text-primary);
+}
+
+[data-theme="dark"] .required {
+  color: var(--color-dark-error-primary);
+}
+
+[data-theme="dark"] .errorMessage {
+  font-size: var(--token-dark-typography-font-size-small);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  color: var(--color-dark-error-primary);
 }
 

@@ -1,4 +1,10 @@
 import '../src/styles/global.css';
+import { initTheme } from '../src/utils/theme';
+
+// Initialize theme on Storybook load
+if (typeof window !== 'undefined') {
+  initTheme();
+}
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -11,6 +17,15 @@ const preview = {
       },
     },
   },
+  decorators: [
+    (Story) => {
+      // Ensure theme is initialized
+      if (typeof window !== 'undefined') {
+        initTheme();
+      }
+      return <Story />;
+    },
+  ],
 };
 
 export default preview;

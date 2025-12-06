@@ -4,6 +4,34 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as Label from '@radix-ui/react-label';
 import styles from './Checkbox.module.css';
 
+/**
+ * Checkbox component with label, error states, and multiple sizes
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} [props.label=''] - Checkbox label
+ * @param {boolean} [props.checked] - Controlled checked state
+ * @param {boolean} [props.defaultChecked=false] - Uncontrolled default checked state
+ * @param {Function} [props.onCheckedChange] - Checked state change handler
+ * @param {Function} [props.onBlur] - Blur handler
+ * @param {boolean} [props.disabled=false] - Whether the checkbox is disabled
+ * @param {boolean} [props.required=false] - Whether the checkbox is required
+ * @param {boolean} [props.error=false] - Whether the checkbox has an error
+ * @param {string} [props.errorMessage=''] - Error message to display
+ * @param {('sm'|'md'|'lg')} [props.size='md'] - Checkbox size
+ * @param {string} [props.className=''] - Additional CSS classes
+ * @param {string} [props.id] - Checkbox ID (auto-generated if not provided)
+ * @param {Object} props... - Additional props passed to the checkbox element
+ * @returns {React.ForwardRefExoticComponent} Checkbox component
+ * 
+ * @example
+ * <Checkbox
+ *   label="Accept terms and conditions"
+ *   required
+ *   checked={isChecked}
+ *   onCheckedChange={setIsChecked}
+ * />
+ */
 const Checkbox = React.forwardRef(({
   label = '',
   checked,
@@ -18,7 +46,7 @@ const Checkbox = React.forwardRef(({
   className = '',
   ...props
 }, ref) => {
-  const checkboxId = props.id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
+  const checkboxId = props.id || `checkbox-${crypto.randomUUID()}`;
   
   const sizeClasses = {
     sm: styles.small,
@@ -47,6 +75,7 @@ const Checkbox = React.forwardRef(({
           required={required}
           className={checkboxClasses}
           aria-invalid={error}
+          aria-label={props['aria-label'] || (label ? undefined : 'Checkbox')}
           aria-describedby={error ? `${checkboxId}-error` : undefined}
           {...props}
         >
