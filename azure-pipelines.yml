@@ -41,8 +41,6 @@ variables:
       
       **Generated Outputs:**
       - CSS variables for light/dark themes
-      - SCSS variables with getter functions
-      - TypeScript definitions
       
       Please review the changes and merge if approved.
 
@@ -72,10 +70,6 @@ stages:
     - script: |
         npm run build:token
       displayName: 'Build Design Tokens with Style Dictionary'
-
-    - script: |
-        node scripts/build-typescript.js
-      displayName: 'Build TypeScript Files'
 
     - task: GitVersion@5
       inputs:
@@ -170,11 +164,6 @@ stages:
         # Test that Style Dictionary can build tokens
         npm run build:token
       displayName: 'Test Style Dictionary Build'
-
-    - script: |
-        # Test that TypeScript files can be built
-        node scripts/build-typescript.js
-      displayName: 'Test TypeScript Build'
 
     - script: |
         # Run any existing tests

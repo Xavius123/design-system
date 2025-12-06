@@ -1,16 +1,15 @@
 # Design System
 
-A comprehensive design system that generates CSS variables for dark/light themes and SCSS variables with getter functions for easy access.
+A comprehensive design system that generates CSS variables for dark/light themes. Built with React, Radix UI, and CSS Modules.
 
 ## Features
 
 - 🎨 **Theme Support**: Light and dark theme color tokens
 - 🎯 **CSS Variables**: Auto-generated CSS custom properties for themes
-- 🔧 **SCSS Functions**: Convenient getter functions for theme colors
-- 📦 **Modular Output**: Separate files for different use cases
+- 📦 **CSS Modules**: Component styles using CSS modules
 - 🚀 **Easy Integration**: Simple import and usage
-- ⚛️ **React Components**: Reusable React components with Tailwind CSS
-- 🎨 **Tailwind Integration**: Design tokens integrated with Tailwind CSS
+- ⚛️ **React Components**: Reusable React components built with Radix UI
+- 🎨 **Design Tokens**: All styling uses design token CSS variables
 
 ## Quick Start
 
@@ -21,15 +20,10 @@ A comprehensive design system that generates CSS variables for dark/light themes
 
 2. **Build tokens**:
    ```bash
-   npm run build:tokens
+   npm run build:token
    ```
 
-3. **Build CSS** (for React components):
-   ```bash
-   npm run build:css
-   ```
-
-4. **Use in your project**:
+3. **Use in your project**:
    ```css
    /* Import CSS variables */
    @import 'build/css/light.css';
@@ -53,7 +47,7 @@ After building, you'll get:
 
 ### React Components
 
-The design system includes React components built with Tailwind CSS:
+The design system includes React components built with Radix UI and CSS Modules:
 
 ```jsx
 import { Button } from './components';
@@ -92,24 +86,6 @@ import { Button } from './components';
 | `className` | `string` | `''` | Additional CSS classes |
 | `onClick` | `function` | - | Click handler |
 | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Button type |
-
-### SCSS Functions
-
-The design system provides several convenient functions:
-
-```scss
-// Get light theme color
-background-color: light-color("background-primary");
-
-// Get dark theme color
-color: dark-color("text-primary");
-
-// Get theme color with theme parameter
-border-color: get-theme-color("border-primary", "dark");
-
-// Get CSS custom property
-background-color: css-var("background-primary", "light");
-```
 
 ### CSS Variables
 
@@ -173,7 +149,7 @@ document.documentElement.setAttribute('data-theme', 'dark');
 
 2. Rebuild the tokens:
    ```bash
-   npm run build:tokens
+   npm run build:token
    ```
 
 ### Token Structure
@@ -203,17 +179,26 @@ design-system/
 ├── components/
 │   ├── Button/
 │   │   ├── Button.jsx
+│   │   ├── Button.module.css
+│   │   ├── Button.stories.jsx
+│   │   └── index.js
+│   ├── Input/
+│   │   ├── Input.jsx
+│   │   ├── Input.module.css
+│   │   ├── Input.stories.jsx
+│   │   └── index.js
+│   ├── Checkbox/
+│   │   ├── Checkbox.jsx
+│   │   ├── Checkbox.module.css
+│   │   ├── Checkbox.stories.jsx
 │   │   └── index.js
 │   └── index.js
 ├── config/
 │   ├── style-dictionary.config.js
-│   └── formats/
-│       └── scss-getters.js
-├── examples/
-│   └── ButtonDemo.jsx
+│   └── figma.config.js
 ├── src/
 │   └── styles/
-│       └── input.css
+│       └── global.css
 ├── tokens/
 │   ├── colors.json
 │   ├── colors-light.json
@@ -221,12 +206,17 @@ design-system/
 │   ├── shadows.json
 │   └── spaces.json
 ├── scripts/
-│   └── build-tokens.js
+│   ├── build-tokens.js
+│   ├── fetch-figma-tokens.js
+│   ├── setup-figma-integration.js
+│   └── update-pr.js
 ├── build/
-│   ├── scss/
 │   └── css/
-├── tailwind.config.js
-└── postcss.config.js
+│       ├── light.css
+│       └── dark.css
+└── .storybook/
+    ├── main.js
+    └── preview.js
 ```
 
 ### Adding New Token Types

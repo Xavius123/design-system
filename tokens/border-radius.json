@@ -1,0 +1,31 @@
+{
+  "BorderRadius": {
+    "Base": {
+      "None": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "SM": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "MD": {
+        "$type": "dimension",
+        "$value": "6px"
+      },
+      "LG": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "XL": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "Full": {
+        "$type": "dimension",
+        "$value": "9999px"
+      }
+    }
+  }
+}
+

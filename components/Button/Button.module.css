@@ -3,18 +3,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: var(--token-light-border-radius-button);
+  font-size: var(--token-light-typography-font-size-small);
+  font-weight: var(--token-light-typography-font-weight-button);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  font-family: inherit;
+  box-shadow: var(--token-light-shadow-button);
 }
 
 .button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 108, 207, 0.2);
+  box-shadow: var(--token-light-shadow-focus);
 }
 
 .button:disabled {
@@ -29,7 +31,11 @@
 }
 
 .primary:hover {
-  background-color: var(--color-light-accent-secondary);
+  background-color: var(--color-light-accent-hover);
+}
+
+.primary:active {
+  background-color: var(--color-light-accent-active);
 }
 
 .secondary {
@@ -63,20 +69,20 @@
 
 /* Sizes */
 .small {
-  height: 32px;
-  padding: 0 12px;
-  font-size: 12px;
+  height: calc(var(--token-light-spacing-md) * 2);
+  padding: 0 var(--token-light-spacing-sm);
+  font-size: var(--token-light-typography-font-size-small);
 }
 
 .medium {
-  height: 40px;
-  padding: 0 16px;
-  font-size: 14px;
+  height: calc(var(--token-light-spacing-md) * 2.5);
+  padding: 0 var(--token-light-spacing-md);
+  font-size: var(--token-light-typography-font-size-small);
 }
 
 .large {
-  height: 48px;
-  padding: 0 24px;
-  font-size: 16px;
+  height: calc(var(--token-light-spacing-lg) * 2);
+  padding: 0 var(--token-light-spacing-lg);
+  font-size: var(--token-light-typography-font-size-body);
 }
 

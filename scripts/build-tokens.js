@@ -1,6 +1,5 @@
 import StyleDictionary from 'style-dictionary';
 import styleConfig from '../config/style-dictionary.config.js';
-import '../config/formats/scss-getters.js';
 
 console.log('Building design tokens...');
 

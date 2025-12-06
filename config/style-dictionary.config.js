@@ -1,6 +1,4 @@
-import { formats, transformGroups } from 'style-dictionary/enums';
-import './formats/scss-getters.js';
-import './formats/typescript-colors.js';
+import { transformGroups } from 'style-dictionary/enums';
 
 export default {
   source: ['tokens/*.json'],
@@ -13,13 +11,17 @@ export default {
           destination: 'light.css',
           format: 'css/variables',
           selector: ':root[data-theme="light"]',
-          filter: (token) => token.filePath.includes('colors-light'),
+          filter: (token) => 
+            token.filePath.includes('colors-light') || 
+            token.filePath.includes('theme-light'),
         },
         {
           destination: 'dark.css',
           format: 'css/variables',
           selector: ':root[data-theme="dark"]',
-          filter: (token) => token.filePath.includes('colors-dark'),
+          filter: (token) => 
+            token.filePath.includes('colors-dark') || 
+            token.filePath.includes('theme-dark'),
         },
       ],
     },

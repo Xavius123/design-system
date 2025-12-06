@@ -4,71 +4,99 @@
       "Background": {
         "Primary": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "{Color.Brand.Toyota.White}"
         },
         "Secondary": {
           "$type": "color",
-          "$value": "#fafafa"
+          "$value": "{Color.Brand.Toyota.Gray.50}"
         },
         "Tertiary": {
           "$type": "color",
-          "$value": "#f5f5f5"
+          "$value": "{Color.Brand.Toyota.Gray.100}"
         }
       },
       "Surface": {
         "Primary": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "{Color.Brand.Toyota.White}"
         },
         "Secondary": {
           "$type": "color",
-          "$value": "#fafafa"
+          "$value": "{Color.Brand.Toyota.Gray.50}"
         },
         "Tertiary": {
           "$type": "color",
-          "$value": "#f5f5f5"
+          "$value": "{Color.Brand.Toyota.Gray.100}"
         }
       },
       "Text": {
         "Primary": {
           "$type": "color",
-          "$value": "#1d1f2a"
+          "$value": "{Color.Brand.Toyota.Black}"
         },
         "Secondary": {
           "$type": "color",
-          "$value": "#4c4d53"
+          "$value": "{Color.Brand.Toyota.Gray.600}"
         },
         "Tertiary": {
           "$type": "color",
-          "$value": "#737373"
+          "$value": "{Color.Brand.Toyota.Gray.500}"
         },
         "Inverse": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "{Color.Brand.Toyota.White}"
         }
       },
       "Border": {
         "Primary": {
           "$type": "color",
-          "$value": "#e5e5e5"
+          "$value": "{Color.Brand.Toyota.Gray.200}"
         },
         "Secondary": {
           "$type": "color",
-          "$value": "#d4d4d4"
+          "$value": "{Color.Brand.Toyota.Gray.300}"
         },
         "Focus": {
           "$type": "color",
-          "$value": "#3b6ccf"
+          "$value": "{Color.Brand.Toyota.Red}"
         }
       },
       "Accent": {
         "Primary": {
           "$type": "color",
-          "$value": "#3b6ccf"
+          "$value": "{Color.Brand.Toyota.Red}"
         },
         "Secondary": {
           "$type": "color",
-          "$value": "#5d5d62"
+          "$value": "{Color.Brand.Toyota.RedDark}"
+        },
+        "Hover": {
+          "$type": "color",
+          "$value": "{Color.Brand.Toyota.RedDark}"
+        },
+        "Active": {
+          "$type": "color",
+          "$value": "{Color.Brand.Toyota.RedLight}"
+        }
+      },
+      "Error": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#DC2626"
+        },
+        "Background": {
+          "$type": "color",
+          "$value": "#FEF2F2"
+        }
+      },
+      "Success": {
+        "Primary": {
+          "$type": "color",
+          "$value": "#16A34A"
+        },
+        "Background": {
+          "$type": "color",
+          "$value": "#F0FDF4"
         }
       }
     }

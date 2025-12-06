@@ -29,7 +29,6 @@
   "scripts": {
     "build:token": "node scripts/build-tokens.js",
     "build": "style-dictionary build",
-    "build:typescript": "node scripts/build-typescript.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

@@ -1,0 +1,135 @@
+{
+  "Token": {
+    "Light": {
+      "Typography": {
+        "FontFamily": {
+          "Body": {
+            "$type": "fontFamily",
+            "$value": "{Typography.FontFamily.Sans}"
+          },
+          "Heading": {
+            "$type": "fontFamily",
+            "$value": "{Typography.FontFamily.Sans}"
+          },
+          "Code": {
+            "$type": "fontFamily",
+            "$value": "{Typography.FontFamily.Mono}"
+          }
+        },
+        "FontSize": {
+          "Body": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.Base}"
+          },
+          "Small": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.SM}"
+          },
+          "Large": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.LG}"
+          },
+          "Heading1": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.4XL}"
+          },
+          "Heading2": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.3XL}"
+          },
+          "Heading3": {
+            "$type": "dimension",
+            "$value": "{Typography.FontSize.2XL}"
+          }
+        },
+        "FontWeight": {
+          "Body": {
+            "$type": "fontWeight",
+            "$value": "{Typography.FontWeight.Regular}"
+          },
+          "Heading": {
+            "$type": "fontWeight",
+            "$value": "{Typography.FontWeight.Bold}"
+          },
+          "Button": {
+            "$type": "fontWeight",
+            "$value": "{Typography.FontWeight.Medium}"
+          }
+        },
+        "LineHeight": {
+          "Body": {
+            "$type": "number",
+            "$value": "{Typography.LineHeight.Normal}"
+          },
+          "Heading": {
+            "$type": "number",
+            "$value": "{Typography.LineHeight.Tight}"
+          }
+        }
+      },
+      "Spacing": {
+        "XS": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.1}"
+        },
+        "SM": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.2}"
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.4}"
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.6}"
+        },
+        "XL": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.8}"
+        },
+        "2XL": {
+          "$type": "dimension",
+          "$value": "{Spacing.Base.12}"
+        }
+      },
+      "BorderRadius": {
+        "Button": {
+          "$type": "dimension",
+          "$value": "{BorderRadius.Base.MD}"
+        },
+        "Input": {
+          "$type": "dimension",
+          "$value": "{BorderRadius.Base.MD}"
+        },
+        "Checkbox": {
+          "$type": "dimension",
+          "$value": "{BorderRadius.Base.SM}"
+        },
+        "Card": {
+          "$type": "dimension",
+          "$value": "{BorderRadius.Base.LG}"
+        }
+      },
+      "Shadow": {
+        "Button": {
+          "$type": "shadow",
+          "$value": "{Shadow.Base.None}"
+        },
+        "Card": {
+          "$type": "shadow",
+          "$value": "{Shadow.Base.SM}"
+        },
+        "Modal": {
+          "$type": "shadow",
+          "$value": "{Shadow.Base.XL}"
+        },
+        "Focus": {
+          "$type": "shadow",
+          "$value": "0 0 0 2px rgba(235, 10, 30, 0.2)"
+        }
+      }
+    }
+  }
+}
+

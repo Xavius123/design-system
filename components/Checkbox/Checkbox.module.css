@@ -2,20 +2,20 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--token-light-spacing-xs);
 }
 
 .container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--token-light-spacing-sm);
 }
 
 /* Checkbox Root */
 .checkbox {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: var(--token-light-spacing-md);
+  height: var(--token-light-spacing-md);
+  border-radius: var(--token-light-border-radius-checkbox);
   border: 2px solid var(--color-light-border-primary);
   background-color: var(--color-light-background-primary);
   cursor: pointer;
@@ -29,8 +29,7 @@
 .checkbox:focus {
   outline: none;
   border-color: var(--color-light-border-focus);
-  box-shadow: 0 0 0 2px var(--color-light-border-focus);
-  box-shadow: 0 0 0 2px rgba(59, 108, 207, 0.2);
+  box-shadow: var(--token-light-shadow-focus);
 }
 
 .checkbox:disabled {
@@ -46,28 +45,28 @@
 
 /* Sizes */
 .small {
-  width: 12px;
-  height: 12px;
+  width: var(--token-light-spacing-sm);
+  height: var(--token-light-spacing-sm);
 }
 
 .medium {
-  width: 16px;
-  height: 16px;
+  width: var(--token-light-spacing-md);
+  height: var(--token-light-spacing-md);
 }
 
 .large {
-  width: 20px;
-  height: 20px;
+  width: calc(var(--token-light-spacing-md) + var(--token-light-spacing-xs));
+  height: calc(var(--token-light-spacing-md) + var(--token-light-spacing-xs));
 }
 
 /* States */
 .error {
-  border-color: #ef4444;
+  border-color: var(--color-light-error-primary);
 }
 
 .error:focus {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  border-color: var(--color-light-error-primary);
+  box-shadow: 0 0 0 2px var(--color-light-error-background);
 }
 
 .disabled {
@@ -77,14 +76,16 @@
 
 /* Label */
 .label {
-  font-size: 14px;
+  font-size: var(--token-light-typography-font-size-small);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
   color: var(--color-light-text-primary);
   cursor: pointer;
   user-select: none;
 }
 
 .required {
-  color: #ef4444;
+  color: var(--color-light-error-primary);
   margin-left: 4px;
 }
 
@@ -115,9 +116,11 @@
 
 /* Error Message */
 .errorMessage {
-  font-size: 14px;
-  color: #ef4444;
-  margin-top: 4px;
-  margin-left: 24px;
+  font-size: var(--token-light-typography-font-size-small);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
+  color: var(--color-light-error-primary);
+  margin-top: var(--token-light-spacing-xs);
+  margin-left: var(--token-light-spacing-lg);
 }
 
