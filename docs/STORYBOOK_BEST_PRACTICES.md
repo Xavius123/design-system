@@ -427,24 +427,26 @@ export const decorators = [
 
 ### 3. Theme Switching
 
+Use the Storybook toolbar theme selector, or programmatically:
+
 ```jsx
+import { useTheme } from '@toyota/react-ui';
+
 export const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState('light');
-  
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+  const { theme, toggleTheme } = useTheme();
   
   return (
     <div>
-      <Button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-        Toggle Theme
+      <Button onClick={toggleTheme}>
+        Toggle Theme (Current: {theme})
       </Button>
       <Button variant="primary">Primary Button</Button>
     </div>
   );
 };
 ```
+
+See [STORYBOOK_THEMING.md](./STORYBOOK_THEMING.md) for complete theming guide.
 
 ---
 
@@ -491,13 +493,12 @@ export const Accessibility = {
 ```js
 // .storybook/main.js
 export default {
-  stories: ['../components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-essentials',
+    '@storybook/addon-essentials', // Includes: actions, controls, docs, viewport, backgrounds, measure, outline
     '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-    '@storybook/addon-viewport',
-    '@storybook/addon-docs',
+    '@storybook/addon-links',
+    '@storybook/addon-a11y', // Accessibility testing
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -508,6 +509,10 @@ export default {
   },
 };
 ```
+
+### Available Addons
+
+See [STORYBOOK_ADDONS.md](./STORYBOOK_ADDONS.md) for complete addon documentation.
 
 ### Preview Configuration
 

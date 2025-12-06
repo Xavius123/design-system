@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Toast, { useToast } from './Toast';
+import { ToastProvider } from './ToastProvider';
 import Button from '../Button/Button';
 
 export default {
@@ -11,9 +12,9 @@ export default {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <Toast.Provider>
+      <ToastProvider position="bottom-right">
         <Story />
-      </Toast.Provider>
+      </ToastProvider>
     ),
   ],
   argTypes: {

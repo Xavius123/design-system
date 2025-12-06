@@ -36,10 +36,17 @@ const Modal = ({
   ...props
 }) => {
   return (
-    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange} {...props}>
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange} modal={true} {...props}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className={styles.overlay} />
-        <DialogPrimitive.Content className={`${styles.content} ${className}`}>
+        <DialogPrimitive.Overlay 
+          className={styles.overlay}
+          onClick={closeOnOverlayClick ? undefined : (e) => e.preventDefault()}
+        />
+        <DialogPrimitive.Content 
+          className={`${styles.content} ${className}`}
+          onEscapeKeyDown={closeOnEscape ? undefined : (e) => e.preventDefault()}
+          onPointerDownOutside={closeOnOverlayClick ? undefined : (e) => e.preventDefault()}
+        >
           {title && (
             <DialogPrimitive.Title className={styles.title}>
               {title}

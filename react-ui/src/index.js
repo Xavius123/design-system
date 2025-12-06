@@ -6,7 +6,7 @@ export { default as Card } from './components/Card';
 export { default as RadioGroup, Radio, RadioOption } from './components/Radio';
 export { default as Modal } from './components/Modal';
 export { default as Tooltip } from './components/Tooltip';
-export { default as Toast, useToast } from './components/Toast';
+export { default as Toast, useToast, ToastProvider } from './components/Toast';
 export { default as ThemeProvider, useTheme } from './components/ThemeProvider';
 export { default as ErrorBoundary } from './components/ErrorBoundary';
 

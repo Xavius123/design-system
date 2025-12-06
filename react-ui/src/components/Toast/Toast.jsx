@@ -91,66 +91,16 @@ Toast.propTypes = {
 };
 
 /**
- * ToastProvider component that wraps the app and provides toast context
- * 
- * @component
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Child components
- * @param {('top-left'|'top-right'|'bottom-left'|'bottom-right'|'top-center'|'bottom-center')} [props.position='bottom-right'] - Toast position
- * @param {number} [props.duration=5000] - Default duration for toasts
- * @param {number} [props.swipeDirection='right'] - Swipe direction to dismiss
- * @returns {React.Component} ToastProvider component
- */
-const ToastProvider = ({
-  children,
-  position = 'bottom-right',
-  duration = 5000,
-  swipeDirection = 'right',
-}) => {
-  const positionMap = {
-    'top-left': { x: 'left', y: 'top' },
-    'top-right': { x: 'right', y: 'top' },
-    'top-center': { x: 'center', y: 'top' },
-    'bottom-left': { x: 'left', y: 'bottom' },
-    'bottom-right': { x: 'right', y: 'bottom' },
-    'bottom-center': { x: 'center', y: 'bottom' },
-  };
-
-  const pos = positionMap[position] || positionMap['bottom-right'];
-
-  return (
-    <ToastPrimitive.Provider
-      duration={duration}
-      swipeDirection={swipeDirection}
-    >
-      {children}
-      <ToastPrimitive.Viewport
-        className={styles.viewport}
-        style={{
-          [pos.y]: 0,
-          [pos.x]: 0,
-          transform: pos.x === 'center' ? 'translateX(-50%)' : undefined,
-        }}
-      />
-    </ToastPrimitive.Provider>
-  );
-};
-
-ToastProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  position: PropTypes.oneOf(['top-left', 'top-right', 'bottom-left', 'bottom-right', 'top-center', 'bottom-center']),
-  duration: PropTypes.number,
-  swipeDirection: PropTypes.oneOf(['left', 'right', 'up', 'down']),
-};
-
-/**
  * Hook to create and show toasts programmatically
+ * Note: This is a simplified implementation. For production, consider using a toast context.
+ * 
+ * @returns {Object} Object with toast function and dismiss function
  */
 export const useToast = () => {
   const [toasts, setToasts] = React.useState([]);
 
   const toast = React.useCallback(({ title, description, variant = 'info', duration = 5000 }) => {
-    const id = `toast-${Date.now()}`;
+    const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const newToast = {
       id,
       title,
@@ -160,18 +110,25 @@ export const useToast = () => {
       open: true,
     };
     setToasts((prev) => [...prev, newToast]);
+    
+    // Auto-dismiss after duration
+    if (duration > 0) {
+      setTimeout(() => {
+        setToasts((prev) => prev.filter((t) => t.id !== id));
+      }, duration);
+    }
+    
     return id;
   }, []);
 
   const dismiss = React.useCallback((id) => {
-    setToasts((prev) => prev.map((t) => (t.id === id ? { ...t, open: false } : t)));
+    setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
   return { toast, dismiss, toasts };
 };
 
-Toast.Provider = ToastProvider;
-Toast.useToast = useToast;
-
+// ToastProvider is exported separately from ToastProvider.jsx
+// useToast hook is exported separately
 export default Toast;
 
