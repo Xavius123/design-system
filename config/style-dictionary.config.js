@@ -5,7 +5,7 @@ export default {
   platforms: {
     css: {
       transformGroup: transformGroups.css,
-      buildPath: 'build/css/',
+      buildPath: 'tokens/dist/css/',
       files: [
         {
           destination: 'light.css',

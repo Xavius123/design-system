@@ -1,6 +1,7 @@
 /* Import design system CSS variables */
-@import '../../build/css/light.css';
-@import '../../build/css/dark.css';
+/* These will be inlined during build */
+@import '../../../../tokens/dist/css/light.css';
+@import '../../../../tokens/dist/css/dark.css';
 
 /* Base theme setup */
 :root {
@@ -26,4 +27,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-

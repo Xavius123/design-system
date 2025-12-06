@@ -1,0 +1,78 @@
+{
+  "name": "@your-org/react-ui",
+  "version": "1.0.0",
+  "description": "Toyota-branded React UI components built with Radix UI and CSS Modules",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/index.css",
+    "./tokens/light": "../../tokens/dist/css/light.css",
+    "./tokens/dark": "../../tokens/dist/css/dark.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "dist/index.css"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:storybook": "storybook build",
+    "storybook": "storybook dev -p 6006",
+    "dev": "vite build --watch"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "ui",
+    "toyota",
+    "radix-ui",
+    "css-modules"
+  ],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/design-system.git",
+    "directory": "react-ui"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.4.7",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.0"
+  }
+}
+
+

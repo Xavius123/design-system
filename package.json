@@ -1,39 +1,23 @@
 {
   "name": "design-system",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "type": "module",
-  "devDependencies": {
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
-    "@storybook/addon-links": "^8.4.7",
-    "@storybook/blocks": "^8.4.7",
-    "@storybook/react": "^8.4.7",
-    "@storybook/react-vite": "^8.4.7",
-    "@storybook/test": "^8.4.7",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "prettier": "^3.6.2",
-    "storybook": "^8.4.7",
-    "style-dictionary": "^5.0.0",
-    "vite": "^6.0.0"
-  },
-  "dependencies": {
-    "@radix-ui/react-checkbox": "^1.3.3",
-    "@radix-ui/react-label": "^2.1.8",
-    "@radix-ui/react-slot": "^1.2.4",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
+  "workspaces": [
+    "react-ui"
+  ],
   "scripts": {
     "build:token": "node scripts/build-tokens.js",
-    "build": "style-dictionary build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build": "npm run build:token && npm run build --workspace=react-ui",
+    "storybook": "npm run storybook --workspace=react-ui",
+    "build-storybook": "npm run build-storybook --workspace=react-ui"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "style-dictionary": "^5.0.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Toyota-branded design system monorepo"
 }

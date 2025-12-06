@@ -4,5 +4,16 @@ node_modules/
 # Environment variables
 .env
 
-# Storybook build output
+# Build outputs
+build/
+tokens/dist/
+react-ui/dist/
 storybook-static/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
