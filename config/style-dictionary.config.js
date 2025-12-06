@@ -25,5 +25,25 @@ export default {
         },
       ],
     },
+    javascript: {
+      transformGroup: 'js',
+      buildPath: 'tokens/dist/js/',
+      files: [
+        {
+          destination: 'light.js',
+          format: 'javascript/es6',
+          filter: (token) => 
+            token.filePath.includes('colors-light') || 
+            token.filePath.includes('theme-light'),
+        },
+        {
+          destination: 'dark.js',
+          format: 'javascript/es6',
+          filter: (token) => 
+            token.filePath.includes('colors-dark') || 
+            token.filePath.includes('theme-dark'),
+        },
+      ],
+    },
   },
 };

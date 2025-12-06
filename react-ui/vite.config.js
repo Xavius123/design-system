@@ -8,7 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+              '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+              '@toyota/design-tokens': resolve(__dirname, '../../tokens'),
     },
   },
   plugins: [
@@ -24,15 +25,15 @@ export default defineConfig({
         try {
           mkdirSync(resolve(__dirname, 'dist'), { recursive: true });
           
-          // Read token CSS files
-          const lightCss = readFileSync(
-            resolve(__dirname, '../../tokens/dist/css/light.css'),
-            'utf8'
-          );
-          const darkCss = readFileSync(
-            resolve(__dirname, '../../tokens/dist/css/dark.css'),
-            'utf8'
-          );
+                  // Read token CSS files from tokens package
+                  const lightCss = readFileSync(
+                    resolve(__dirname, '../../tokens/dist/css/light.css'),
+                    'utf8'
+                  );
+                  const darkCss = readFileSync(
+                    resolve(__dirname, '../../tokens/dist/css/dark.css'),
+                    'utf8'
+                  );
           
           // Read global CSS
           let globalCss = readFileSync(

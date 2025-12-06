@@ -1,0 +1,47 @@
+{
+  "name": "@toyota/react-native-ui",
+  "version": "1.0.0",
+  "description": "Toyota-branded React Native UI components built with design tokens",
+  "main": "./src/index.js",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,json}\""
+  },
+  "keywords": [
+    "design-system",
+    "react-native",
+    "components",
+    "ui",
+    "toyota",
+    "mobile"
+  ],
+  "author": "Toyota Design System Team",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toyota/design-system.git",
+    "directory": "react-native-ui"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-native": "^0.72.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "@toyota/design-tokens": "file:../tokens",
+    "prop-types": "^15.8.1"
+  }
+}
+

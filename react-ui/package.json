@@ -12,8 +12,8 @@
       "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/index.css",
-    "./tokens/light": "../../tokens/dist/css/light.css",
-    "./tokens/dark": "../../tokens/dist/css/dark.css",
+    "./tokens/light": "@toyota/design-tokens/css/light",
+    "./tokens/dark": "@toyota/design-tokens/css/dark",
     "./package.json": "./package.json"
   },
   "files": [
