@@ -1,0 +1,150 @@
+/* Modal Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+}
+
+/* Modal Content */
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-light-background-primary, #ffffff);
+  border-radius: var(--token-light-border-radius-card, 8px);
+  box-shadow: var(--token-light-shadow-modal, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1));
+  padding: var(--token-light-spacing-lg, 24px);
+  max-width: 90vw;
+  max-height: 85vh;
+  width: 100%;
+  max-width: 500px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1001;
+  font-family: var(--token-light-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  overflow-y: auto;
+}
+
+.content:focus {
+  outline: none;
+}
+
+/* Modal Title */
+.title {
+  font-size: var(--token-light-typography-font-size-large, 18px);
+  font-weight: var(--token-light-typography-font-weight-heading, 700);
+  font-family: var(--token-light-typography-font-family-heading, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-light-typography-line-height-heading, 1.25);
+  color: var(--color-light-text-primary, #000000);
+  margin: 0 0 var(--token-light-spacing-md, 16px) 0;
+}
+
+/* Modal Description */
+.description {
+  font-size: var(--token-light-typography-font-size-body, 16px);
+  font-family: var(--token-light-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-light-typography-line-height-body, 1.5);
+  color: var(--color-light-text-secondary, #525252);
+  margin: 0 0 var(--token-light-spacing-lg, 24px) 0;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: var(--token-light-spacing-md, 16px);
+  right: var(--token-light-spacing-md, 16px);
+  width: var(--token-light-spacing-xl, 32px);
+  height: var(--token-light-spacing-xl, 32px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-light-text-secondary, #525252);
+  transition: all 0.2s ease;
+}
+
+.close:hover {
+  background-color: var(--color-light-surface-secondary, #fafafa);
+  color: var(--color-light-text-primary, #000000);
+}
+
+.close:focus {
+  outline: none;
+  box-shadow: var(--token-light-shadow-focus, 0 0 0 2px rgba(235, 10, 30, 0.2));
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--token-light-spacing-sm, 8px) var(--token-light-spacing-md, 16px);
+  border-radius: var(--token-light-border-radius-button, 6px);
+  font-family: var(--token-light-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  transition: all 0.2s ease;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .content {
+  background-color: var(--color-dark-background-primary, #000000);
+  border-radius: var(--token-dark-border-radius-card, 8px);
+  box-shadow: var(--token-dark-shadow-modal, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="dark"] .title {
+  font-size: var(--token-dark-typography-font-size-large, 18px);
+  font-weight: var(--token-dark-typography-font-weight-heading, 700);
+  font-family: var(--token-dark-typography-font-family-heading, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-dark-typography-line-height-heading, 1.25);
+  color: var(--color-dark-text-primary, #ffffff);
+}
+
+[data-theme="dark"] .description {
+  font-size: var(--token-dark-typography-font-size-body, 16px);
+  font-family: var(--token-dark-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-dark-typography-line-height-body, 1.5);
+  color: var(--color-dark-text-secondary, #d4d4d4);
+}
+
+[data-theme="dark"] .close {
+  color: var(--color-dark-text-secondary, #d4d4d4);
+}
+
+[data-theme="dark"] .close:hover {
+  background-color: var(--color-dark-surface-secondary, #171717);
+  color: var(--color-dark-text-primary, #ffffff);
+}
+
