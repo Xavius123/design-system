@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { ComponentSize } from '@toyota/core';
 import Checkbox from './Checkbox';
 import styles from './Checkbox.stories.module.css';
 
@@ -27,7 +26,7 @@ const meta: Meta<typeof Checkbox> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: Object.values(ComponentSize),
+      options: ['sm', 'md', 'lg'],
     },
     disabled: {
       control: { type: 'boolean' },
@@ -96,21 +95,21 @@ export const DisabledChecked: Story = {
 export const Small: Story = {
   args: {
     label: 'Small Checkbox',
-    size: ComponentSize.Small,
+    size: 'sm',
   },
 };
 
 export const Medium: Story = {
   args: {
     label: 'Medium Checkbox',
-    size: ComponentSize.Medium,
+    size: 'md',
   },
 };
 
 export const Large: Story = {
   args: {
     label: 'Large Checkbox',
-    size: ComponentSize.Large,
+    size: 'lg',
   },
 };
 
@@ -147,9 +146,9 @@ export const Controlled: Story = {
 
 export const AllSizes = () => (
   <div className={styles.container}>
-    <Checkbox label="Small" size={ComponentSize.Small} />
-    <Checkbox label="Medium" size={ComponentSize.Medium} />
-    <Checkbox label="Large" size={ComponentSize.Large} />
+    <Checkbox label="Small" size="sm" />
+    <Checkbox label="Medium" size="md" />
+    <Checkbox label="Large" size="lg" />
   </div>
 );
 

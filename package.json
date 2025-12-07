@@ -12,8 +12,6 @@
     "build": "npm run build:token && npm run build --workspace=packages/react-ui",
     "storybook": "npm run storybook --workspace=packages/react-ui",
     "build-storybook": "npm run build-storybook --workspace=packages/react-ui",
-    "chromatic": "chromatic --exit-zero-on-changes",
-    "chromatic:ci": "chromatic --exit-zero-on-changes --auto-accept-changes main",
     "format": "prettier --write \"**/*.{js,jsx,css,json,md}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{js,jsx,css,json,md}\" --ignore-path .gitignore",
     "lint": "npm run lint --workspace=packages/react-ui",

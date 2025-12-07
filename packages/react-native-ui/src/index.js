@@ -1,6 +1,4 @@
 // Export all components
 export { default as Button } from './components/Button';
-
-// Export theme utilities (to be added)
-// export { getTheme, setTheme, useTheme } from './utils/theme';
-
+export { default as Input } from './components/Input';
+export { default as Checkbox } from './components/Checkbox';

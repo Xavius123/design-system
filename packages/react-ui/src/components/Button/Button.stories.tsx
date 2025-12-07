@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { ButtonVariant, ComponentSize } from '@toyota/core';
 import Button from './Button';
 import styles from './Button.stories.module.css';
 
@@ -27,11 +26,11 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: Object.values(ButtonVariant),
+      options: ['primary', 'secondary', 'ghost', 'outline'],
     },
     size: {
       control: { type: 'select' },
-      options: Object.values(ComponentSize),
+      options: ['sm', 'md', 'lg'],
     },
     disabled: {
       control: { type: 'boolean' },
@@ -44,49 +43,49 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    variant: ButtonVariant.Primary,
+    variant: 'primary',
     children: 'Primary Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    variant: ButtonVariant.Secondary,
+    variant: 'secondary',
     children: 'Secondary Button',
   },
 };
 
 export const Ghost: Story = {
   args: {
-    variant: ButtonVariant.Ghost,
+    variant: 'ghost',
     children: 'Ghost Button',
   },
 };
 
 export const Outline: Story = {
   args: {
-    variant: ButtonVariant.Outline,
+    variant: 'outline',
     children: 'Outline Button',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: ComponentSize.Small,
+    size: 'sm',
     children: 'Small Button',
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: ComponentSize.Medium,
+    size: 'md',
     children: 'Medium Button',
   },
 };
 
 export const Large: Story = {
   args: {
-    size: ComponentSize.Large,
+    size: 'lg',
     children: 'Large Button',
   },
 };
@@ -100,24 +99,24 @@ export const Disabled: Story = {
 
 export const AllVariants = () => (
   <div className={styles.container}>
-    <Button variant={ButtonVariant.Primary}>Primary</Button>
-    <Button variant={ButtonVariant.Secondary}>Secondary</Button>
-    <Button variant={ButtonVariant.Ghost}>Ghost</Button>
-    <Button variant={ButtonVariant.Outline}>Outline</Button>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="outline">Outline</Button>
   </div>
 );
 
 export const AllSizes = () => (
   <div className={styles.container}>
-    <Button size={ComponentSize.Small}>Small</Button>
-    <Button size={ComponentSize.Medium}>Medium</Button>
-    <Button size={ComponentSize.Large}>Large</Button>
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
   </div>
 );
 
 export const WithInteractionTest: Story = {
   args: {
-    variant: ButtonVariant.Primary,
+    variant: 'primary',
     children: 'Click me',
   },
   play: async ({ canvasElement }) => {
@@ -139,7 +138,7 @@ export const WithInteractionTest: Story = {
 
 export const DisabledInteractionTest: Story = {
   args: {
-    variant: ButtonVariant.Primary,
+    variant: 'primary',
     disabled: true,
     children: 'Disabled',
   },
@@ -155,7 +154,7 @@ export const DisabledInteractionTest: Story = {
 
 export const FocusInteractionTest: Story = {
   args: {
-    variant: ButtonVariant.Primary,
+    variant: 'primary',
     children: 'Focus Test',
   },
   play: async ({ canvasElement }) => {

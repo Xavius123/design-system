@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentSize } from '../enums';
 
 /**
@@ -9,34 +8,43 @@ export interface BaseComponentProps {
   size?: ComponentSize;
   /** Whether the component is disabled */
   disabled?: boolean;
-  /** Additional CSS class name (web) */
+  /** Additional CSS class name (web only) */
   className?: string;
-  /** Test ID for testing (React Native) */
+  /** Test ID for testing */
   testID?: string;
+  /** Additional inline styles */
+  style?: React.CSSProperties;
 }
 
 /**
  * Props for interactive web components
  */
 export interface InteractiveWebProps {
-  /** Click handler for web */
+  /** Click event handler (web) */
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  /** Blur event handler */
+  onBlur?: (event: React.FocusEvent<HTMLElement>) => void;
+  /** Focus event handler */
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 }
 
 /**
  * Props for interactive React Native components
  */
 export interface InteractiveNativeProps {
-  /** Press handler for React Native */
+  /** Press event handler (React Native) */
   onPress?: () => void;
+  /** Blur event handler */
+  onBlur?: () => void;
+  /** Focus event handler */
+  onFocus?: () => void;
 }
 
 /**
  * Props for components with children
  */
 export interface WithChildren {
-  /** Child elements */
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 /**
@@ -53,4 +61,9 @@ export interface FormFieldProps {
   errorMessage?: string;
   /** Helper text to display */
   helperText?: string;
+  /** Field name */
+  name?: string;
+  /** Field ID */
+  id?: string;
 }
+

@@ -1,21 +1,21 @@
 import React from 'react';
 import * as Slot from '@radix-ui/react-slot';
-import { ButtonVariant, ComponentSize } from '@toyota/core';
-import type { BaseComponentProps, InteractiveWebProps, WithChildren } from '@toyota/core';
-import { DEFAULT_BUTTON_VARIANT, DEFAULT_SIZE } from '@toyota/core';
 import styles from './Button.module.css';
 
 /**
  * Button Props
- * Extends base component props with button-specific properties
  */
-export interface ButtonProps extends BaseComponentProps, InteractiveWebProps, WithChildren {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Button variant style */
-  variant?: ButtonVariant;
-  /** Button type attribute */
-  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  /** Button size */
+  size?: 'sm' | 'md' | 'lg';
+  /** Whether the button is disabled */
+  disabled?: boolean;
   /** Render as child component using Radix Slot */
   asChild?: boolean;
+  /** Button content */
+  children?: React.ReactNode;
 }
 
 /**
@@ -24,33 +24,32 @@ export interface ButtonProps extends BaseComponentProps, InteractiveWebProps, Wi
  * @component
  * @example
  * ```tsx
- * <Button variant={ButtonVariant.Primary} size={ComponentSize.Medium} onClick={handleClick}>
+ * <Button variant="primary" size="md" onClick={handleClick}>
  *   Click me
  * </Button>
  * ```
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   children,
-  variant = DEFAULT_BUTTON_VARIANT as ButtonVariant,
-  size = DEFAULT_SIZE as ComponentSize,
+  variant = 'primary',
+  size = 'md',
   disabled = false,
   className = '',
-  onClick,
   type = 'button',
   asChild = false,
   ...props
 }, ref) => {
-  const variantClasses: Record<ButtonVariant, string> = {
-    [ButtonVariant.Primary]: styles.primary,
-    [ButtonVariant.Secondary]: styles.secondary,
-    [ButtonVariant.Ghost]: styles.ghost,
-    [ButtonVariant.Outline]: styles.outline,
+  const variantClasses: Record<string, string> = {
+    primary: styles.primary,
+    secondary: styles.secondary,
+    ghost: styles.ghost,
+    outline: styles.outline,
   };
   
-  const sizeClasses: Record<ComponentSize, string> = {
-    [ComponentSize.Small]: styles.small,
-    [ComponentSize.Medium]: styles.medium,
-    [ComponentSize.Large]: styles.large,
+  const sizeClasses: Record<string, string> = {
+    sm: styles.small,
+    md: styles.medium,
+    lg: styles.large,
   };
   
   const classes = [
@@ -68,7 +67,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       type={asChild ? undefined : type}
       className={classes}
       disabled={disabled}
-      onClick={onClick}
       {...props}
     >
       {children}

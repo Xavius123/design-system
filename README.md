@@ -113,12 +113,11 @@ From the root directory:
 ## Documentation
 
 See `docs/` directory for:
-- **Component Architecture Guide** - How to build components
-- **Storybook Addons Reference** - All installed addons and how to use them
-- **Chromatic Visual Testing** - Visual regression testing workflow
-- **NPM Package Guide** - Publishing and versioning
-- **Design System Best Practices** - General guidelines
-- **Quick Reference** - Common commands and patterns
+- Design System Best Practices
+- Component Architecture Guide
+- Storybook Best Practices
+- NPM Package Guide
+- Quick Reference
 
 ## License
 

@@ -1,20 +1,15 @@
-import { ButtonVariant, ComponentSize } from '../enums';
+/**
+ * Default values and constants used across components
+ */
 
-// Default values for components
-export const DEFAULT_BUTTON_VARIANT = ButtonVariant.Primary;
-export const DEFAULT_SIZE = ComponentSize.Medium;
+export const DEFAULT_SIZE = 'md' as const;
+export const DEFAULT_BUTTON_VARIANT = 'primary' as const;
+export const DEFAULT_BUTTON_TYPE = 'button' as const;
+export const DEFAULT_INPUT_TYPE = 'text' as const;
 
-// Component configuration
-export const COMPONENT_CONFIG = {
-  button: {
-    defaultVariant: ButtonVariant.Primary,
-    defaultSize: ComponentSize.Medium,
-  },
-  input: {
-    defaultType: 'text' as const,
-    defaultSize: ComponentSize.Medium,
-  },
-  checkbox: {
-    defaultSize: ComponentSize.Medium,
-  },
-} as const;
+/**
+ * Platform detection
+ */
+export const IS_WEB = typeof window !== 'undefined' && typeof document !== 'undefined';
+export const IS_NATIVE = !IS_WEB;
+

@@ -1,330 +1,280 @@
-# Storybook Addons Reference
+# Storybook Addons Guide
 
-Quick reference for all Storybook addons installed in this project.
+Complete guide to all Storybook addons configured in this design system.
 
 ## Installed Addons
 
-### Official Addons
+### Core Addons (from @storybook/addon-essentials)
 
-#### @storybook/addon-essentials
-**Included by default** - Bundle of essential addons:
-- **Controls**: Interactive component props editor
-- **Actions**: Event handler logging
-- **Docs**: Auto-generated documentation
-- **Viewport**: Responsive design testing
-- **Backgrounds**: Background color testing
-- **Toolbars**: Custom toolbar items
+These are included automatically with `@storybook/addon-essentials`:
 
-**Usage:** Always active, no configuration needed.
+- **@storybook/addon-actions** - Log actions/events in the Actions panel
+- **@storybook/addon-controls** - Interactive controls for component props
+- **@storybook/addon-docs** - Enhanced documentation with MDX support
+- **@storybook/addon-viewport** - Test components at different screen sizes
+- **@storybook/addon-backgrounds** - Test components on different backgrounds
+- **@storybook/addon-measure** - Measure component dimensions
+- **@storybook/addon-outline** - Show element outlines for debugging
 
----
-
-#### @storybook/addon-themes
-**Purpose:** Switch between light and dark themes
-
-**Features:**
-- Theme switcher in toolbar
-- Applies `data-theme` attribute to document
-- Syncs with design tokens
-
-**Configuration:** `packages/react-ui/.storybook/preview.js`
-
-```javascript
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
-
-decorators: [
-  withThemeByDataAttribute({
-    themes: {
-      light: 'light',
-      dark: 'dark',
-    },
-    defaultTheme: 'light',
-    attributeName: 'data-theme',
-  }),
-]
-```
-
-**How to use:**
-1. Open Storybook
-2. Click theme icon in toolbar
-3. Select Light or Dark
-
----
+### Additional Addons
 
 #### @storybook/addon-a11y
-**Purpose:** Accessibility testing
+
+Automated accessibility testing for all components.
 
 **Features:**
-- Runs axe accessibility tests
-- Shows violations in Accessibility panel
-- Highlights problematic elements
-- Provides fix suggestions
+- WCAG compliance checking
+- Color contrast validation
+- Keyboard navigation testing
+- ARIA attribute validation
+- Visual accessibility violations panel
 
-**Configuration:** `packages/react-ui/.storybook/preview.js`
+**Usage:**
+The addon automatically runs on all stories. Check the "Accessibility" panel in Storybook to see violations.
 
+**Configuration:**
 ```javascript
-a11y: {
-  config: {
-    rules: [
-      { id: 'color-contrast', enabled: true },
-      { id: 'keyboard-navigation', enabled: true },
-      { id: 'focus-order-semantics', enabled: true },
-    ],
+// .storybook/preview.js
+parameters: {
+  a11y: {
+    config: {
+      rules: [
+        { id: 'color-contrast', enabled: true },
+        { id: 'keyboard-navigation', enabled: true },
+      ],
+    },
   },
 }
 ```
 
-**How to use:**
-1. View any story
-2. Open "Accessibility" panel (bottom)
-3. Review violations and passes
-
----
+**Best Practices:**
+- Fix all critical violations before publishing
+- Test keyboard navigation for all interactive components
+- Ensure proper ARIA labels on icon-only buttons
+- Verify color contrast meets WCAG AA standards
 
 #### @storybook/addon-interactions
-**Purpose:** View and debug interaction tests
+
+Test component interactions and user flows.
 
 **Features:**
-- Shows step-by-step test execution
-- Displays assertions and results
-- Provides detailed error messages
-- Allows replay of interactions
+- Interaction testing with `play` functions
+- User event simulation
+- Async interaction testing
+- Visual interaction timeline
 
-**How to use:**
-1. View story with `play` function
-2. Open "Interactions" panel (bottom)
-3. Watch tests run automatically
-4. Review pass/fail status
+**Usage:**
+```jsx
+import { userEvent, within, expect } from '@storybook/test';
 
-**Example:**
-```typescript
-export const ClickTest: Story = {
+export const Clicked = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
     await userEvent.click(button);
-    await expect(button).toBeInTheDocument();
+    await expect(button).toHaveTextContent('Clicked!');
   },
 };
 ```
 
----
-
-#### @storybook/addon-measure
-**Purpose:** Inspect component dimensions
-
-**Features:**
-- Measure element widths and heights
-- Show padding and margins
-- Visualize spacing
-
-**How to use:**
-1. Click measure icon in toolbar
-2. Hover over elements to see dimensions
-3. Toggle on/off as needed
-
----
-
-#### @storybook/addon-outline
-**Purpose:** Visualize component boundaries
-
-**Features:**
-- Shows outlines around all elements
-- Helps debug layout issues
-- Reveals hidden elements
-
-**How to use:**
-1. Click outline icon in toolbar
-2. See all element boundaries
-3. Toggle on/off as needed
-
----
-
 #### @storybook/addon-links
-**Purpose:** Create links between stories
+
+Link between stories for navigation flows.
 
 **Features:**
-- Link from one story to another
-- Build story navigation flows
-- Demo user journeys
+- Navigate between related stories
+- Create story flows
+- Link components together
 
-**Example:**
-```typescript
+**Usage:**
+```jsx
 import { linkTo } from '@storybook/addon-links';
 
-<Button onClick={linkTo('Components/Input', 'Default')}>
-  Go to Input
+<Button onClick={linkTo('Components/Modal', 'Default')}>
+  Open Modal Story
 </Button>
 ```
 
----
+## Theme Switching
 
-### Custom Addons
+### Custom Theme Switcher
 
-#### Design Tokens Panel
-**Purpose:** Show design tokens used by each component
+We use a custom theme switcher integrated with our design system's theme utilities.
 
-**Location:** `packages/react-ui/.storybook/addons/design-tokens-panel/`
+**Configuration:**
+```javascript
+// .storybook/preview.js
+globalTypes: {
+  theme: {
+    toolbar: {
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+    },
+  },
+}
+```
 
-**Features:**
-- Displays tokens by category (colors, spacing, typography, etc.)
-- Shows values for light and dark themes
-- Copy CSS variable names
-- Color preview swatches
+**Usage:**
+- Use the theme selector in the Storybook toolbar
+- All components automatically adapt to the selected theme
+- Theme preference is persisted in localStorage
 
-**How to use:**
-1. Open any component story
-2. Click "Design Tokens" tab (bottom panel)
-3. Switch between light/dark themes
-4. Click "Copy CSS" to copy token variable names
+## Viewport Testing
 
-**Adding tokens to a story:**
-```typescript
-export default {
-  title: 'Components/Button',
-  component: Button,
+### Custom Viewports
+
+Pre-configured viewports for Toyota design system:
+
+- **Mobile**: 375px × 667px (iPhone SE)
+- **Tablet**: 768px × 1024px (iPad)
+- **Desktop**: 1920px × 1080px (Full HD)
+
+**Usage:**
+- Select viewport from toolbar
+- Test responsive behavior
+- Verify mobile-first design
+
+**Adding Custom Viewports:**
+```javascript
+// .storybook/preview.js
+parameters: {
+  viewport: {
+    viewports: {
+      custom: {
+        name: 'Custom',
+        styles: { width: '1440px', height: '900px' },
+      },
+    },
+  },
+}
+```
+
+## Background Testing
+
+### Pre-configured Backgrounds
+
+- **Light**: #ffffff (default)
+- **Dark**: #000000
+- **Gray**: #f5f5f5
+
+**Usage:**
+- Test component contrast
+- Verify visibility on different backgrounds
+- Ensure proper color contrast ratios
+
+## Accessibility Testing
+
+### Running A11y Tests
+
+1. Open any story in Storybook
+2. Check the "Accessibility" panel (bottom)
+3. Review violations and warnings
+4. Fix issues in component code
+5. Re-test to verify fixes
+
+### Common Issues and Fixes
+
+**Color Contrast:**
+- Issue: Text doesn't meet WCAG AA (4.5:1 ratio)
+- Fix: Use design tokens with proper contrast ratios
+
+**Missing ARIA Labels:**
+- Issue: Icon-only buttons lack labels
+- Fix: Add `aria-label` prop
+
+**Keyboard Navigation:**
+- Issue: Component not keyboard accessible
+- Fix: Ensure proper tab order and focus management
+
+**Focus Indicators:**
+- Issue: No visible focus state
+- Fix: Add focus-visible styles using design tokens
+
+## Design Integration
+
+### Figma Integration (Manual)
+
+While we don't have the addon installed (requires Storybook 10), you can manually link to Figma:
+
+```jsx
+export const Button = {
   parameters: {
-    designTokens: {
-      colors: ['color-light-primary', 'color-light-text-inverse'],
-      spacing: ['spacing-md', 'spacing-lg'],
-      typography: ['fontSize-body', 'fontWeight-semibold'],
-      borderRadius: ['borderRadius-md'],
+    docs: {
+      description: {
+        component: 'Button component. [View in Figma](https://figma.com/file/...)',
+      },
     },
   },
 };
 ```
 
----
+## Best Practices
 
-## Addon Configuration Files
+### 1. Always Test Accessibility
 
-### Main Configuration
-`packages/react-ui/.storybook/main.js`
+- Run a11y addon on every new component
+- Fix critical violations before merging
+- Document accessibility features in stories
 
-Lists all registered addons:
-```javascript
-addons: [
-  '@storybook/addon-essentials',
-  '@storybook/addon-interactions',
-  '@storybook/addon-links',
-  '@storybook/addon-a11y',
-  '@storybook/addon-themes',
-  '@storybook/addon-measure',
-  '@storybook/addon-outline',
-  './addons/design-tokens-panel/register.js',
-]
-```
+### 2. Test Multiple Viewports
 
-### Preview Configuration
-`packages/react-ui/.storybook/preview.js`
+- Test all components at mobile, tablet, and desktop
+- Verify responsive behavior
+- Check for layout issues
 
-Configures addon behavior and global settings.
+### 3. Use Theme Switcher
 
----
+- Test components in both light and dark themes
+- Verify all design tokens work correctly
+- Ensure proper contrast in both themes
 
-## Useful Addon Combinations
+### 4. Document Interactions
 
-### Accessibility Testing
-1. **a11y addon** - Check violations
-2. **Interactions addon** - Test keyboard navigation
-3. **Outline addon** - Visualize focus order
+- Use interaction tests for complex components
+- Show user flows in stories
+- Document keyboard shortcuts
 
-### Design Review
-1. **Theme addon** - Test light/dark modes
-2. **Design Tokens panel** - Verify token usage
-3. **Measure addon** - Check spacing
-4. **Viewport addon** - Test responsive behavior
+### 5. Test on Different Backgrounds
 
-### Development
-1. **Controls addon** - Experiment with props
-2. **Actions addon** - See event handlers fire
-3. **Interactions addon** - Test user flows
-4. **Outline addon** - Debug layout
-
----
-
-## Adding New Addons
-
-### 1. Install the addon
-```bash
-cd packages/react-ui
-npm install --save-dev @storybook/addon-name
-```
-
-### 2. Register in main.js
-```javascript
-// packages/react-ui/.storybook/main.js
-addons: [
-  // ... existing addons
-  '@storybook/addon-name',
-]
-```
-
-### 3. Configure in preview.js (if needed)
-```javascript
-// packages/react-ui/.storybook/preview.js
-export default {
-  parameters: {
-    addonName: {
-      // configuration options
-    },
-  },
-};
-```
-
----
-
-## Popular Addons to Consider
-
-### @storybook/addon-designs
-Link Figma designs to stories
-```bash
-npm install --save-dev @storybook/addon-designs
-```
-
-### @storybook/addon-coverage
-Show test coverage from interaction tests
-```bash
-npm install --save-dev @storybook/addon-coverage
-```
-
-### @storybook/addon-jest
-Display Jest test results
-```bash
-npm install --save-dev @storybook/addon-jest
-```
-
-### @chromaui/addon-visual-tests
-Chromatic visual tests directly in Storybook
-```bash
-npm install --save-dev @chromaui/addon-visual-tests
-```
-
----
+- Verify component visibility
+- Check contrast ratios
+- Ensure proper styling
 
 ## Troubleshooting
 
-### Addon not showing up
-1. Check it's listed in `main.js` addons array
-2. Restart Storybook dev server
-3. Clear browser cache
+### A11y Addon Not Showing
 
-### Addon conflicts
-Some addons may conflict. Check:
-- Addon versions match Storybook version
-- No duplicate addons
-- Check console for errors
+- Ensure `@storybook/addon-a11y` is in `main.js` addons array
+- Restart Storybook server
+- Clear browser cache
 
-### Performance issues
-Too many addons can slow down Storybook:
-- Disable unused addons
-- Use lazy loading for heavy addons
-- Consider splitting into multiple Storybook instances
+### Theme Not Switching
 
----
+- Check that `initTheme()` is called in preview.js
+- Verify `data-theme` attribute is set on document
+- Ensure CSS variables are loaded
+
+### Viewport Not Working
+
+- Check viewport configuration in preview.js
+- Verify viewport addon is included in essentials
+- Restart Storybook
+
+## Future Addons to Consider
+
+When upgrading to Storybook 10:
+
+- **@storybook/addon-themes** - Official theme switching addon
+- **@storybook/addon-designs** - Figma integration (v10 compatible)
+- **storybook-addon-design-tokens** - Visualize design tokens
+- **@storybook/addon-measure** - Enhanced measurement tools
 
 ## Resources
 
 - [Storybook Addons Catalog](https://storybook.js.org/addons)
-- [Creating Custom Addons](https://storybook.js.org/docs/react/addons/writing-addons)
-- [Addon API Documentation](https://storybook.js.org/docs/react/addons/addon-api)
+- [A11y Addon Docs](https://storybook.js.org/addons/@storybook/addon-a11y)
+- [Interactions Addon Docs](https://storybook.js.org/addons/@storybook/addon-interactions)
+- [Viewport Addon Docs](https://storybook.js.org/addons/@storybook/addon-viewport)
+

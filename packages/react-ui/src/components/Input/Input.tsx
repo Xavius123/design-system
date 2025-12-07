@@ -1,33 +1,27 @@
 import React from 'react';
 import * as Label from '@radix-ui/react-label';
-import { ComponentSize, InputType } from '@toyota/core';
-import type { BaseComponentProps, FormFieldProps } from '@toyota/core';
-import { DEFAULT_SIZE } from '@toyota/core';
 import styles from './Input.module.css';
 
 /**
  * Input Props
- * Extends base component props with input-specific properties
  */
-export interface InputProps extends Omit<BaseComponentProps, 'testID'>, FormFieldProps {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** Input type */
-  type?: InputType;
-  /** Placeholder text */
-  placeholder?: string;
-  /** Controlled input value */
-  value?: string;
-  /** Uncontrolled input default value */
-  defaultValue?: string;
-  /** Change handler */
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /** Blur handler */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  /** Input size */
+  size?: 'sm' | 'md' | 'lg';
+  /** Input label */
+  label?: string;
+  /** Whether the input has an error */
+  error?: boolean;
+  /** Error message to display */
+  errorMessage?: string;
+  /** Helper text to display */
+  helperText?: string;
+  /** Whether the input is required */
+  required?: boolean;
   /** Whether the input should take full width */
   fullWidth?: boolean;
-  /** Input ID (auto-generated if not provided) */
-  id?: string;
-  /** Aria label for accessibility */
-  'aria-label'?: string;
 }
 
 /**
@@ -38,7 +32,7 @@ export interface InputProps extends Omit<BaseComponentProps, 'testID'>, FormFiel
  * ```tsx
  * <Input
  *   label="Email"
- *   type={InputType.Email}
+ *   type="email"
  *   placeholder="Enter your email"
  *   required
  *   error={hasError}
@@ -47,43 +41,36 @@ export interface InputProps extends Omit<BaseComponentProps, 'testID'>, FormFiel
  * ```
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({
-  type = InputType.Text,
-  placeholder = '',
-  value,
-  defaultValue,
-  onChange,
-  onBlur,
-  disabled = false,
-  required = false,
+  type = 'text',
+  size = 'md',
+  label = '',
   error = false,
   errorMessage = '',
-  label = '',
   helperText = '',
-  className = '',
-  size = DEFAULT_SIZE as ComponentSize,
+  required = false,
   fullWidth = false,
+  className = '',
   id,
-  'aria-label': ariaLabel,
   ...props
 }, ref) => {
   // Validate that value and defaultValue are not used together
-  if (process.env.NODE_ENV !== 'production' && value !== undefined && defaultValue !== undefined) {
+  if (process.env.NODE_ENV !== 'production' && props.value !== undefined && props.defaultValue !== undefined) {
     console.warn('Input: Both `value` and `defaultValue` cannot be used. Use `value` for controlled components or `defaultValue` for uncontrolled components.');
   }
 
   const inputId = id || `input-${crypto.randomUUID()}`;
   
-  const sizeClasses: Record<ComponentSize, string> = {
-    [ComponentSize.Small]: styles.small,
-    [ComponentSize.Medium]: styles.medium,
-    [ComponentSize.Large]: styles.large,
+  const sizeClasses: Record<string, string> = {
+    sm: styles.small,
+    md: styles.medium,
+    lg: styles.large,
   };
   
   const inputClasses = [
     styles.input,
     sizeClasses[size],
     error && styles.error,
-    disabled && styles.disabled,
+    props.disabled && styles.disabled,
     className
   ].filter(Boolean).join(' ');
   
@@ -104,16 +91,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
         id={inputId}
         ref={ref}
         type={type}
-        placeholder={placeholder}
-        value={value}
-        defaultValue={defaultValue}
-        onChange={onChange}
-        onBlur={onBlur}
-        disabled={disabled}
         required={required}
         className={inputClasses}
         aria-invalid={error}
-        aria-label={ariaLabel || (label ? undefined : 'Input field')}
+        aria-label={props['aria-label'] || (label ? undefined : 'Input field')}
         aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
         {...props}
       />

@@ -1,22 +1,32 @@
 import React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as Label from '@radix-ui/react-label';
-import { ComponentSize } from '@toyota/core';
-import type { BaseComponentProps, FormFieldProps } from '@toyota/core';
-import { DEFAULT_SIZE } from '@toyota/core';
 import styles from './Checkbox.module.css';
 
 /**
  * Checkbox Props
- * Extends base component props with checkbox-specific properties
  */
-export interface CheckboxProps extends Omit<BaseComponentProps, 'testID'>, Omit<FormFieldProps, 'helperText'> {
+export interface CheckboxProps {
   /** Controlled checked state */
   checked?: boolean | 'indeterminate';
   /** Default checked state (uncontrolled) */
   defaultChecked?: boolean;
   /** Handler called when checkbox state changes */
   onCheckedChange?: (checked: boolean | 'indeterminate') => void;
+  /** Checkbox label */
+  label?: string;
+  /** Whether the checkbox has an error */
+  error?: boolean;
+  /** Error message to display */
+  errorMessage?: string;
+  /** Whether the checkbox is required */
+  required?: boolean;
+  /** Whether the checkbox is disabled */
+  disabled?: boolean;
+  /** Checkbox size */
+  size?: 'sm' | 'md' | 'lg';
+  /** Additional CSS class name */
+  className?: string;
   /** Checkbox ID (auto-generated if not provided) */
   id?: string;
 }
@@ -46,17 +56,17 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(({
   errorMessage = '',
   required = false,
   disabled = false,
-  size = DEFAULT_SIZE as ComponentSize,
+  size = 'md',
   className = '',
   id,
   ...props
 }, ref) => {
   const checkboxId = id || `checkbox-${crypto.randomUUID()}`;
   
-  const sizeClasses: Record<ComponentSize, string> = {
-    [ComponentSize.Small]: styles.small,
-    [ComponentSize.Medium]: styles.medium,
-    [ComponentSize.Large]: styles.large,
+  const sizeClasses: Record<string, string> = {
+    sm: styles.small,
+    md: styles.medium,
+    lg: styles.large,
   };
   
   const checkboxClasses = [

@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { ComponentSize, InputType } from '@toyota/core';
 import Input from './Input';
 import styles from './Input.stories.module.css';
 
@@ -27,11 +26,11 @@ const meta: Meta<typeof Input> = {
   argTypes: {
     type: {
       control: { type: 'select' },
-      options: Object.values(InputType),
+      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'search'],
     },
     size: {
       control: { type: 'select' },
-      options: Object.values(ComponentSize),
+      options: ['sm', 'md', 'lg'],
     },
     disabled: {
       control: { type: 'boolean' },
@@ -61,7 +60,7 @@ export const WithLabel: Story = {
   args: {
     label: 'Email Address',
     placeholder: 'Enter your email',
-    type: InputType.Email,
+    type: 'email',
   },
 };
 
@@ -77,7 +76,7 @@ export const WithError: Story = {
   args: {
     label: 'Email',
     placeholder: 'Enter your email',
-    type: InputType.Email,
+    type: 'email',
     error: true,
     errorMessage: 'Please enter a valid email address',
   },
@@ -86,7 +85,7 @@ export const WithError: Story = {
 export const WithHelperText: Story = {
   args: {
     label: 'Password',
-    type: InputType.Password,
+    type: 'password',
     placeholder: 'Enter password',
     helperText: 'Must be at least 8 characters',
   },
@@ -103,7 +102,7 @@ export const Disabled: Story = {
 export const Small: Story = {
   args: {
     label: 'Small Input',
-    size: ComponentSize.Small,
+    size: 'sm',
     placeholder: 'Small size',
   },
 };
@@ -111,7 +110,7 @@ export const Small: Story = {
 export const Medium: Story = {
   args: {
     label: 'Medium Input',
-    size: ComponentSize.Medium,
+    size: 'md',
     placeholder: 'Medium size',
   },
 };
@@ -119,7 +118,7 @@ export const Medium: Story = {
 export const Large: Story = {
   args: {
     label: 'Large Input',
-    size: ComponentSize.Large,
+    size: 'lg',
     placeholder: 'Large size',
   },
 };
@@ -137,21 +136,21 @@ export const FullWidth: Story = {
 
 export const AllTypes = () => (
   <div className={styles.container}>
-    <Input label="Text" type={InputType.Text} placeholder="Text input" />
-    <Input label="Email" type={InputType.Email} placeholder="email@example.com" />
-    <Input label="Password" type={InputType.Password} placeholder="Password" />
-    <Input label="Number" type={InputType.Number} placeholder="123" />
-    <Input label="Tel" type={InputType.Tel} placeholder="(555) 555-5555" />
-    <Input label="URL" type={InputType.Url} placeholder="https://example.com" />
-    <Input label="Search" type={InputType.Search} placeholder="Search..." />
+    <Input label="Text" type="text" placeholder="Text input" />
+    <Input label="Email" type="email" placeholder="email@example.com" />
+    <Input label="Password" type="password" placeholder="Password" />
+    <Input label="Number" type="number" placeholder="123" />
+    <Input label="Tel" type="tel" placeholder="(555) 555-5555" />
+    <Input label="URL" type="url" placeholder="https://example.com" />
+    <Input label="Search" type="search" placeholder="Search..." />
   </div>
 );
 
 export const AllSizes = () => (
   <div className={styles.container}>
-    <Input label="Small" size={ComponentSize.Small} placeholder="Small input" />
-    <Input label="Medium" size={ComponentSize.Medium} placeholder="Medium input" />
-    <Input label="Large" size={ComponentSize.Large} placeholder="Large input" />
+    <Input label="Small" size="sm" placeholder="Small input" />
+    <Input label="Medium" size="md" placeholder="Medium input" />
+    <Input label="Large" size="lg" placeholder="Large input" />
   </div>
 );
 
@@ -181,7 +180,7 @@ export const TypingInteractionTest: Story = {
 export const FocusBlurInteractionTest: Story = {
   args: {
     label: 'Email',
-    type: InputType.Email,
+    type: 'email',
     placeholder: 'Enter email',
   },
   play: async ({ canvasElement }) => {
@@ -201,7 +200,7 @@ export const FocusBlurInteractionTest: Story = {
 export const ErrorValidationTest: Story = {
   args: {
     label: 'Email',
-    type: InputType.Email,
+    type: 'email',
     error: true,
     errorMessage: 'Please enter a valid email',
   },
