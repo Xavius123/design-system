@@ -1,0 +1,364 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Testing/Visual Regression" />
+
+# Visual Regression Testing with Chromatic
+
+Automated visual testing to catch UI bugs before they reach production.
+
+## Overview
+
+Visual regression testing with Chromatic:
+- Captures screenshots of all stories
+- Detects visual changes automatically
+- Provides UI for reviewing changes
+- Integrates with GitHub PRs
+- Runs in CI/CD pipeline
+
+## How It Works
+
+### 1. Initial Baseline
+
+First Chromatic build creates baseline screenshots:
+
+```bash
+npm run chromatic
+```
+
+This captures every story as a baseline image.
+
+### 2. Detect Changes
+
+On subsequent builds, Chromatic:
+- Captures new screenshots
+- Compares to baseline
+- Highlights differences
+- Flags changes for review
+
+### 3. Review Changes
+
+In the Chromatic UI:
+- ✅ **Accept** - Update baseline (expected change)
+- ❌ **Reject** - Keep baseline (unintended change)
+- 🔄 **Request changes** - Ask developer to fix
+
+## Setup
+
+### 1. Create Chromatic Account
+
+1. Visit [chromatic.com](https://www.chromatic.com/)
+2. Sign up with GitHub
+3. Link your repository
+4. Get project token
+
+### 2. Configure Project
+
+The project is already configured with:
+
+**`.chromatic.config.json`:**
+```json
+{
+  "projectToken": "YOUR_PROJECT_TOKEN_HERE",
+  "buildScriptName": "build-storybook",
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "autoAcceptChanges": "main"
+}
+```
+
+**Update** `projectToken` with your actual token.
+
+### 3. Add GitHub Secret
+
+1. Go to GitHub repository settings
+2. Navigate to Secrets → Actions
+3. Add new secret: `CHROMATIC_PROJECT_TOKEN`
+4. Paste your Chromatic project token
+
+### 4. GitHub Actions Setup
+
+Already configured in `.github/workflows/chromatic.yml`:
+
+```yaml
+name: Chromatic Visual Regression
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build design tokens
+        run: npm run build:token
+      
+      - name: Build core package
+        run: npm run build --workspace=packages/core
+      
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: 'build-storybook'
+          workingDir: packages/react-ui
+```
+
+## Running Locally
+
+### Manual Run
+
+```bash
+# Run Chromatic build
+npm run chromatic
+
+# View results link in terminal
+```
+
+### CI Mode
+
+```bash
+# Auto-accept changes on main branch
+npm run chromatic:ci
+```
+
+## Workflow
+
+### Developer Workflow
+
+1. **Make changes** to components
+2. **Push to branch** or create PR
+3. **Chromatic runs** automatically in CI
+4. **Review changes** in Chromatic UI
+5. **Accept/reject** visual changes
+6. **Merge PR** when approved
+
+### Review Process
+
+#### Expected Changes ✅
+
+```
+Change: Button color updated to match new brand
+Action: Accept changes → Updates baseline
+```
+
+#### Unintended Changes ❌
+
+```
+Change: Text unintentionally moved 2px down
+Action: Reject changes → Fix component
+```
+
+#### No Changes 🎉
+
+```
+No visual changes detected
+Action: Auto-approve
+```
+
+## Optimizing Chromatic
+
+### Ignore Stories
+
+Skip stories that shouldn't be tested:
+
+```typescript
+export const DynamicStory: Story = {
+  parameters: {
+    chromatic: { 
+      disableSnapshot: true 
+    },
+  },
+};
+```
+
+### Delay for Animations
+
+Wait for animations to complete:
+
+```typescript
+export const AnimatedStory: Story = {
+  parameters: {
+    chromatic: { 
+      delay: 300 // milliseconds
+    },
+  },
+};
+```
+
+### Pause Animations
+
+Disable animations during capture:
+
+```typescript
+export const StoryWithAnimation: Story = {
+  parameters: {
+    chromatic: { 
+      pauseAnimationAtEnd: true 
+    },
+  },
+};
+```
+
+### Viewport Testing
+
+Test different screen sizes:
+
+```typescript
+export const ResponsiveStory: Story = {
+  parameters: {
+    chromatic: {
+      viewports: [375, 768, 1920],
+    },
+  },
+};
+```
+
+## Best Practices
+
+### ✅ Do
+
+- Run Chromatic on every PR
+- Review all changes before accepting
+- Use consistent data in stories
+- Test multiple viewports for responsive components
+- Disable snapshots for highly dynamic content
+- Document expected changes in PR description
+
+### ❌ Don't
+
+- Auto-accept without reviewing
+- Ignore failing Chromatic builds
+- Use random data in stories
+- Test every animation frame
+- Snapshot loading states (unless testing them)
+
+## Handling Changes
+
+### Font Loading
+
+Ensure fonts load before capture:
+
+```typescript
+export const StoryWithCustomFont: Story = {
+  parameters: {
+    chromatic: {
+      delay: 500, // Wait for font
+    },
+  },
+};
+```
+
+### Image Loading
+
+Use static images or wait for load:
+
+```typescript
+export const StoryWithImages: Story = {
+  parameters: {
+    chromatic: {
+      delay: 1000, // Wait for images
+    },
+  },
+};
+```
+
+### Dynamic Content
+
+Use fixed data for snapshots:
+
+```typescript
+export const DynamicContent: Story = {
+  args: {
+    // Use fixed date instead of Date.now()
+    date: new Date('2024-01-01'),
+  },
+};
+```
+
+## PR Integration
+
+Chromatic automatically:
+- Comments on PRs with build results
+- Shows visual changes in UI review
+- Links to Chromatic build
+- Blocks merge if changes unreviewed (optional)
+
+### Example PR Comment
+
+```
+🌈 Chromatic Results
+
+✅ 15 stories unchanged
+⚠️ 3 stories changed
+🆕 2 new stories
+
+👀 Review changes: [View build →]
+```
+
+## Debugging
+
+### Build Failed
+
+Check:
+1. Storybook builds locally: `npm run build-storybook`
+2. All dependencies installed
+3. Design tokens built
+4. Core package built
+
+### Too Many Changes
+
+If every story shows changes:
+- Check for global CSS changes
+- Verify font loading
+- Check design token changes
+- Review theme implementation
+
+### Flaky Tests
+
+If snapshots differ each time:
+- Add delay for animations
+- Use fixed data (not random)
+- Disable animations with `pauseAnimationAtEnd`
+- Check for dynamic content (dates, IDs)
+
+## Costs
+
+Chromatic pricing:
+- **Free tier**: 5,000 snapshots/month
+- **Team plan**: $149/month for 35,000 snapshots
+- **Enterprise**: Custom pricing
+
+Tips to reduce snapshot count:
+- Use `disableSnapshot` for non-visual stories
+- Limit viewport testing to essential breakpoints
+- Group similar component states
+
+## Resources
+
+- [Chromatic Documentation](https://www.chromatic.com/docs/)
+- [Storybook Visual Testing](https://storybook.js.org/docs/react/writing-tests/visual-testing)
+- [Chromatic GitHub Action](https://github.com/chromaui/action)
+- [Chromatic Best Practices](https://www.chromatic.com/docs/best-practices)
+
+## Support
+
+- Chromatic Support: support@chromatic.com
+- GitHub Issues: Report bugs in this repo
+- Team Channel: #design-system in Slack
+

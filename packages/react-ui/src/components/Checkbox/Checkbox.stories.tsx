@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { ComponentSize } from '@toyota/core';
 import Checkbox from './Checkbox';
 import styles from './Checkbox.stories.module.css';
@@ -9,6 +10,18 @@ const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   parameters: {
     layout: 'centered',
+    designTokens: {
+      colors: [
+        'color-light-primary',
+        'color-light-border',
+        'color-light-text-primary',
+        'color-light-error',
+        'color-light-background',
+      ],
+      spacing: ['spacing-xs', 'spacing-sm'],
+      typography: ['fontSize-body', 'fontSize-sm'],
+      borderRadius: ['borderRadius-sm'],
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -149,4 +162,113 @@ export const AllStates = () => (
     <Checkbox label="Error" error errorMessage="This field is required" />
   </div>
 );
+
+export const CheckUncheckInteractionTest: Story = {
+  args: {
+    label: 'Accept terms',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+    
+    // Test initial unchecked state
+    await expect(checkbox).toBeInTheDocument();
+    await expect(checkbox).not.toBeChecked();
+    
+    // Test checking
+    await userEvent.click(checkbox);
+    await expect(checkbox).toBeChecked();
+    
+    // Test unchecking
+    await userEvent.click(checkbox);
+    await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const KeyboardNavigationTest: Story = {
+  args: {
+    label: 'Keyboard test',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+    
+    // Test focus
+    await checkbox.focus();
+    await expect(checkbox).toHaveFocus();
+    
+    // Test Space key to check
+    await userEvent.keyboard(' ');
+    await expect(checkbox).toBeChecked();
+    
+    // Test Space key to uncheck
+    await userEvent.keyboard(' ');
+    await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const DisabledCheckboxTest: Story = {
+  args: {
+    label: 'Disabled checkbox',
+    disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+    
+    // Test disabled state
+    await expect(checkbox).toBeDisabled();
+    
+    // Verify user cannot check
+    await userEvent.click(checkbox);
+    await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const IndeterminateStateTest: Story = {
+  render: () => {
+    const [checked, setChecked] = useState<boolean | 'indeterminate'>('indeterminate');
+    
+    return (
+      <Checkbox
+        checked={checked}
+        onCheckedChange={setChecked}
+        label="Indeterminate (click to cycle)"
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+    
+    // Test initial indeterminate state
+    await expect(checkbox).toBeInTheDocument();
+    
+    // Test clicking cycles through states
+    await userEvent.click(checkbox);
+    await expect(checkbox).toBeChecked();
+    
+    await userEvent.click(checkbox);
+    await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const ErrorStateTest: Story = {
+  args: {
+    label: 'Required checkbox',
+    error: true,
+    errorMessage: 'You must accept the terms',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    
+    // Test error message is displayed
+    const errorMessage = canvas.getByText('You must accept the terms');
+    await expect(errorMessage).toBeInTheDocument();
+    
+    // Test checkbox has aria-invalid
+    const checkbox = canvas.getByRole('checkbox');
+    await expect(checkbox).toHaveAttribute('aria-invalid', 'true');
+  },
+};
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { ComponentSize, InputType } from '@toyota/core';
 import Input from './Input';
 import styles from './Input.stories.module.css';
@@ -9,6 +10,18 @@ const meta: Meta<typeof Input> = {
   component: Input,
   parameters: {
     layout: 'centered',
+    designTokens: {
+      colors: [
+        'color-light-border',
+        'color-light-text-primary',
+        'color-light-text-secondary',
+        'color-light-error',
+        'color-light-background',
+      ],
+      spacing: ['spacing-xs', 'spacing-sm', 'spacing-md'],
+      typography: ['fontSize-sm', 'fontSize-body', 'fontWeight-regular'],
+      borderRadius: ['borderRadius-md'],
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -141,4 +154,86 @@ export const AllSizes = () => (
     <Input label="Large" size={ComponentSize.Large} placeholder="Large input" />
   </div>
 );
+
+export const TypingInteractionTest: Story = {
+  args: {
+    label: 'Username',
+    placeholder: 'Enter your username',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByPlaceholderText('Enter your username');
+    
+    // Test initial state
+    await expect(input).toBeInTheDocument();
+    await expect(input).toHaveValue('');
+    
+    // Test typing
+    await userEvent.type(input, 'johndoe');
+    await expect(input).toHaveValue('johndoe');
+    
+    // Test clearing
+    await userEvent.clear(input);
+    await expect(input).toHaveValue('');
+  },
+};
+
+export const FocusBlurInteractionTest: Story = {
+  args: {
+    label: 'Email',
+    type: InputType.Email,
+    placeholder: 'Enter email',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByPlaceholderText('Enter email');
+    
+    // Test focus
+    await input.focus();
+    await expect(input).toHaveFocus();
+    
+    // Test blur
+    await userEvent.tab();
+    await expect(input).not.toHaveFocus();
+  },
+};
+
+export const ErrorValidationTest: Story = {
+  args: {
+    label: 'Email',
+    type: InputType.Email,
+    error: true,
+    errorMessage: 'Please enter a valid email',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    
+    // Test error message is displayed
+    const errorMessage = canvas.getByText('Please enter a valid email');
+    await expect(errorMessage).toBeInTheDocument();
+    
+    // Test input has aria-invalid
+    const input = canvas.getByRole('textbox');
+    await expect(input).toHaveAttribute('aria-invalid', 'true');
+  },
+};
+
+export const DisabledInputTest: Story = {
+  args: {
+    label: 'Disabled',
+    placeholder: 'Cannot type here',
+    disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByPlaceholderText('Cannot type here');
+    
+    // Test disabled state
+    await expect(input).toBeDisabled();
+    
+    // Verify user cannot type
+    await userEvent.type(input, 'test');
+    await expect(input).toHaveValue('');
+  },
+};
 

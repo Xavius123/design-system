@@ -1,6 +1,7 @@
 import React from 'react';
 import '../src/styles/global.css';
 import { initTheme } from '../src/utils/theme';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 // Initialize theme on Storybook load
 if (typeof window !== 'undefined') {
@@ -79,32 +80,15 @@ const preview = {
     },
   },
   decorators: [
-    (Story, context) => {
-      // Ensure theme is initialized
-      if (typeof window !== 'undefined') {
-        const theme = context.globals.theme || 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-        initTheme();
-      }
-      return React.createElement(Story);
-    },
-  ],
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      defaultValue: 'light',
-      toolbar: {
-        title: 'Theme',
-        icon: 'circlehollow',
-        items: [
-          { value: 'light', title: 'Light', icon: 'circlehollow' },
-          { value: 'dark', title: 'Dark', icon: 'circle' },
-        ],
-        showName: true,
-        dynamicTitle: true,
+    withThemeByDataAttribute({
+      themes: {
+        light: 'light',
+        dark: 'dark',
       },
-    },
-  },
+      defaultTheme: 'light',
+      attributeName: 'data-theme',
+    }),
+  ],
 };
 
 export default preview;

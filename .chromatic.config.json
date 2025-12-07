@@ -1,0 +1,9 @@
+{
+  "projectToken": "YOUR_PROJECT_TOKEN_HERE",
+  "buildScriptName": "build-storybook",
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "autoAcceptChanges": "main",
+  "ignoreLastBuildOnBranch": "main"
+}
+

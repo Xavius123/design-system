@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { ButtonVariant, ComponentSize } from '@toyota/core';
 import Button from './Button';
 import styles from './Button.stories.module.css';
@@ -9,6 +10,18 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
+    designTokens: {
+      colors: [
+        'color-light-primary',
+        'color-light-secondary',
+        'color-light-text-primary',
+        'color-light-text-inverse',
+        'color-light-border',
+      ],
+      spacing: ['spacing-sm', 'spacing-md', 'spacing-lg'],
+      typography: ['fontSize-body', 'fontWeight-semibold'],
+      borderRadius: ['borderRadius-md'],
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -101,4 +114,60 @@ export const AllSizes = () => (
     <Button size={ComponentSize.Large}>Large</Button>
   </div>
 );
+
+export const WithInteractionTest: Story = {
+  args: {
+    variant: ButtonVariant.Primary,
+    children: 'Click me',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    // Test initial state
+    await expect(button).toBeInTheDocument();
+    await expect(button).toHaveTextContent('Click me');
+    await expect(button).not.toBeDisabled();
+    
+    // Test click interaction
+    await userEvent.click(button);
+    
+    // Test button is still in document after click
+    await expect(button).toBeInTheDocument();
+  },
+};
+
+export const DisabledInteractionTest: Story = {
+  args: {
+    variant: ButtonVariant.Primary,
+    disabled: true,
+    children: 'Disabled',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    // Test disabled state
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveTextContent('Disabled');
+  },
+};
+
+export const FocusInteractionTest: Story = {
+  args: {
+    variant: ButtonVariant.Primary,
+    children: 'Focus Test',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    // Test focus
+    await button.focus();
+    await expect(button).toHaveFocus();
+    
+    // Test keyboard interaction (Enter key)
+    await userEvent.keyboard('{Enter}');
+  },
+};
 
