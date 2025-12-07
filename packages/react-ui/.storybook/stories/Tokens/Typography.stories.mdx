@@ -1,0 +1,145 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Tokens/Typography" />
+
+# Typography Tokens
+
+Typography scale and font settings for the Toyota Design System.
+
+## Type Scale
+
+<Typeset
+  fontSizes={[
+    '0.75rem',   // 12px - xs
+    '0.875rem',  // 14px - sm
+    '1rem',      // 16px - base/body
+    '1.125rem',  // 18px - lg
+    '1.25rem',   // 20px - xl
+    '1.5rem',    // 24px - 2xl
+    '1.875rem',  // 30px - 3xl
+    '2.25rem',   // 36px - 4xl
+    '3rem',      // 48px - 5xl
+  ]}
+  fontWeight={400}
+  sampleText="Toyota Design System"
+  fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+/>
+
+## Font Families
+
+```css
+/* Body Text */
+font-family: var(--token-light-typography-font-family-body);
+/* -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif */
+
+/* Headings */
+font-family: var(--token-light-typography-font-family-heading);
+/* -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif */
+
+/* Monospace (code) */
+font-family: var(--token-light-typography-font-family-mono);
+/* 'Courier New', Courier, monospace */
+```
+
+## Font Weights
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--token-light-typography-font-weight-regular` | 400 | Body text, normal text |
+| `--token-light-typography-font-weight-medium` | 500 | Slightly emphasized text |
+| `--token-light-typography-font-weight-semibold` | 600 | Subheadings, strong emphasis |
+| `--token-light-typography-font-weight-bold` | 700 | Headings, important text |
+
+## Line Heights
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--token-light-typography-line-height-tight` | 1.25 | Headings |
+| `--token-light-typography-line-height-normal` | 1.5 | Body text |
+| `--token-light-typography-line-height-relaxed` | 1.75 | Long-form content |
+
+## Usage Examples
+
+### Headings
+
+<div style={{ fontFamily: 'var(--token-light-typography-font-family-heading)' }}>
+  <h1 style={{ 
+    fontSize: 'var(--token-light-typography-font-size-h1)',
+    fontWeight: 'var(--token-light-typography-font-weight-bold)',
+    lineHeight: 'var(--token-light-typography-line-height-tight)'
+  }}>
+    Heading 1 - 3rem (48px)
+  </h1>
+  <h2 style={{ 
+    fontSize: 'var(--token-light-typography-font-size-h2)',
+    fontWeight: 'var(--token-light-typography-font-weight-bold)',
+    lineHeight: 'var(--token-light-typography-line-height-tight)'
+  }}>
+    Heading 2 - 2.25rem (36px)
+  </h2>
+  <h3 style={{ 
+    fontSize: 'var(--token-light-typography-font-size-h3)',
+    fontWeight: 'var(--token-light-typography-font-weight-semibold)',
+    lineHeight: 'var(--token-light-typography-line-height-tight)'
+  }}>
+    Heading 3 - 1.875rem (30px)
+  </h3>
+</div>
+
+### Body Text
+
+<p style={{ 
+  fontSize: 'var(--token-light-typography-font-size-body)',
+  lineHeight: 'var(--token-light-typography-line-height-normal)',
+  fontWeight: 'var(--token-light-typography-font-weight-regular)'
+}}>
+  Body text uses a comfortable reading size of 1rem (16px) with normal line height (1.5) for optimal readability.
+</p>
+
+<p style={{ 
+  fontSize: 'var(--token-light-typography-font-size-sm)',
+  lineHeight: 'var(--token-light-typography-line-height-normal)',
+  fontWeight: 'var(--token-light-typography-font-weight-regular)'
+}}>
+  Small text uses 0.875rem (14px) for supporting information.
+</p>
+
+## Web Usage
+
+```css
+.heading {
+  font-family: var(--token-light-typography-font-family-heading);
+  font-size: var(--token-light-typography-font-size-h1);
+  font-weight: var(--token-light-typography-font-weight-bold);
+  line-height: var(--token-light-typography-line-height-tight);
+}
+
+.body {
+  font-family: var(--token-light-typography-font-family-body);
+  font-size: var(--token-light-typography-font-size-body);
+  font-weight: var(--token-light-typography-font-weight-regular);
+  line-height: var(--token-light-typography-line-height-normal);
+}
+```
+
+## React Native Usage
+
+```javascript
+import tokens from '@toyota/design-tokens/js/light';
+
+const styles = StyleSheet.create({
+  heading: {
+    fontFamily: tokens.typography.fontFamily.heading,
+    fontSize: parseInt(tokens.typography.fontSize.h1),
+    fontWeight: tokens.typography.fontWeight.bold,
+    lineHeight: parseInt(tokens.typography.fontSize.h1) * tokens.typography.lineHeight.tight,
+  },
+  body: {
+    fontFamily: tokens.typography.fontFamily.body,
+    fontSize: parseInt(tokens.typography.fontSize.body),
+    fontWeight: tokens.typography.fontWeight.regular,
+    lineHeight: parseInt(tokens.typography.fontSize.body) * tokens.typography.lineHeight.normal,
+  },
+});
+```
+

@@ -40,6 +40,7 @@
     "prettier": "^3.6.2"
   },
   "dependencies": {
+    "@toyota/core": "file:../core",
     "@toyota/design-tokens": "file:../tokens",
     "prop-types": "^15.8.1"
   }

@@ -1,0 +1,150 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Tokens/Colors" />
+
+# Color Tokens
+
+Design tokens for the Toyota Design System. These colors are available in both light and dark themes.
+
+## Brand Colors
+
+Primary brand colors used throughout the Toyota design system.
+
+<ColorPalette>
+  <ColorItem
+    title="Primary Red"
+    subtitle="Main brand color"
+    colors={{
+      '--color-light-primary': '#EB0A1E',
+      '--color-dark-primary': '#FF1E30'
+    }}
+  />
+  <ColorItem
+    title="Secondary Gray"
+    subtitle="Supporting brand color"
+    colors={{
+      '--color-light-secondary': '#58595B',
+      '--color-dark-secondary': '#9CA3AF'
+    }}
+  />
+</ColorPalette>
+
+## Text Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Text"
+    subtitle="Primary and secondary text colors"
+    colors={{
+      'Light Primary': '#1F2937',
+      'Light Secondary': '#6B7280',
+      'Dark Primary': '#F9FAFB',
+      'Dark Secondary': '#D1D5DB'
+    }}
+  />
+</ColorPalette>
+
+## Background Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Background"
+    subtitle="Page and surface backgrounds"
+    colors={{
+      'Light Background': '#FFFFFF',
+      'Light Surface': '#F9FAFB',
+      'Dark Background': '#111827',
+      'Dark Surface': '#1F2937'
+    }}
+  />
+</ColorPalette>
+
+## State Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Success"
+    subtitle="Success states"
+    colors={{
+      '--color-light-success': '#10B981',
+      '--color-dark-success': '#34D399'
+    }}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Warning states"
+    colors={{
+      '--color-light-warning': '#F59E0B',
+      '--color-dark-warning': '#FBBF24'
+    }}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="Error states"
+    colors={{
+      '--color-light-error': '#EF4444',
+      '--color-dark-error': '#F87171'
+    }}
+  />
+  <ColorItem
+    title="Info"
+    subtitle="Informational states"
+    colors={{
+      '--color-light-info': '#3B82F6',
+      '--color-dark-info': '#60A5FA'
+    }}
+  />
+</ColorPalette>
+
+## Usage
+
+### Web (CSS)
+
+```css
+/* Import tokens */
+@import '@toyota/design-tokens/css/light';
+@import '@toyota/design-tokens/css/dark';
+
+/* Use in your styles */
+.my-component {
+  color: var(--color-light-primary);
+  background: var(--color-light-background);
+}
+
+[data-theme="dark"] .my-component {
+  color: var(--color-dark-primary);
+  background: var(--color-dark-background);
+}
+```
+
+### React Native (JavaScript)
+
+```javascript
+import { lightColors, darkColors } from '@toyota/design-tokens/js/light';
+import { useColorScheme } from 'react-native';
+
+const MyComponent = () => {
+  const colorScheme = useColorScheme();
+  const colors = colorScheme === 'dark' ? darkColors : lightColors;
+  
+  return (
+    <View style={{ backgroundColor: colors.background }}>
+      <Text style={{ color: colors.primary }}>Hello</Text>
+    </View>
+  );
+};
+```
+
+## Token Files
+
+Tokens are defined in JSON format in `packages/tokens/`:
+
+- `colors-light.json` - Light theme colors
+- `colors-dark.json` - Dark theme colors  
+- `theme-light.json` - Light theme aliases
+- `theme-dark.json` - Dark theme aliases
+
+## Figma Integration
+
+Colors are automatically synced from Figma using the Azure Pipeline. See `scripts/fetch-figma-tokens.js` for details.
+

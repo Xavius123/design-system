@@ -1,0 +1,258 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Type System" />
+
+# TypeScript Type System
+
+TypeScript types and interfaces for building type-safe components across web and React Native.
+
+## Overview
+
+The `@toyota/core` package provides shared TypeScript types that ensure consistency between web and React Native implementations.
+
+## Base Component Props
+
+### BaseComponentProps
+
+Foundation interface for all components:
+
+```typescript
+import type { BaseComponentProps } from '@toyota/core';
+import { ComponentSize } from '@toyota/core';
+
+interface BaseComponentProps {
+  /** Component size */
+  size?: ComponentSize;
+  /** Whether the component is disabled */
+  disabled?: boolean;
+  /** Additional CSS class name (web) */
+  className?: string;
+  /** Test ID for testing (React Native) */
+  testID?: string;
+}
+```
+
+**Usage:**
+
+```typescript
+interface MyComponentProps extends BaseComponentProps {
+  title: string;
+}
+```
+
+## Interactive Props
+
+### InteractiveWebProps
+
+For web components with click handlers:
+
+```typescript
+import type { InteractiveWebProps } from '@toyota/core';
+
+interface InteractiveWebProps {
+  /** Click handler for web */
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+}
+```
+
+### InteractiveNativeProps
+
+For React Native components with press handlers:
+
+```typescript
+import type { InteractiveNativeProps } from '@toyota/core';
+
+interface InteractiveNativeProps {
+  /** Press handler for React Native */
+  onPress?: () => void;
+}
+```
+
+**Example - Platform-specific Button:**
+
+```typescript
+// Web Button
+interface WebButtonProps extends BaseComponentProps, InteractiveWebProps {
+  variant?: ButtonVariant;
+}
+
+// Native Button
+interface NativeButtonProps extends BaseComponentProps, InteractiveNativeProps {
+  variant?: ButtonVariant;
+}
+```
+
+## Form Field Props
+
+### FormFieldProps
+
+Common props for form inputs:
+
+```typescript
+import type { FormFieldProps } from '@toyota/core';
+
+interface FormFieldProps {
+  /** Field label */
+  label?: string;
+  /** Whether the field is required */
+  required?: boolean;
+  /** Whether the field has an error */
+  error?: boolean;
+  /** Error message to display */
+  errorMessage?: string;
+  /** Helper text to display */
+  helperText?: string;
+}
+```
+
+**Usage:**
+
+```typescript
+interface InputProps extends BaseComponentProps, FormFieldProps {
+  type?: InputType;
+  placeholder?: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+```
+
+## Children Props
+
+### WithChildren
+
+For components that accept child elements:
+
+```typescript
+import type { WithChildren } from '@toyota/core';
+
+interface WithChildren {
+  /** Child elements */
+  children?: React.ReactNode;
+}
+```
+
+**Usage:**
+
+```typescript
+interface ButtonProps extends BaseComponentProps, WithChildren {
+  variant?: ButtonVariant;
+}
+
+// Allows: <Button>Click me</Button>
+```
+
+## Complete Component Example
+
+### Web Button with Full Type Safety
+
+```typescript
+import React from 'react';
+import { ButtonVariant, ComponentSize } from '@toyota/core';
+import type { 
+  BaseComponentProps, 
+  InteractiveWebProps, 
+  WithChildren 
+} from '@toyota/core';
+
+interface ButtonProps 
+  extends BaseComponentProps, 
+          InteractiveWebProps, 
+          WithChildren {
+  variant?: ButtonVariant;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const Button: React.FC<ButtonProps> = ({
+  variant = ButtonVariant.Primary,
+  size = ComponentSize.Medium,
+  disabled = false,
+  className = '',
+  onClick,
+  type = 'button',
+  children,
+}) => {
+  return (
+    <button
+      type={type}
+      className={className}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
+```
+
+### React Native Button
+
+```typescript
+import React from 'react';
+import { Pressable, Text } from 'react-native';
+import { ButtonVariant, ComponentSize } from '@toyota/core';
+import type { 
+  BaseComponentProps, 
+  InteractiveNativeProps, 
+  WithChildren 
+} from '@toyota/core';
+
+interface ButtonProps 
+  extends BaseComponentProps, 
+          InteractiveNativeProps, 
+          WithChildren {
+  variant?: ButtonVariant;
+}
+
+const Button: React.FC<ButtonProps> = ({
+  variant = ButtonVariant.Primary,
+  size = ComponentSize.Medium,
+  disabled = false,
+  testID,
+  onPress,
+  children,
+}) => {
+  return (
+    <Pressable
+      testID={testID}
+      disabled={disabled}
+      onPress={onPress}
+    >
+      <Text>{children}</Text>
+    </Pressable>
+  );
+};
+```
+
+## Type Composition
+
+Combine multiple types for complex components:
+
+```typescript
+import type {
+  BaseComponentProps,
+  FormFieldProps,
+  InteractiveWebProps,
+} from '@toyota/core';
+import { InputType } from '@toyota/core';
+
+interface SearchInputProps
+  extends BaseComponentProps,
+          FormFieldProps,
+          Omit<InteractiveWebProps, 'onClick'> {
+  type?: InputType;
+  placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  onSubmit?: () => void;
+}
+```
+
+## Benefits
+
+✅ **Type Safety** - Catch errors at compile time  
+✅ **Consistency** - Same prop names across platforms  
+✅ **IntelliSense** - Better autocomplete in IDEs  
+✅ **Documentation** - Types serve as documentation  
+✅ **Refactoring** - Easier to refactor with confidence  
+✅ **AI-Friendly** - Clear contracts for AI-assisted development
+
