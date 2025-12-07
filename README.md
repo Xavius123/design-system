@@ -113,6 +113,7 @@ From the root directory:
 ## Documentation
 
 - **[Repository Improvements](docs/REPO_IMPROVEMENTS.md)** - 7 essential tools to improve code quality, speed, and collaboration
+- **[Multi-Brand Architecture](docs/MULTI_BRAND.md)** - Managing multiple brands with token-based theming
 - **[MCP Setup Guide](docs/MCP_SETUP.md)** - Configure Model Context Protocol for AI-assisted development
 - [Storybook Addons Guide](docs/STORYBOOK_ADDONS.md)
 - [Chromatic Visual Regression Testing](docs/CHROMATIC.md)
