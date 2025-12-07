@@ -112,12 +112,14 @@ From the root directory:
 
 ## Documentation
 
-See `docs/` directory for:
-- Design System Best Practices
-- Component Architecture Guide
-- Storybook Best Practices
-- NPM Package Guide
-- Quick Reference
+- **[Repository Improvements](docs/REPO_IMPROVEMENTS.md)** - 7 essential tools to improve code quality, speed, and collaboration
+- [Storybook Addons Guide](docs/STORYBOOK_ADDONS.md)
+- [Chromatic Visual Regression Testing](docs/CHROMATIC.md)
+- [Advanced Improvements Guide](docs/ADVANCED_IMPROVEMENTS.md)
+- [Design System Best Practices](docs/DESIGN_SYSTEM_BEST_PRACTICES.md)
+- [Component Architecture Guide](docs/COMPONENT_ARCHITECTURE.md)
+- [NPM Package Guide](docs/NPM_PACKAGE_GUIDE.md)
+- [Quick Reference](docs/QUICK_REFERENCE.md)
 
 ## License
 
