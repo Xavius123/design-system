@@ -1,7 +1,7 @@
 {
-  "name": "@toyota/core",
+  "name": "@redhorn/core",
   "version": "1.0.0",
-  "description": "Core types, enums, and utilities for Toyota Design System",
+  "description": "Core types, enums, and utilities for Redhorn Design System",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -17,13 +17,13 @@
     "design-system",
     "typescript",
     "shared",
-    "toyota"
+    "redhorn"
   ],
-  "author": "Toyota Design System Team",
+  "author": "Redhorn Design System Team",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/toyota/design-system.git",
+    "url": "https://github.com/redhorn/design-system.git",
     "directory": "packages/core"
   },
   "devDependencies": {

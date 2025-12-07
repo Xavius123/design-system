@@ -1,11 +1,11 @@
-# @toyota/react-native-ui
+# @redhorn/react-native-ui
 
-Toyota-branded React Native UI components built with design tokens.
+Redhorn React Native UI components built with design tokens.
 
 ## Installation
 
 ```bash
-npm install @toyota/react-native-ui
+npm install @redhorn/react-native-ui
 ```
 
 ## Peer Dependencies
@@ -16,7 +16,7 @@ npm install @toyota/react-native-ui
 ## Usage
 
 ```javascript
-import { Button } from '@toyota/react-native-ui';
+import { Button } from '@redhorn/react-native-ui';
 
 function MyComponent() {
   return (

@@ -1,11 +1,11 @@
-# React UI
+# @redhorn/react-ui
 
-Toyota-branded React UI components built with Radix UI and CSS Modules.
+Redhorn React UI components built with Radix UI and CSS Modules.
 
 ## Installation
 
 ```bash
-npm install @your-org/react-ui
+npm install @redhorn/react-ui
 ```
 
 ## Usage
@@ -13,25 +13,25 @@ npm install @your-org/react-ui
 ### Import Components
 
 ```jsx
-import { Button, Input, Checkbox } from '@your-org/react-ui';
+import { Button, Input, Checkbox } from '@redhorn/react-ui';
 ```
 
 ### Import Styles
 
 ```jsx
 // Option 1: Import all styles
-import '@your-org/react-ui/styles';
+import '@redhorn/react-ui/styles';
 
 // Option 2: Import tokens only
-import '@your-org/react-ui/tokens/light';
-import '@your-org/react-ui/tokens/dark';
+import '@redhorn/react-ui/tokens/light';
+import '@redhorn/react-ui/tokens/dark';
 ```
 
 ### Example
 
 ```jsx
-import { Button } from '@your-org/react-ui';
-import '@your-org/react-ui/styles';
+import { Button } from '@redhorn/react-ui';
+import '@redhorn/react-ui/styles';
 
 function App() {
   return (

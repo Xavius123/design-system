@@ -1,6 +1,6 @@
 # Advanced Improvements Guide
 
-Comprehensive guide to recommended improvements for the Toyota Design System monorepo. Read this to understand what each improvement does, why it's beneficial, and how to implement it when ready.
+Comprehensive guide to recommended improvements for the Redhorn Design System monorepo. Read this to understand what each improvement does, why it's beneficial, and how to implement it when ready.
 
 ---
 
@@ -358,7 +358,7 @@ git push --follow-tags
   "commit": false,
   "fixed": [],
   "linked": [
-    ["@toyota/core", "@toyota/react-ui", "@toyota/react-native-ui"]
+    ["@redhorn/core", "@redhorn/react-ui", "@redhorn/react-native-ui"]
   ],
   "access": "public",
   "baseBranch": "main",
@@ -1412,7 +1412,7 @@ Token changes are breaking changes but aren't treated as such.
 **Treat tokens as API:**
 ```json
 {
-  "name": "@toyota/design-tokens",
+  "name": "@redhorn/design-tokens",
   "version": "1.0.0"  // Independent versioning
 }
 ```
@@ -1428,7 +1428,7 @@ Token changes are breaking changes but aren't treated as such.
 ```json
 {
   "dependencies": {
-    "@toyota/design-tokens": "^1.0.0"  // Won't auto-upgrade to 2.x
+    "@redhorn/design-tokens": "^1.0.0"  // Won't auto-upgrade to 2.x
   }
 }
 ```
@@ -1452,7 +1452,7 @@ module.exports = function migrate(css) {
 
 **Run migration:**
 ```bash
-npx @toyota/design-tokens migrate 1.x 2.x src/**/*.css
+npx @redhorn/design-tokens migrate 1.x 2.x src/**/*.css
 ```
 
 ### Solution 3: Deprecation Warnings
@@ -1550,7 +1550,7 @@ export const tokens = {
 **1. Add token versioning:**
 ```json
 {
-  "name": "@toyota/design-tokens",
+  "name": "@redhorn/design-tokens",
   "version": "1.0.0",
   "scripts": {
     "version": "changeset version"
@@ -1637,13 +1637,13 @@ Version 2.0 includes breaking changes to improve consistency and accessibility.
 ### Step 1: Update Dependencies
 
 ```bash
-npm install @toyota/react-ui@2.0.0 @toyota/core@2.0.0
+npm install @redhorn/react-ui@2.0.0 @redhorn/core@2.0.0
 ```
 
 ### Step 2: Run Codemods
 
 ```bash
-npx @toyota/codemods v1-to-v2 src/
+npx @redhorn/codemods v1-to-v2 src/
 ```
 
 ### Step 3: Fix TypeScript Errors
@@ -1653,9 +1653,9 @@ Common errors and solutions...
 ### Step 4: Update Imports
 
 ```diff
-- import { Button } from '@toyota/react-ui';
-+ import { Button } from '@toyota/react-ui';
-+ import { ButtonVariant } from '@toyota/core';
+- import { Button } from '@redhorn/react-ui';
++ import { Button } from '@redhorn/react-ui';
++ import { ButtonVariant } from '@redhorn/core';
 ```
 
 ### Step 5: Test Thoroughly

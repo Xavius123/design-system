@@ -9,7 +9,7 @@ export default defineConfig({
       alias: {
         '@': resolve(__dirname, 'src'),
         '@tokens': resolve(__dirname, '../tokens/dist/css'),
-        '@toyota/design-tokens': resolve(__dirname, '../tokens'),
+        '@redhorn/design-tokens': resolve(__dirname, '../tokens'),
       },
   },
   plugins: [

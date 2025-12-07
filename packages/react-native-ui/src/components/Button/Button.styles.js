@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import * as LightTokens from '@toyota/design-tokens/js/light';
-import * as DarkTokens from '@toyota/design-tokens/js/dark';
+import * as LightTokens from '@redhorn/design-tokens/js/light';
+import * as DarkTokens from '@redhorn/design-tokens/js/dark';
 
 // Helper to parse pixel values to numbers
 const parsePx = (value) => {

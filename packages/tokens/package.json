@@ -1,7 +1,7 @@
 {
-  "name": "@toyota/design-tokens",
+  "name": "@redhorn/design-tokens",
   "version": "1.0.0",
-  "description": "Toyota design tokens - shared by web and React Native",
+  "description": "Redhorn design tokens - shared by web and React Native",
   "main": "./dist/js/light.js",
   "files": [
     "dist",
@@ -18,14 +18,14 @@
   },
   "keywords": [
     "design-tokens",
-    "toyota",
+    "redhorn",
     "design-system"
   ],
-  "author": "Toyota Design System Team",
+  "author": "Redhorn Design System Team",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/toyota/design-system.git",
+    "url": "https://github.com/redhorn/design-system.git",
     "directory": "packages/tokens"
   }
 }

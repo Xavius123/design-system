@@ -1,7 +1,7 @@
 {
-  "name": "@toyota/react-native-ui",
+  "name": "@redhorn/react-native-ui",
   "version": "1.0.0",
-  "description": "Toyota-branded React Native UI components built with design tokens",
+  "description": "Redhorn React Native UI components built with design tokens",
   "main": "./src/index.js",
   "files": [
     "src",
@@ -18,14 +18,14 @@
     "react-native",
     "components",
     "ui",
-    "toyota",
+    "redhorn",
     "mobile"
   ],
-  "author": "Toyota Design System Team",
+  "author": "Redhorn Design System Team",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/toyota/design-system.git",
+    "url": "https://github.com/redhorn/design-system.git",
     "directory": "packages/react-native-ui"
   },
   "peerDependencies": {
@@ -40,7 +40,7 @@
     "prettier": "^3.6.2"
   },
   "dependencies": {
-    "@toyota/design-tokens": "file:../tokens",
+    "@redhorn/design-tokens": "file:../tokens",
     "prop-types": "^15.8.1"
   }
 }

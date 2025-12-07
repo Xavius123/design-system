@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { lightTokens } from '@toyota/design-tokens/js/light';
+import { lightTokens } from '@redhorn/design-tokens/js/light';
 
 export const styles = StyleSheet.create({
   wrapper: {

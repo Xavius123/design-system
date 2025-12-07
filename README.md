@@ -1,6 +1,6 @@
-# Design System Monorepo
+# Redhorn Design System
 
-Toyota-branded design system with design tokens and React UI components.
+Modern design system with design tokens and cross-platform UI components (React Web & React Native).
 
 ## Structure
 
@@ -84,12 +84,12 @@ npm publish
 Once published, install the package:
 
 ```bash
-npm install @your-org/react-ui
+npm install @redhorn/react-ui
 ```
 
 ```jsx
-import { Button, Input, Checkbox } from '@your-org/react-ui';
-import '@your-org/react-ui/styles';
+import { Button, Input, Checkbox } from '@redhorn/react-ui';
+import '@redhorn/react-ui/styles';
 
 function App() {
   return (

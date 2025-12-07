@@ -1,5 +1,7 @@
 # Chromatic Visual Regression Testing
 
+Guide for visual regression testing in the Redhorn Design System.
+
 ## What is Chromatic?
 
 Chromatic is a cloud-based visual testing platform that automatically detects visual changes in your UI components. It captures screenshots of every story in your Storybook and compares them to previous versions, helping you catch unintended visual bugs before they reach production.
