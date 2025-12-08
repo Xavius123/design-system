@@ -13,7 +13,9 @@ export default {
           selector: ':root[data-theme="light"]',
           filter: (token) => 
             token.filePath.includes('colors-light') || 
-            token.filePath.includes('theme-light'),
+            token.filePath.includes('theme-light') ||
+            token.filePath.includes('z-index') ||
+            (!token.filePath.includes('colors-dark') && !token.filePath.includes('theme-dark')),
         },
         {
           destination: 'dark.css',
@@ -21,7 +23,9 @@ export default {
           selector: ':root[data-theme="dark"]',
           filter: (token) => 
             token.filePath.includes('colors-dark') || 
-            token.filePath.includes('theme-dark'),
+            token.filePath.includes('theme-dark') ||
+            token.filePath.includes('z-index') ||
+            (!token.filePath.includes('colors-light') && !token.filePath.includes('theme-light')),
         },
       ],
     },

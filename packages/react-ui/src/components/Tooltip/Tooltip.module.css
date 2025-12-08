@@ -1,0 +1,116 @@
+/* Tooltip Content */
+.content {
+  background-color: var(--color-light-text-primary);
+  color: var(--color-light-text-inverse);
+  border-radius: var(--border-radius-base-md);
+  padding: var(--token-light-spacing-xs) var(--token-light-spacing-sm);
+  font-size: var(--token-light-typography-font-size-small);
+  line-height: 1.4;
+  box-shadow: var(--shadow-base-md);
+  z-index: var(--z-index-tooltip);
+  max-width: 300px;
+  word-wrap: break-word;
+  user-select: none;
+  animation: tooltipSlideIn 0.15s ease;
+}
+
+.content[data-state='delayed-open'][data-side='top'] {
+  animation: tooltipSlideInFromBottom 0.15s ease;
+}
+
+.content[data-state='delayed-open'][data-side='bottom'] {
+  animation: tooltipSlideInFromTop 0.15s ease;
+}
+
+.content[data-state='delayed-open'][data-side='left'] {
+  animation: tooltipSlideInFromRight 0.15s ease;
+}
+
+.content[data-state='delayed-open'][data-side='right'] {
+  animation: tooltipSlideInFromLeft 0.15s ease;
+}
+
+.content[data-state='closed'] {
+  animation: tooltipFadeOut 0.1s ease;
+}
+
+/* Tooltip Arrow */
+.arrow {
+  fill: var(--color-light-text-primary);
+}
+
+/* Animations */
+@keyframes tooltipSlideIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tooltipSlideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tooltipSlideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tooltipSlideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tooltipSlideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tooltipFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Dark theme support */
+:root[data-theme='dark'] .content {
+  background-color: var(--color-dark-surface-secondary);
+  color: var(--color-dark-text-inverse);
+  border: 1px solid var(--color-dark-border-primary);
+}
+
+:root[data-theme='dark'] .arrow {
+  fill: var(--color-dark-surface-secondary);
+  stroke: var(--color-dark-border-primary);
+  stroke-width: 1px;
+}

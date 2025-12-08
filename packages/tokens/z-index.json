@@ -1,0 +1,44 @@
+{
+  "ZIndex": {
+    "Base": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Base z-index for normal document flow"
+    },
+    "Dropdown": {
+      "$type": "number",
+      "$value": 1000,
+      "$description": "Dropdowns and select menus"
+    },
+    "Sticky": {
+      "$type": "number",
+      "$value": 1100,
+      "$description": "Sticky positioned elements"
+    },
+    "Fixed": {
+      "$type": "number",
+      "$value": 1200,
+      "$description": "Fixed positioned elements"
+    },
+    "DialogOverlay": {
+      "$type": "number",
+      "$value": 1300,
+      "$description": "Dialog/modal overlay backdrop"
+    },
+    "DialogContent": {
+      "$type": "number",
+      "$value": 1400,
+      "$description": "Dialog/modal content"
+    },
+    "Toast": {
+      "$type": "number",
+      "$value": 2000,
+      "$description": "Toast notifications"
+    },
+    "Tooltip": {
+      "$type": "number",
+      "$value": 3000,
+      "$description": "Tooltips (highest priority)"
+    }
+  }
+}

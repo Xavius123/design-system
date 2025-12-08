@@ -1,0 +1,163 @@
+/**
+ * Custom styles for Sonner toast
+ * Sonner provides its own styling, but we can override with CSS variables
+ */
+
+/* Override Sonner's CSS variables to match our design tokens */
+:root {
+  --toast-bg: var(--color-light-background);
+  --toast-border: var(--color-light-border);
+  --toast-text: var(--color-light-text-primary);
+  --toast-success-bg: var(--color-light-success-bg, #f0fdf4);
+  --toast-success-border: var(--color-light-success, #16a34a);
+  --toast-success-text: var(--color-light-success, #16a34a);
+  --toast-error-bg: var(--color-light-error-bg, #fef2f2);
+  --toast-error-border: var(--color-light-error, #dc2626);
+  --toast-error-text: var(--color-light-error, #dc2626);
+  --toast-warning-bg: var(--color-light-warning-bg, #fffbeb);
+  --toast-warning-border: var(--color-light-warning, #f59e0b);
+  --toast-warning-text: var(--color-light-warning, #f59e0b);
+  --toast-info-bg: var(--color-light-info-bg, #eff6ff);
+  --toast-info-border: var(--color-light-info, #3b82f6);
+  --toast-info-text: var(--color-light-info, #3b82f6);
+}
+
+:root[data-theme='dark'] {
+  --toast-bg: var(--color-dark-background);
+  --toast-border: var(--color-dark-border);
+  --toast-text: var(--color-dark-text-primary);
+  --toast-success-bg: var(--color-dark-success-bg, #064e3b);
+  --toast-success-border: var(--color-dark-success, #10b981);
+  --toast-success-text: var(--color-dark-success, #10b981);
+  --toast-error-bg: var(--color-dark-error-bg, #7f1d1d);
+  --toast-error-border: var(--color-dark-error, #ef4444);
+  --toast-error-text: var(--color-dark-error, #ef4444);
+  --toast-warning-bg: var(--color-dark-warning-bg, #78350f);
+  --toast-warning-border: var(--color-dark-warning, #f59e0b);
+  --toast-warning-text: var(--color-dark-warning, #f59e0b);
+  --toast-info-bg: var(--color-dark-info-bg, #1e3a8a);
+  --toast-info-border: var(--color-dark-info, #60a5fa);
+  --toast-info-text: var(--color-dark-info, #60a5fa);
+}
+
+/* Sonner toast container */
+[data-sonner-toaster] {
+  font-family: var(--fontFamily-body);
+  z-index: var(--zIndex-toast) !important;
+}
+
+/* Individual toast */
+[data-sonner-toast] {
+  background: var(--toast-bg) !important;
+  border: 1px solid var(--toast-border) !important;
+  color: var(--toast-text) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-radius: var(--borderRadius-md) !important;
+  padding: var(--spacing-md) !important;
+  font-size: var(--fontSize-md) !important;
+}
+
+/* Toast variants */
+[data-sonner-toast][data-type='success'] {
+  background: var(--toast-success-bg) !important;
+  border-color: var(--toast-success-border) !important;
+  color: var(--toast-success-text) !important;
+}
+
+[data-sonner-toast][data-type='error'] {
+  background: var(--toast-error-bg) !important;
+  border-color: var(--toast-error-border) !important;
+  color: var(--toast-error-text) !important;
+}
+
+[data-sonner-toast][data-type='warning'] {
+  background: var(--toast-warning-bg) !important;
+  border-color: var(--toast-warning-border) !important;
+  color: var(--toast-warning-text) !important;
+}
+
+[data-sonner-toast][data-type='info'] {
+  background: var(--toast-info-bg) !important;
+  border-color: var(--toast-info-border) !important;
+  color: var(--toast-info-text) !important;
+}
+
+/* Toast title */
+[data-sonner-toast] [data-title] {
+  font-weight: var(--fontWeight-semibold);
+  font-size: var(--fontSize-md);
+}
+
+/* Toast description */
+[data-sonner-toast] [data-description] {
+  color: var(--toast-text);
+  opacity: 0.8;
+  font-size: var(--fontSize-sm);
+  margin-top: var(--spacing-xs);
+}
+
+/* Close button */
+[data-sonner-toast] [data-close-button] {
+  background: transparent !important;
+  border: none !important;
+  color: var(--toast-text) !important;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+[data-sonner-toast] [data-close-button]:hover {
+  opacity: 1;
+}
+
+/* Action button */
+[data-sonner-toast] [data-button] {
+  background: var(--color-light-primary) !important;
+  color: var(--color-light-text-inverse) !important;
+  border: none !important;
+  border-radius: var(--borderRadius-sm) !important;
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+  font-size: var(--fontSize-sm) !important;
+  font-weight: var(--fontWeight-semibold) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-sonner-toast] [data-button]:hover {
+  background: var(--color-light-primary-hover) !important;
+}
+
+/* Cancel button */
+[data-sonner-toast] [data-cancel] {
+  background: transparent !important;
+  color: var(--toast-text) !important;
+  border: 1px solid var(--toast-border) !important;
+  border-radius: var(--borderRadius-sm) !important;
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+  font-size: var(--fontSize-sm) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-sonner-toast] [data-cancel]:hover {
+  background: var(--color-light-surface-hover) !important;
+}
+
+/* Loading spinner */
+[data-sonner-toast] [data-icon] {
+  color: var(--toast-text);
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] [data-sonner-toast] [data-button] {
+  background: var(--color-dark-primary) !important;
+  color: var(--color-dark-text-inverse) !important;
+}
+
+:root[data-theme='dark'] [data-sonner-toast] [data-button]:hover {
+  background: var(--color-dark-primary-hover) !important;
+}
+
+:root[data-theme='dark'] [data-sonner-toast] [data-cancel]:hover {
+  background: var(--color-dark-surface-hover) !important;
+}
+
