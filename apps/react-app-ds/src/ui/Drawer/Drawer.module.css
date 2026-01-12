@@ -1,0 +1,44 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--ds-z-modal-overlay);
+  animation: fadeIn var(--ds-duration-normal) var(--ds-ease-out);
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--ds-sidebar-width);
+  background: var(--ds-color-surface);
+  z-index: var(--ds-z-modal-content);
+  overflow-y: auto;
+  box-shadow: var(--ds-shadow-xl);
+}
+
+.left {
+  left: 0;
+  animation: slideInLeft var(--ds-duration-normal) var(--ds-ease-out);
+}
+
+.right {
+  right: 0;
+  animation: slideInRight var(--ds-duration-normal) var(--ds-ease-out);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
