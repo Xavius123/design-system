@@ -1,5 +1,11 @@
 /* Button Base Styles */
 .button {
+  /* Component-scoped reset (doesn't affect global styles) */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  /* Button styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -13,18 +13,8 @@
   color-scheme: dark;
 }
 
-/* Base styles */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: var(--token-light-typography-font-family-body);
-  font-size: var(--token-light-typography-font-size-body);
-  font-weight: var(--token-light-typography-font-weight-body);
-  line-height: var(--token-light-typography-line-height-body);
-  color: var(--color-light-text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* 
+ * Component Library Best Practice:
+ * NO global styles that affect the consumer's app
+ * All styling is handled within scoped CSS modules
+ */
