@@ -154,5 +154,21 @@
   .main {
     margin-left: var(--ds-sidebar-width);
   }
+  
+  /* Shift footer to make room for sidebar */
+  .footer {
+    margin-left: var(--ds-sidebar-width);
+  }
+}
+
+/* ========================================
+   Footer (Optional)
+   ======================================== */
+.footer {
+  padding: var(--ds-space-6);
+  background: var(--ds-color-surface);
+  border-top: 1px solid var(--ds-color-border);
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-text-secondary);
 }
 

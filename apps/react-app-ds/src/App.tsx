@@ -48,6 +48,24 @@ const AppContent: React.FC<{ theme: 'light' | 'dark'; toggleTheme: () => void }>
       navBottom={
         <div>v1.0.0</div>
       }
+      footer={
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 'var(--ds-space-4)',
+        }}>
+          <p style={{ margin: 0 }}>
+            © 2026 Your Company. All rights reserved.
+          </p>
+          <div style={{ display: 'flex', gap: 'var(--ds-space-4)' }}>
+            <a href="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms</a>
+            <a href="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</a>
+            <a href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</a>
+          </div>
+        </div>
+      }
     >
       <Routes>
         <Route path="/" element={<HomePage />} />

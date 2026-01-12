@@ -10,6 +10,7 @@ const AppShell: React.FC<AppShellProps> = ({
   headerEnd,
   navTop,
   navBottom,
+  footer,
   renderNavContent,
   children,
 }) => {
@@ -91,6 +92,13 @@ const AppShell: React.FC<AppShellProps> = ({
       <main className={styles.main}>
         {children}
       </main>
+
+      {/* Footer (optional) */}
+      {footer && (
+        <footer className={styles.footer}>
+          {footer}
+        </footer>
+      )}
     </div>
   );
 };

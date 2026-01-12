@@ -16,6 +16,7 @@ export interface AppShellProps {
   headerEnd?: ReactNode;
   navTop?: ReactNode;
   navBottom?: ReactNode;
+  footer?: ReactNode;
   renderNavContent?: (items: NavItem[]) => ReactNode;
   children: ReactNode;
 }
