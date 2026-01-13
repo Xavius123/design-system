@@ -1,85 +1,179 @@
-# Redhorn Design System
+# Design System Monorepo
 
-Modern design system with design tokens and cross-platform UI components (React Web & React Native).
+A comprehensive design system with token management, React UI components, and demo application.
 
-## Structure
+**Live Demo**: https://YOUR-USERNAME.github.io/design-system/
+
+## 📦 Packages
+
+### `packages/tokens/`
+Design tokens generated from JSON using Style Dictionary.
+
+- **Source**: JSON token files (Token Studio format)
+- **Output**: CSS variables (light/dark themes)
+- **Build**: `npm run build:token`
+
+### `packages/react-ui/`
+React component library with Radix UI and CSS Modules.
+
+- **Components**: Button, Checkbox, Input, Toast, Tooltip
+- **Storybook**: `npm run storybook --workspace=packages/react-ui`
+- **Build**: `npm run build --workspace=packages/react-ui`
+
+### `packages/react-native-ui/`
+React Native component library.
+
+- **Components**: Button, Checkbox, Input
+- **Platform**: iOS, Android
+
+### `packages/core/`
+TypeScript types and metadata shared across packages.
+
+- **Types**: Component props, design tokens
+- **Enums**: Component variants, states
+- **Build**: Automatic TypeScript compilation
+
+## 🚀 Apps
+
+### `apps/react-app-ds/`
+**Live Demo**: https://YOUR-USERNAME.github.io/design-system/
+
+Full-featured demo application showcasing the design system.
+
+- **AppShell**: Responsive layout framework
+- **Routing**: React Router with multiple pages
+- **Themes**: Light/dark mode switching
+- **Start**: `npm run dev --workspace=apps/react-app-ds`
+
+See [apps/react-app-ds/README.md](apps/react-app-ds/README.md) for details.
+
+## 🏃 Quick Start
+
+```bash
+# Install all dependencies
+npm install
+
+# Build design tokens
+npm run build:token
+
+# Run demo app
+npm run dev --workspace=apps/react-app-ds
+
+# Run Storybook
+npm run storybook --workspace=packages/react-ui
+```
+
+## 🛠️ Development
+
+### Monorepo Structure
 
 ```
 design-system/
-├── packages/
-│   ├── tokens/              # Design tokens (colors, typography, spacing, etc.)
-│   │   ├── *.json          # Token definitions
-│   │   └── dist/           # Generated outputs (css/, js/)
-│   ├── react-ui/           # React UI component library (npm package)
-│   │   ├── src/
-│   │   │   ├── components/ # React components
-│   │   │   └── styles/     # Global styles
-│   │   ├── dist/           # Built package (generated)
-│   │   └── .storybook/     # Storybook configuration
-│   └── react-native-ui/    # React Native UI component library (npm package)
-│       └── src/
-│           └── components/ # React Native components
-├── config/             # Style Dictionary configuration
-├── scripts/            # Build and utility scripts
-└── docs/               # Documentation
+├── packages/              # Published npm packages
+│   ├── tokens/           # Design tokens
+│   ├── core/             # Shared types
+│   ├── react-ui/         # React components
+│   └── react-native-ui/  # React Native components
+│
+├── apps/                 # Demo applications (not published)
+│   └── react-app-ds/     # Web demo
+│
+├── scripts/              # Build scripts
+├── docs/                 # Documentation
+└── package.json          # Root workspace config
 ```
 
-## Packages
+### Common Commands
 
-### Tokens
-
-Design tokens built with Style Dictionary. Generates CSS variables for light and dark themes.
-
-**Build tokens:**
 ```bash
+# Install dependencies
+npm install
+
+# Build design tokens
 npm run build:token
+
+# Validate tokens
+npm run validate:tokens
+
+# Build React UI package
+npm run build --workspace=packages/react-ui
+
+# Run Storybook
+npm run storybook --workspace=packages/react-ui
+
+# Build Storybook
+npm run build-storybook --workspace=packages/react-ui
+
+# Run demo app
+npm run dev --workspace=apps/react-app-ds
+
+# Format all code
+npm run format
+
+# Lint all code
+npm run lint
 ```
 
-**Output:** `tokens/dist/css/light.css` and `tokens/dist/css/dark.css`
+## 📚 Documentation
 
-### React UI
+- [Component Architecture](docs/COMPONENT_ARCHITECTURE.md)
+- [Multi-Brand Support](docs/MULTI_BRAND.md)
+- [CSS Import Safety](docs/CSS_IMPORT_SAFETY_GUIDE.md)
+- [Chromatic Visual Testing](docs/CHROMATIC.md)
+- [Storybook Addons](docs/STORYBOOK_ADDONS.md)
+- [NPM Package Guide](docs/NPM_PACKAGE_GUIDE.md)
+- [Repository Improvements](docs/REPO_IMPROVEMENTS.md)
+- [Style Isolation](docs/STYLE_ISOLATION.md)
+- [Design System Best Practices](docs/DESIGN_SYSTEM_BEST_PRACTICES.md)
+- [Quick Reference](docs/QUICK_REFERENCE.md)
 
-React component library built with Radix UI and CSS Modules. This package will be published to npm.
+## 🎨 Design System Features
 
-**Development:**
+### Token System
+- JSON source tokens (Token Studio format)
+- Style Dictionary transformation
+- CSS variables output
+- Light/dark theme support
+
+### Component Library
+- React components with TypeScript
+- Radix UI primitives
+- CSS Modules for styling
+- Storybook documentation
+- Visual regression testing (Chromatic - when configured)
+
+### AppShell Framework
+- Responsive layout (mobile/desktop)
+- CSS-driven breakpoints
+- Customizable header/footer/nav
+- Theme switching
+
+## 🚢 Deployment
+
+### Demo App (GitHub Pages)
+
+Automatically deployed on push to `main`:
+
 ```bash
-npm run storybook
+# Trigger deployment
+git push origin main
+
+# View live demo
+# https://YOUR-USERNAME.github.io/design-system/
 ```
 
-**Build:**
-```bash
-npm run build
-```
+### NPM Packages
 
-**Publish:**
 ```bash
-cd react-ui
+# Build packages
+npm run build --workspace=packages/react-ui
+
+# Publish (when ready)
+cd packages/react-ui
 npm publish
 ```
 
-## Quick Start
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Build tokens:**
-   ```bash
-   npm run build:token
-   ```
-
-3. **Start Storybook:**
-   ```bash
-   npm run storybook
-   ```
-
-4. **Build React UI package:**
-   ```bash
-   npm run build
-   ```
-
-## Using React UI Package
+## 📖 Using the React UI Package
 
 Once published, install the package:
 
@@ -102,28 +196,15 @@ function App() {
 }
 ```
 
-## Workspace Scripts
+## 🤝 Contributing
 
-From the root directory:
+1. Create a feature branch
+2. Make changes
+3. Run tests and linters
+4. Create pull request
+5. Review visual changes (if Chromatic configured)
+6. Merge when approved
 
-- `npm run build:token` - Build design tokens
-- `npm run build` - Build tokens and react-ui package
-- `npm run storybook` - Start Storybook (runs in react-ui workspace)
-
-## Documentation
-
-- **[Repository Improvements](docs/REPO_IMPROVEMENTS.md)** - 7 essential tools to improve code quality, speed, and collaboration
-- **[Multi-Brand Architecture](docs/MULTI_BRAND.md)** - Managing multiple brands with token-based theming
-- **[Style Isolation Best Practices](docs/STYLE_ISOLATION.md)** - How to avoid breaking consumer app styles
-- **[MCP Setup Guide](docs/MCP_SETUP.md)** - Configure Model Context Protocol for AI-assisted development
-- [Storybook Addons Guide](docs/STORYBOOK_ADDONS.md)
-- [Chromatic Visual Regression Testing](docs/CHROMATIC.md)
-- [Advanced Improvements Guide](docs/ADVANCED_IMPROVEMENTS.md)
-- [Design System Best Practices](docs/DESIGN_SYSTEM_BEST_PRACTICES.md)
-- [Component Architecture Guide](docs/COMPONENT_ARCHITECTURE.md)
-- [NPM Package Guide](docs/NPM_PACKAGE_GUIDE.md)
-- [Quick Reference](docs/QUICK_REFERENCE.md)
-
-## License
+## 📄 License
 
 ISC

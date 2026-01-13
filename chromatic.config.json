@@ -1,0 +1,8 @@
+{
+  "projectToken": "chpt_ae00f952b66e53f",
+  "buildScriptName": "build-storybook",
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "autoAcceptChanges": "main"
+}
+

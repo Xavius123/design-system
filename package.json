@@ -19,6 +19,7 @@
     "lint:fix": "npm run lint:fix --workspace=packages/react-ui"
   },
   "devDependencies": {
+    "chromatic": "^13.3.5",
     "prettier": "^3.6.2",
     "style-dictionary": "^5.0.0"
   },

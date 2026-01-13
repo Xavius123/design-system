@@ -84,9 +84,14 @@ function App() {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
+  // Base path for GitHub Pages deployment
+  // In production, uses /design-system/ (or your repo name)
+  // In development, uses /
+  const basename = import.meta.env.BASE_URL;
+
   return (
     <div data-ds-root data-theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <AppContent theme={theme} toggleTheme={toggleTheme} />
       </BrowserRouter>
     </div>

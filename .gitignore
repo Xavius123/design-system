@@ -35,3 +35,6 @@ Thumbs.db
 
 # Token build output (keep dist in tokens/)
 !tokens/dist/
+
+#Environments
+.env

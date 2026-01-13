@@ -28,6 +28,7 @@
     "prebuild": "node ../../scripts/validate-tokens.js",
     "build": "vite build",
     "build:storybook": "storybook build",
+    "build-storybook": "storybook build",
     "storybook": "storybook dev -p 6006",
     "dev": "vite build --watch",
     "lint": "eslint src --ext .js,.jsx",
@@ -35,7 +36,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,css,json}\"",
     "analyze": "vite build --mode analyze",
-    "size-check": "npm run build && node scripts/check-bundle-size.js"
+    "size-check": "npm run build && node scripts/check-bundle-size.js",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "keywords": [
     "design-system",
