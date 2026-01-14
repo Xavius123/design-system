@@ -1,6 +1,5 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, fn, userEvent, within } from '@storybook/test';
 import Input from './Input';
 import styles from './Input.stories.module.css';
 
@@ -158,6 +157,7 @@ export const TypingInteractionTest: Story = {
   args: {
     label: 'Username',
     placeholder: 'Enter your username',
+    onChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -182,6 +182,9 @@ export const FocusBlurInteractionTest: Story = {
     label: 'Email',
     type: 'email',
     placeholder: 'Enter email',
+    onChange: fn(),
+    onFocus: fn(),
+    onBlur: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -203,6 +206,7 @@ export const ErrorValidationTest: Story = {
     type: 'email',
     error: true,
     errorMessage: 'Please enter a valid email',
+    onChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -222,6 +226,7 @@ export const DisabledInputTest: Story = {
     label: 'Disabled',
     placeholder: 'Cannot type here',
     disabled: true,
+    onChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

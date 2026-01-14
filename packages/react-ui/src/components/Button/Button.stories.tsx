@@ -1,6 +1,5 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, fn, userEvent, within } from '@storybook/test';
 import Button from './Button';
 import styles from './Button.stories.module.css';
 
@@ -45,6 +44,7 @@ export const Primary: Story = {
   args: {
     variant: 'primary',
     children: 'Primary Button',
+    onClick: fn(),
   },
 };
 
@@ -118,6 +118,7 @@ export const WithInteractionTest: Story = {
   args: {
     variant: 'primary',
     children: 'Click me',
+    onClick: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -141,6 +142,7 @@ export const DisabledInteractionTest: Story = {
     variant: 'primary',
     disabled: true,
     children: 'Disabled',
+    onClick: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -156,6 +158,7 @@ export const FocusInteractionTest: Story = {
   args: {
     variant: 'primary',
     children: 'Focus Test',
+    onClick: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

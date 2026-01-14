@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, fn, userEvent, within } from '@storybook/test';
 import Checkbox from './Checkbox';
 import styles from './Checkbox.stories.module.css';
 
@@ -46,6 +46,7 @@ type Story = StoryObj<typeof Checkbox>;
 export const Default: Story = {
   args: {
     label: 'Default Checkbox',
+    onCheckedChange: fn(),
   },
 };
 
@@ -165,6 +166,7 @@ export const AllStates = () => (
 export const CheckUncheckInteractionTest: Story = {
   args: {
     label: 'Accept terms',
+    onCheckedChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -187,6 +189,7 @@ export const CheckUncheckInteractionTest: Story = {
 export const KeyboardNavigationTest: Story = {
   args: {
     label: 'Keyboard test',
+    onCheckedChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -210,6 +213,7 @@ export const DisabledCheckboxTest: Story = {
   args: {
     label: 'Disabled checkbox',
     disabled: true,
+    onCheckedChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -257,6 +261,7 @@ export const ErrorStateTest: Story = {
     label: 'Required checkbox',
     error: true,
     errorMessage: 'You must accept the terms',
+    onCheckedChange: fn(),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
