@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
-  stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)', '../stories/**/*.mdx'],
+  stories: ['../stories/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',

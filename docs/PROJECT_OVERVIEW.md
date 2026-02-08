@@ -12,7 +12,7 @@
 
 ### Single Source of Truth
 
-Edit components in: `packages/_redhorn-components/src/components/`
+Edit components in: `source/redhorn-components/src/components/`
 
 ### Four Framework Outputs
 
@@ -74,7 +74,7 @@ All packages version together:
 
 ## Component Development Process
 
-1. Create `.lite.tsx` in `packages/_redhorn-components/src/components/`
+1. Create `.lite.tsx` in `source/redhorn-components/src/components/`
 2. Write Mitosis-compatible JSX
 3. Create matching `.module.css` for styles
 4. Run `npm run build:mitosis`
@@ -148,7 +148,7 @@ Components must work across all 4 frameworks:
 - All documentation files
 - Guides and references
 
-### packages/_redhorn-components/
+### source/redhorn-components/
 - Mitosis source components
 - Component development
 
@@ -164,5 +164,5 @@ Components must work across all 4 frameworks:
 
 - **Documentation**: See `docs/` folder
 - **Cursor Rules**: See `.cursor/rules/`
-- **Components**: See `packages/_redhorn-components/src/components/`
+- **Components**: See `source/redhorn-components/src/components/`
 - **Examples**: Run `npm run storybook`

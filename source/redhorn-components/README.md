@@ -10,7 +10,7 @@ This is the **single source** that generates components for:
 - Vue 3
 - React Native
 
-**Note:** The underscore prefix (`_redhorn-components`) ensures this folder appears at the top of the packages list, making it easy to find the source components.
+**Location**: `source/redhorn-components/` - Separated from published packages for clarity.
 
 ## Package Info
 
@@ -21,7 +21,7 @@ This is the **single source** that generates components for:
 ## Structure
 
 ```
-_redhorn-components/
+redhorn-components/
 ├── src/
 │   ├── components/
 │   │   ├── Button/
@@ -43,7 +43,7 @@ _redhorn-components/
 ### Edit Components
 
 ```bash
-code packages/_redhorn-components/src/components/Button/Button.lite.tsx
+code source/redhorn-components/src/components/Button/Button.lite.tsx
 ```
 
 ### Build All Frameworks
@@ -105,7 +105,7 @@ export default function Button(props: ButtonProps) {
 ### 1. Create Files
 
 ```bash
-mkdir packages/_redhorn-components/src/components/Badge
+mkdir source/redhorn-components/src/components/Badge
 ```
 
 ### 2. Write Mitosis Component
@@ -196,7 +196,7 @@ export default {
       api: 'composition'
     }
   },
-  dest: '../',
+  dest: '../../packages/',
   overridesDir: 'overrides'
 }
 ```
@@ -212,21 +212,23 @@ Each `.lite.tsx` file generates 4 framework versions:
 
 All use the same CSS (Button.module.css, Input.module.css).
 
-## Why Underscore Prefix?
+## Folder Structure
 
-The `_` prefix sorts this folder to the top:
+Source and published packages are cleanly separated:
 
 ```
+source/
+└── redhorn-components/     ← Source (edit here)
+
 packages/
-├── _redhorn-components/    ← First in list!
-├── angular/
-├── react/
-├── react-native/
-├── tokens/
-└── vue/
+├── angular/                ← Generated
+├── react/                  ← Generated
+├── react-native/           ← Generated
+├── tokens/                 ← Published
+└── vue/                    ← Generated
 ```
 
-Makes it easy to find the source when browsing `packages/`.
+This makes it clear which files to edit and which are generated.
 
 ## Commands
 
@@ -235,7 +237,7 @@ Makes it easy to find the source when browsing `packages/`.
 npm run build:mitosis
 
 # Watch mode (auto-rebuild on changes)
-npm run watch --workspace=packages/_redhorn-components
+npm run watch --workspace=source/redhorn-components
 
 # Full build (tokens + components)
 npm run build:all
@@ -249,7 +251,7 @@ npm run build:all
 
 ---
 
-**Location**: `packages/_redhorn-components/`  
+**Location**: `source/redhorn-components/`  
 **Package**: `@redhorn/redhorn-components` (private)  
 **Purpose**: Source components for 4 frameworks  
 **Status**: ✅ Active development

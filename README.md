@@ -141,7 +141,7 @@ components    4 outputs  preview   packages
 ```
 
 ```
-packages/_redhorn-components/    (Edit here - at top of list!)
+source/redhorn-components/    (Edit here!)
         ↓
     npm run build:mitosis
         ↓
@@ -174,15 +174,15 @@ npm run build:all
 npm run storybook
 ```
 
-Opens Storybook at http://localhost:6007 showing generated React components.
+Opens Storybook at http://localhost:6009 showing generated React components.
 
 ### Adding a New Component
 
 ```bash
 # 1. Create Redhorn component
-mkdir packages/_redhorn-components/src/components/Badge
-code packages/_redhorn-components/src/components/Badge/Badge.lite.tsx
-code packages/_redhorn-components/src/components/Badge/Badge.module.css
+mkdir source/redhorn-components/src/components/Badge
+code source/redhorn-components/src/components/Badge/Badge.lite.tsx
+code source/redhorn-components/src/components/Badge/Badge.module.css
 
 # 2. Generate outputs for all frameworks
 npm run build:mitosis
@@ -211,7 +211,7 @@ npm run publish:all     # Publish to npm
 
 ### Automated (Recommended)
 
-1. Edit component in `packages/mitosis-components/`
+1. Edit component in `source/redhorn-components/`
 2. Create changeset: `npx changeset`
 3. Push to main
 4. GitHub Actions creates release PR
@@ -286,12 +286,13 @@ npm run publish:all
 
 ```
 design-system/
+├── source/
+│   └── redhorn-components/     # ⭐ SOURCE - Edit here
+│       ├── src/components/
+│       │   ├── Button/
+│       │   └── Input/
+│       └── mitosis.config.js
 ├── packages/
-│   ├── _redhorn-components/    # ⭐ SOURCE - Edit here
-│   │   ├── src/components/
-│   │   │   ├── Button/
-│   │   │   └── Input/
-│   │   └── mitosis.config.js
 │   ├── angular/                # 📦 Published (generated)
 │   ├── react/                  # 📦 Published (generated)
 │   │   ├── src/components/     # Generated from Mitosis
@@ -308,7 +309,7 @@ design-system/
 
 ### For Design System Team
 
-1. Edit components in `packages/mitosis-components/`
+1. Edit components in `source/redhorn-components/`
 2. Follow [Mitosis Guidelines](docs/MITOSIS_GUIDELINES.md)
 3. Test in Storybook
 4. Create changeset

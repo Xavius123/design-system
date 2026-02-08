@@ -1,5 +1,5 @@
 export default {
-  files: 'packages/_redhorn-components/src/**/*.lite.tsx',
+  files: 'source/redhorn-components/src/**/*.lite.tsx',
   targets: ['react', 'angular', 'reactNative', 'vue'],
   options: {
     react: { 

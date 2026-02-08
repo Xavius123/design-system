@@ -11,7 +11,7 @@ When creating or editing components, always follow this sequence:
 
 ### 1. Edit Source
 ```bash
-code packages/_redhorn-components/src/components/Button/Button.lite.tsx
+code source/redhorn-components/src/components/Button/Button.lite.tsx
 ```
 
 ### 2. Generate All Frameworks
@@ -47,7 +47,7 @@ Check generated files look correct:
 - `packages/react-native/src/components/**/*` (generated)
 
 **✅ ALWAYS edit the source:**
-- `packages/_redhorn-components/src/components/**/*.lite.tsx`
+- `source/redhorn-components/src/components/**/*.lite.tsx`
 
 Changes in generated files will be overwritten on next build.
 

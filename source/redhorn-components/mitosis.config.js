@@ -19,6 +19,6 @@ export default {
       api: 'composition'
     }
   },
-  dest: '../',
+  dest: '../../packages/',
   overridesDir: 'overrides'
 }

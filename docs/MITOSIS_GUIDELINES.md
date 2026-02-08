@@ -22,7 +22,7 @@ This guide explains how to work with Mitosis components in the Redhorn Design Sy
 - Button
 - Input
 
-**Location:** `packages/mitosis-components/src/components/`
+**Location:** `source/redhorn-components/src/components/`
 
 **Generated Output:**
 - `packages/react-ui-generated/` - React components
@@ -34,7 +34,7 @@ This guide explains how to work with Mitosis components in the Redhorn Design Sy
 Each Mitosis component follows this structure:
 
 ```
-packages/mitosis-components/src/components/
+source/redhorn-components/src/components/
 └── ComponentName/
     ├── ComponentName.lite.tsx    # Mitosis source
     └── ComponentName.module.css  # CSS Modules styles
@@ -319,7 +319,7 @@ packages/
 
 ### Configuration
 
-Mitosis configuration is in `packages/mitosis-components/mitosis.config.js`:
+Mitosis configuration is in `source/redhorn-components/mitosis.config.js`:
 
 ```js
 export default {
@@ -357,7 +357,7 @@ Start with simple components:
 
 ```bash
 # Navigate to mitosis-components
-cd packages/mitosis-components/src/components
+cd source/redhorn-components/src/components
 
 # Create new component directory
 mkdir NewComponent
@@ -400,7 +400,7 @@ Copy the CSS from your existing React component:
 ```bash
 # From project root
 cp packages/react-ui/src/components/NewComponent/NewComponent.module.css \
-   packages/mitosis-components/src/components/NewComponent/
+   source/redhorn-components/src/components/NewComponent/
 ```
 
 ### 5. Simplify Component Logic
@@ -547,7 +547,7 @@ const handleClick = () => {
 
 - [Mitosis Documentation](https://mitosis.builder.io/)
 - [Mitosis GitHub](https://github.com/BuilderIO/mitosis)
-- [Component Examples](../packages/mitosis-components/src/components/)
+- [Component Examples](../source/redhorn-components/src/components/)
 - [Agent Skill](../agent/design-system-migration/SKILL.md)
 
 ## Questions?

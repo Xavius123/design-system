@@ -35,7 +35,7 @@ cd packages/react
 npm run storybook
 ```
 
-Visit http://localhost:6007 and verify:
+Visit http://localhost:6009 and verify:
 - All components render
 - All variants work
 - All sizes work

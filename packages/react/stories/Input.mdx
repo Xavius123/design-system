@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
 import Input from '../src/components/Input/Input';
 import { useState } from 'react';
 
@@ -98,7 +98,7 @@ Multi-framework input component generated from Mitosis. Write once, use in React
 
 ## Props
 
-<ArgsTable of={Input} />
+<Controls of={Input} />
 
 ---
 
@@ -542,7 +542,7 @@ The Input component supports client-side validation:
 
 The source component is written in Mitosis and compiled to all frameworks:
 
-- **Mitosis Source**: `packages/_redhorn-components/src/components/Input/Input.lite.tsx`
+- **Mitosis Source**: `source/redhorn-components/src/components/Input/Input.lite.tsx`
 - **React Output**: `packages/react/src/components/Input/Input.tsx`
 - **Angular Output**: `packages/angular/src/components/Input/Input.ts`
 - **React Native Output**: `packages/react-native/src/components/Input/Input.tsx`

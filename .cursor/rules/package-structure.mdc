@@ -8,8 +8,10 @@ alwaysApply: true
 ## Package Organization
 
 ```
+source/
+└── redhorn-components/     ⭐ SOURCE - Edit components here
+
 packages/
-├── _redhorn-components/    ⭐ SOURCE - Edit components here
 ├── angular/                📦 PUBLISH - Generated output
 ├── react/                  📦 PUBLISH - Generated output + Storybook
 ├── react-native/           📦 PUBLISH - Generated output
@@ -19,13 +21,13 @@ packages/
 
 ## Source of Truth
 
-**Single source:** `packages/_redhorn-components/`
+**Single source:** `source/redhorn-components/`
 
 This folder:
 - Contains Mitosis `.lite.tsx` components
 - Is NOT published to npm (private)
 - Generates all 4 framework outputs
-- Uses underscore prefix to appear first in list
+- Separated from published packages for clarity
 
 ## Generated Packages
 
@@ -57,10 +59,10 @@ When creating new components, create in source folder:
 
 ```bash
 # Create here
-mkdir packages/_redhorn-components/src/components/Badge
+mkdir source/redhorn-components/src/components/Badge
 
 # Files
-packages/_redhorn-components/src/components/Badge/
+source/redhorn-components/src/components/Badge/
 ├── Badge.lite.tsx       # Mitosis source
 └── Badge.module.css     # Styles
 ```

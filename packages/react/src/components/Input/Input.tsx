@@ -2,8 +2,6 @@
 import * as React from "react";
 import { useState } from "react";
 
-/** @jsxImportSource @builder.io/mitosis */
-
 export interface InputProps {
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";
   size?: "sm" | "md" | "lg";

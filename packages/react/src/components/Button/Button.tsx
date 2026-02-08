@@ -1,8 +1,6 @@
 "use client";
 import * as React from "react";
 
-/** @jsxImportSource @builder.io/mitosis */
-
 export interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost" | "outline";
   size?: "sm" | "md" | "lg";

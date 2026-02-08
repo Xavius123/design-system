@@ -13,7 +13,7 @@ This project uses Cursor rules in `.cursor/rules/` to enforce standards and conv
 
 ### 2. Mitosis Components
 **File**: `.cursor/rules/mitosis-components.mdc`  
-**Scope**: `packages/_redhorn-components/**/*.lite.tsx`  
+**Scope**: `source/redhorn-components/**/*.lite.tsx`  
 **Purpose**: Standards for writing Mitosis components
 
 **Key requirements**:
@@ -50,7 +50,7 @@ This project uses Cursor rules in `.cursor/rules/` to enforce standards and conv
 
 **Key requirements**:
 - Never edit generated files
-- Always edit source in `_redhorn-components`
+- Always edit source in `source/redhorn-components`
 - Build before preview
 - Version all packages together
 
@@ -60,7 +60,7 @@ This project uses Cursor rules in `.cursor/rules/` to enforce standards and conv
 **Purpose**: Folder organization and package roles
 
 **Key requirements**:
-- Source in `_redhorn-components/`
+- Source in `source/redhorn-components/`
 - Generated outputs in framework folders
 - Storybook in `packages/react/stories/`
 

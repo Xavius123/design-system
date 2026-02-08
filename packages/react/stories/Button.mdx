@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story, ArgsTable, Source } from '@storybook/blocks';
+import { Meta, Canvas, Story, Controls, Source } from '@storybook/blocks';
 import Button from '../src/components/Button/Button';
 
 <Meta title="Components/Button" component={Button} />
@@ -48,7 +48,7 @@ Multi-framework button component generated from Mitosis. Write once, use in Reac
 
 ## Props
 
-<ArgsTable of={Button} />
+<Controls of={Button} />
 
 ---
 
@@ -329,7 +329,7 @@ This component uses the following design tokens:
 
 The source component is written in Mitosis and compiled to all frameworks:
 
-- **Mitosis Source**: `packages/_redhorn-components/src/components/Button/Button.lite.tsx`
+- **Mitosis Source**: `source/redhorn-components/src/components/Button/Button.lite.tsx`
 - **React Output**: `packages/react/src/components/Button/Button.tsx`
 - **Angular Output**: `packages/angular/src/components/Button/Button.ts`
 - **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`

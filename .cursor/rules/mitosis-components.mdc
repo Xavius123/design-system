@@ -1,6 +1,6 @@
 ---
 description: Mitosis component development standards
-globs: packages/_redhorn-components/**/*.lite.tsx
+globs: source/redhorn-components/**/*.lite.tsx
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## File Location
 
-All source components MUST be in `packages/_redhorn-components/src/components/`.
+All source components MUST be in `source/redhorn-components/src/components/`.
 
 ## Required JSX Pragma
 
@@ -80,4 +80,4 @@ Always create matching `.module.css` file:
 
 1. Build: `npm run build:mitosis`
 2. Preview: `npm run storybook`
-3. Create MDX story in `packages/react/stories/`
+3. Create MDX story in `packages/react/stories/` with source reference to `source/redhorn-components/`
