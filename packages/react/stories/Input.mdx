@@ -1,0 +1,459 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import Input from '../src/components/Input/Input';
+import { useState } from 'react';
+
+<Meta title="Components/Input" component={Input} />
+
+# Input
+
+Multi-framework input component generated from Mitosis. Write once, use in React, Angular, and React Native.
+
+## Live Preview (React)
+
+<Canvas>
+  <Story name="Default">
+    <Input 
+      label="Email Address" 
+      type="email" 
+      placeholder="you@example.com"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="With Helper Text">
+    <Input 
+      label="Username" 
+      type="text" 
+      placeholder="Choose a username"
+      helperText="This will be your public display name"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Required">
+    <Input 
+      label="Email" 
+      type="email" 
+      required
+      placeholder="you@example.com"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error State">
+    <Input 
+      label="Email" 
+      type="email" 
+      error
+      errorMessage="Please enter a valid email address"
+      value="invalid-email"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Password">
+    <Input 
+      label="Password" 
+      type="password" 
+      required
+      placeholder="Enter your password"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Disabled">
+    <Input 
+      label="Disabled Input" 
+      type="text" 
+      disabled
+      value="Cannot edit this"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="All Sizes">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '400px' }}>
+      <Input label="Small" size="sm" placeholder="Small input" />
+      <Input label="Medium" size="md" placeholder="Medium input" />
+      <Input label="Large" size="lg" placeholder="Large input" />
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Full Width">
+    <Input 
+      label="Full Width Input" 
+      fullWidth
+      placeholder="This input takes full width"
+    />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Input} />
+
+---
+
+## Installation & Usage by Framework
+
+Choose your framework below to see installation instructions and usage examples.
+
+### React
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react
+```
+
+**Import tokens in your main file:**
+
+```tsx
+// src/main.tsx or src/index.tsx
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```tsx
+import { Input } from '@redhorn/react';
+import { useState } from 'react';
+
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validate and submit
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input 
+        label="Email" 
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        placeholder="you@example.com"
+      />
+      
+      <Input 
+        label="Password" 
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        helperText="Must be at least 8 characters"
+      />
+      
+      {error && (
+        <Input 
+          label="Confirm Email" 
+          type="email"
+          error
+          errorMessage={error}
+        />
+      )}
+      
+      <Input 
+        label="Phone (Optional)"
+        type="tel"
+        size="lg"
+        placeholder="+1 (555) 000-0000"
+      />
+    </form>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```tsx
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: (event: any) => void;
+  className?: string;
+}
+```
+
+---
+
+### Angular
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/angular
+```
+
+**Import tokens in styles.css:**
+
+```css
+/* src/styles.css */
+@import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```typescript
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import Input from '@redhorn/angular/input';
+
+@Component({
+  selector: 'app-login-form',
+  standalone: true,
+  imports: [Input, FormsModule],
+  template: `
+    <form (ngSubmit)="handleSubmit()">
+      <input
+        label="Email"
+        type="email"
+        [(value)]="email"
+        (change)="onEmailChange($event)"
+        [required]="true"
+        placeholder="you@example.com"
+      />
+      
+      <input
+        label="Password"
+        type="password"
+        [(value)]="password"
+        (change)="onPasswordChange($event)"
+        [required]="true"
+        helperText="Must be at least 8 characters"
+      />
+      
+      <input
+        *ngIf="error"
+        label="Confirm Email"
+        type="email"
+        [error]="true"
+        [errorMessage]="error"
+      />
+      
+      <input
+        label="Phone (Optional)"
+        type="tel"
+        size="lg"
+        placeholder="+1 (555) 000-0000"
+      />
+    </form>
+  `
+})
+export class LoginFormComponent {
+  email = '';
+  password = '';
+  error = '';
+
+  onEmailChange(event: any) {
+    this.email = event.target.value;
+  }
+
+  onPasswordChange(event: any) {
+    this.password = event.target.value;
+  }
+
+  handleSubmit() {
+    // Validate and submit
+  }
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: (event: any) => void;
+}
+```
+
+---
+
+### React Native
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react-native
+```
+
+**Usage:**
+
+```tsx
+import React, { useState } from 'react';
+import { SafeAreaView, ScrollView } from 'react-native';
+import { Input } from '@redhorn/react-native';
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = () => {
+    // Validate and submit
+  };
+
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <Input 
+          label="Email" 
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.nativeEvent.text)}
+          required
+          placeholder="you@example.com"
+        />
+        
+        <Input 
+          label="Password" 
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.nativeEvent.text)}
+          required
+          helperText="Must be at least 8 characters"
+        />
+        
+        {error && (
+          <Input 
+            label="Confirm Email" 
+            type="email"
+            error
+            errorMessage={error}
+          />
+        )}
+        
+        <Input 
+          label="Phone (Optional)"
+          type="tel"
+          size="lg"
+          placeholder="+1 (555) 000-0000"
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: (event: any) => void;
+}
+```
+
+---
+
+## Design Tokens
+
+This component uses the following design tokens:
+
+- **Colors**: `--color-border-primary`, `--color-border-focus`, `--color-error-primary`
+- **Spacing**: `--spacing-xs`, `--spacing-sm`, `--spacing-md`
+- **Border Radius**: `--border-radius-input`
+- **Typography**: `--font-size-body`, `--font-size-small`
+
+## Input Types
+
+- **text** - Standard text input (default)
+- **email** - Email address with validation
+- **password** - Password field with hidden characters
+- **number** - Numeric input
+- **tel** - Telephone number
+- **url** - URL input
+- **search** - Search field
+
+## Sizes
+
+- **sm** - Small (32px height)
+- **md** - Medium (40px height, default)
+- **lg** - Large (48px height)
+
+## States
+
+- **Default** - Normal input state
+- **Error** - Shows error styling and message
+- **Disabled** - Prevents user input
+- **Required** - Shows asterisk indicator
+- **Focus** - Border highlight via design tokens
+
+## Accessibility
+
+- Proper label association with `htmlFor`/`for`
+- Required indicator with asterisk
+- Error messages announced to screen readers
+- Keyboard navigation support
+- Focus indicators via design tokens
+- Disabled state prevents interaction
+
+## Validation
+
+The Input component supports client-side validation:
+
+- Use `error` and `errorMessage` props for validation feedback
+- Use `helperText` for guidance before errors
+- Use `required` prop for form validation
+
+## Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Source Code
+
+The source component is written in Mitosis and compiled to all frameworks:
+
+- **Mitosis Source**: `packages/mitosis-components/src/components/Input/Input.lite.tsx`
+- **React Output**: `packages/react/src/components/Input/Input.tsx`
+- **Angular Output**: `packages/angular/src/components/Input/Input.ts`
+- **React Native Output**: `packages/react-native/src/components/Input/Input.tsx`

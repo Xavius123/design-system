@@ -10,7 +10,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@redhorn/core",
     "@redhorn/mitosis-components"
   ]
 }
