@@ -3,13 +3,13 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [
-    ["@redhorn/design-tokens", "@redhorn/react", "@redhorn/angular", "@redhorn/react-native"]
+    ["@redhorn/design-tokens", "@redhorn/react", "@redhorn/angular", "@redhorn/react-native", "@redhorn/vue"]
   ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@redhorn/mitosis-components"
+    "@redhorn/redhorn-components"
   ]
 }

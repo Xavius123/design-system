@@ -1,7 +1,7 @@
 {
-  "name": "@redhorn/mitosis-components",
+  "name": "@redhorn/redhorn-components",
   "version": "1.0.0",
-  "description": "Multi-framework components source using Mitosis",
+  "description": "Redhorn design system components source using Mitosis",
   "private": true,
   "type": "module",
   "scripts": {

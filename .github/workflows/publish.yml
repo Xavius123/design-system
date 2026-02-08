@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/mitosis-components/**'
+      - 'packages/_redhorn-components/**'
       - 'packages/tokens/**'
       - '.changeset/**'
 

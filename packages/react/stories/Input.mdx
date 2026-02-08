@@ -392,6 +392,95 @@ interface InputProps {
 
 ---
 
+### Vue 3
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/vue
+```
+
+**Import tokens in main file:**
+
+```javascript
+// src/main.js
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```vue
+<template>
+  <form @submit.prevent="handleSubmit">
+    <Input 
+      label="Email" 
+      type="email"
+      v-model="email"
+      required
+      placeholder="you@example.com"
+    />
+    
+    <Input 
+      label="Password" 
+      type="password"
+      v-model="password"
+      required
+      helperText="Must be at least 8 characters"
+    />
+    
+    <Input 
+      v-if="error"
+      label="Confirm Email" 
+      type="email"
+      :error="true"
+      :errorMessage="error"
+    />
+    
+    <Input 
+      label="Phone (Optional)"
+      type="tel"
+      size="lg"
+      placeholder="+1 (555) 000-0000"
+    />
+  </form>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { Input } from '@redhorn/vue';
+
+const email = ref('');
+const password = ref('');
+const error = ref('');
+
+const handleSubmit = () => {
+  // Validate and submit
+};
+</script>
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: (event: any) => void;
+}
+```
+
+---
+
 ## Design Tokens
 
 This component uses the following design tokens:
@@ -453,7 +542,8 @@ The Input component supports client-side validation:
 
 The source component is written in Mitosis and compiled to all frameworks:
 
-- **Mitosis Source**: `packages/mitosis-components/src/components/Input/Input.lite.tsx`
+- **Mitosis Source**: `packages/_redhorn-components/src/components/Input/Input.lite.tsx`
 - **React Output**: `packages/react/src/components/Input/Input.tsx`
 - **Angular Output**: `packages/angular/src/components/Input/Input.ts`
 - **React Native Output**: `packages/react-native/src/components/Input/Input.tsx`
+- **Vue Output**: `packages/vue/src/components/Input/Input.vue`

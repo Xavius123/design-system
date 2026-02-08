@@ -231,6 +231,64 @@ interface ButtonProps {
 
 ---
 
+### Vue 3
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/vue
+```
+
+**Import tokens in main file:**
+
+```javascript
+// src/main.js
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```vue
+<template>
+  <div>
+    <Button variant="primary" @click="handleClick">
+      Click Me
+    </Button>
+    
+    <Button variant="secondary" size="lg">
+      Large Button
+    </Button>
+    
+    <Button variant="outline" :disabled="true">
+      Disabled
+    </Button>
+  </div>
+</template>
+
+<script setup>
+import { Button } from '@redhorn/vue';
+
+const handleClick = () => {
+  console.log('Button clicked!');
+};
+</script>
+```
+
+**TypeScript Props:**
+
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (event: any) => void;
+  className?: string;
+}
+```
+
+---
+
 ## Design Tokens
 
 This component uses the following design tokens:
@@ -271,7 +329,8 @@ This component uses the following design tokens:
 
 The source component is written in Mitosis and compiled to all frameworks:
 
-- **Mitosis Source**: `packages/mitosis-components/src/components/Button/Button.lite.tsx`
+- **Mitosis Source**: `packages/_redhorn-components/src/components/Button/Button.lite.tsx`
 - **React Output**: `packages/react/src/components/Button/Button.tsx`
 - **Angular Output**: `packages/angular/src/components/Button/Button.ts`
 - **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`
+- **Vue Output**: `packages/vue/src/components/Button/Button.vue`

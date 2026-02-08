@@ -1,6 +1,6 @@
 export default {
   files: 'src/**/*.lite.tsx',
-  targets: ['react', 'angular', 'reactNative'],
+  targets: ['react', 'angular', 'reactNative', 'vue'],
   options: {
     react: {
       stylesType: 'style-tag',
@@ -13,6 +13,10 @@ export default {
     reactNative: {
       typescript: true,
       stateType: 'useState'
+    },
+    vue: {
+      typescript: true,
+      api: 'composition'
     }
   },
   dest: '../',

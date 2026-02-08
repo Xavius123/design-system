@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build:tokens": "node scripts/build-tokens.js",
-    "build:mitosis": "npm run build --workspace=packages/mitosis-components",
+    "build:mitosis": "npm run build --workspace=packages/_redhorn-components",
     "build:all": "npm run build:tokens && npm run build:mitosis",
     "validate:tokens": "node scripts/validate-tokens.js",
     "storybook": "npm run storybook --workspace=packages/react",
@@ -18,7 +18,8 @@
     "publish:react": "npm publish --workspace=packages/react",
     "publish:angular": "npm publish --workspace=packages/angular",
     "publish:react-native": "npm publish --workspace=packages/react-native",
-    "publish:all": "npm run publish:tokens && npm run publish:react && npm run publish:angular && npm run publish:react-native",
+    "publish:vue": "npm publish --workspace=packages/vue",
+    "publish:all": "npm run publish:tokens && npm run publish:react && npm run publish:angular && npm run publish:react-native && npm run publish:vue",
     "version": "changeset version",
     "release": "npm run build:all && npm run publish:all",
     "format": "prettier --write \"**/*.{js,jsx,css,json,md}\" --ignore-path .gitignore",

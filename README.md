@@ -9,10 +9,10 @@
 
 ## Overview
 
-A design system that generates components for **React**, **Angular**, and **React Native** from a single source using [Mitosis](https://github.com/BuilderIO/mitosis).
+A design system that generates components for **React**, **Angular**, **Vue 3**, and **React Native** from a single source using [Mitosis](https://github.com/BuilderIO/mitosis).
 
 **Maintained by:** 1-2 developers  
-**Serves:** 10 applications (5 React, 3 Angular, 2 React Native)  
+**Serves:** 10+ applications (5 React, 3 Angular, 2 React Native, Vue support)  
 **Philosophy:** Write once, maintain once, deploy everywhere
 
 ## 📦 Published Packages
@@ -23,6 +23,7 @@ A design system that generates components for **React**, **Angular**, and **Reac
 | [@redhorn/react](https://npmjs.com/package/@redhorn/react) | 1.0.0 | React | `npm i @redhorn/react` |
 | [@redhorn/angular](https://npmjs.com/package/@redhorn/angular) | 1.0.0 | Angular | `npm i @redhorn/angular` |
 | [@redhorn/react-native](https://npmjs.com/package/@redhorn/react-native) | 1.0.0 | React Native | `npm i @redhorn/react-native` |
+| [@redhorn/vue](https://npmjs.com/package/@redhorn/vue) | 1.0.0 | Vue 3 | `npm i @redhorn/vue` |
 
 ## 🚀 Quick Start
 
@@ -47,6 +48,26 @@ function App() {
     </div>
   );
 }
+```
+
+### For Vue Apps
+
+```bash
+npm install @redhorn/design-tokens @redhorn/vue
+```
+
+```vue
+<script setup>
+import '@redhorn/design-tokens/css/light';
+import { Button, Input } from '@redhorn/vue';
+</script>
+
+<template>
+  <div>
+    <Input label="Email" type="email" />
+    <Button variant="primary">Submit</Button>
+  </div>
+</template>
 ```
 
 ### For Angular Apps
@@ -115,21 +136,21 @@ import { Button } from '@redhorn/react-native';
 Edit Source → Build → Preview → Publish
      ↓            ↓        ↓         ↓
 mitosis-      generate  Storybook  npm
-components    3 outputs  preview   packages
+components    4 outputs  preview   packages
 ```
 
 ```
-packages/mitosis-components/     (Edit here)
+packages/_redhorn-components/    (Edit here - at top of list!)
         ↓
     npm run build:mitosis
         ↓
-┌───────┬─────────┬──────────────┐
-│ React │ Angular │ React Native │
-└───────┴─────────┴──────────────┘
+┌───────┬─────────┬──────────────┬─────┐
+│ React │ Angular │ React Native │ Vue │
+└───────┴─────────┴──────────────┴─────┘
         ↓
    npm publish
         ↓
-   10 Apps Consume
+   10+ Apps Consume
 ```
 
 ## 💻 Development
@@ -157,10 +178,10 @@ Opens Storybook at http://localhost:6007 showing generated React components.
 ### Adding a New Component
 
 ```bash
-# 1. Create Mitosis component
-mkdir packages/mitosis-components/src/components/Badge
-code packages/mitosis-components/src/components/Badge/Badge.lite.tsx
-code packages/mitosis-components/src/components/Badge/Badge.module.css
+# 1. Create Redhorn component
+mkdir packages/_redhorn-components/src/components/Badge
+code packages/_redhorn-components/src/components/Badge/Badge.lite.tsx
+code packages/_redhorn-components/src/components/Badge/Badge.module.css
 
 # 2. Generate outputs for all frameworks
 npm run build:mitosis
@@ -253,7 +274,7 @@ npm run publish:all
 
 ## 🛠️ Technology Stack
 
-- **[Mitosis](https://github.com/BuilderIO/mitosis)** - Component compiler
+- **[Mitosis](https://github.com/BuilderIO/mitosis)** - Component compiler (React, Angular, Vue, React Native)
 - **[Changesets](https://github.com/changesets/changesets)** - Version management
 - **[Storybook](https://storybook.js.org/)** - Component preview
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD
@@ -265,18 +286,18 @@ npm run publish:all
 ```
 design-system/
 ├── packages/
-│   ├── mitosis-components/     # ⭐ SOURCE - Edit here
+│   ├── _redhorn-components/    # ⭐ SOURCE - Edit here
 │   │   ├── src/components/
 │   │   │   ├── Button/
 │   │   │   └── Input/
 │   │   └── mitosis.config.js
-│   ├── tokens/                 # 📦 Published
+│   ├── angular/                # 📦 Published (generated)
 │   ├── react/                  # 📦 Published (generated)
 │   │   ├── src/components/     # Generated from Mitosis
 │   │   └── stories/            # Storybook stories
-│   ├── angular/                # 📦 Published (generated)
 │   ├── react-native/           # 📦 Published (generated)
-│   └── core/                   # 🔧 Internal utilities
+│   ├── tokens/                 # 📦 Published
+│   └── vue/                    # 📦 Published (generated)
 ├── .github/workflows/          # CI/CD pipeline
 ├── .changeset/                 # Version management
 └── docs/                       # Documentation
