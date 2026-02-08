@@ -1,0 +1,175 @@
+/* Input Wrapper */
+.wrapper {
+  /* Component-scoped reset */
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  gap: var(--token-light-spacing-xs);
+}
+
+.wrapperFullWidth {
+  width: 100%;
+}
+
+/* Label */
+.label {
+  /* Component-scoped reset */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  font-size: var(--token-light-typography-font-size-small);
+  font-weight: var(--token-light-typography-font-weight-medium);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
+  color: var(--color-light-text-primary);
+  margin-bottom: var(--token-light-spacing-xs);
+}
+
+.required {
+  color: var(--color-light-error-primary);
+  margin-left: var(--token-light-spacing-xs);
+}
+
+/* Input */
+.input {
+  /* Component-scoped reset */
+  box-sizing: border-box;
+  margin: 0;
+  
+  width: 100%;
+  border-radius: var(--token-light-border-radius-input, 6px);
+  border: 1px solid var(--color-light-border-primary, #e5e5e5);
+  background-color: var(--color-light-background-primary, #ffffff);
+  color: var(--color-light-text-primary, #000000);
+  font-family: var(--token-light-typography-font-family-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: var(--token-light-typography-line-height-body, 1.5);
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--color-light-text-tertiary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-light-border-focus);
+  box-shadow: var(--token-light-shadow-focus);
+}
+
+.input:disabled {
+  background-color: var(--color-light-surface-secondary);
+  color: var(--color-light-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.small {
+  height: calc(var(--token-light-spacing-md) * 2);
+  padding: 0 var(--token-light-spacing-sm);
+  font-size: var(--token-light-typography-font-size-small);
+}
+
+.medium {
+  height: calc(var(--token-light-spacing-md) * 2.5);
+  padding: 0 var(--token-light-spacing-md);
+  font-size: var(--token-light-typography-font-size-small);
+}
+
+.large {
+  height: calc(var(--token-light-spacing-lg) * 2);
+  padding: 0 var(--token-light-spacing-md);
+  font-size: var(--token-light-typography-font-size-body);
+}
+
+/* States */
+.error {
+  border-color: var(--color-light-error-primary);
+}
+
+.error:focus {
+  border-color: var(--color-light-error-primary);
+  box-shadow: 0 0 0 2px var(--color-light-error-background);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.errorMessage {
+  font-size: var(--token-light-typography-font-size-small);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
+  color: var(--color-light-error-primary);
+  margin-top: var(--token-light-spacing-xs);
+}
+
+.helperText {
+  font-size: var(--token-light-typography-font-size-small);
+  font-family: var(--token-light-typography-font-family-body);
+  line-height: var(--token-light-typography-line-height-body);
+  color: var(--color-light-text-secondary);
+  margin-top: var(--token-light-spacing-xs);
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .label {
+  font-size: var(--token-dark-typography-font-size-small);
+  font-weight: var(--token-dark-typography-font-weight-medium);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  color: var(--color-dark-text-primary);
+}
+
+[data-theme="dark"] .required {
+  color: var(--color-dark-error-primary);
+}
+
+[data-theme="dark"] .input {
+  border-radius: var(--token-dark-border-radius-input);
+  border-color: var(--color-dark-border-primary);
+  background-color: var(--color-dark-background-primary);
+  color: var(--color-dark-text-primary);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+}
+
+[data-theme="dark"] .input::placeholder {
+  color: var(--color-dark-text-tertiary);
+}
+
+[data-theme="dark"] .input:focus {
+  border-color: var(--color-dark-border-focus);
+  box-shadow: var(--token-dark-shadow-focus);
+}
+
+[data-theme="dark"] .input:disabled {
+  background-color: var(--color-dark-surface-secondary);
+  color: var(--color-dark-text-tertiary);
+}
+
+[data-theme="dark"] .error {
+  border-color: var(--color-dark-error-primary);
+}
+
+[data-theme="dark"] .error:focus {
+  border-color: var(--color-dark-error-primary);
+  box-shadow: 0 0 0 2px var(--color-dark-error-background);
+}
+
+[data-theme="dark"] .errorMessage {
+  font-size: var(--token-dark-typography-font-size-small);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  color: var(--color-dark-error-primary);
+}
+
+[data-theme="dark"] .helperText {
+  font-size: var(--token-dark-typography-font-size-small);
+  font-family: var(--token-dark-typography-font-family-body);
+  line-height: var(--token-dark-typography-line-height-body);
+  color: var(--color-dark-text-secondary);
+}

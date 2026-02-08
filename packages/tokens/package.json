@@ -23,6 +23,9 @@
   ],
   "author": "Redhorn Design System Team",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/redhorn/design-system.git",
