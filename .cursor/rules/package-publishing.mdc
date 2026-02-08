@@ -1,0 +1,71 @@
+---
+description: Package publishing and versioning standards
+globs: packages/*/package.json
+alwaysApply: false
+---
+
+# Package Publishing Standards
+
+## Published Packages
+
+These packages are published to npm and MUST have:
+
+✅ `publishConfig: { "access": "public" }`
+
+**Published packages:**
+- `packages/tokens/` → `@redhorn/design-tokens`
+- `packages/react/` → `@redhorn/react`
+- `packages/angular/` → `@redhorn/angular`
+- `packages/react-native/` → `@redhorn/react-native`
+- `packages/vue/` → `@redhorn/vue`
+
+## Private Package
+
+This package MUST remain private:
+
+❌ `packages/_redhorn-components/` → `@redhorn/redhorn-components`
+
+Must have: `"private": true`
+
+## Version Synchronization
+
+All published packages MUST use the same version number.
+
+When bumping versions, update ALL packages together via Changesets:
+
+```bash
+npx changeset
+# Select: tokens, react, angular, react-native, vue
+# All packages version together (1.0.0 → 1.1.0)
+```
+
+## Required Fields
+
+All published package.json files must include:
+
+```json
+{
+  "name": "@redhorn/package-name",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "files": ["src"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redhorn/design-system.git",
+    "directory": "packages/package-name"
+  }
+}
+```
+
+## Peer Dependencies
+
+Set correct peer dependencies:
+
+- **React**: `"react": "^18.0.0"`
+- **Angular**: `"@angular/core": "^17.0.0"`
+- **Vue**: `"vue": "^3.0.0"`
+- **React Native**: `"react-native": ">=0.70.0"`

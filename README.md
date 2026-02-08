@@ -124,11 +124,12 @@ import { Button } from '@redhorn/react-native';
 
 ## 📖 Documentation
 
-- **[Simplified Setup](SIMPLIFIED_SETUP.md)** - Quick start guide ⭐
+- **[Project Overview](docs/PROJECT_OVERVIEW.md)** - Architecture and key concepts
 - **[Mitosis Guidelines](docs/MITOSIS_GUIDELINES.md)** - Component development patterns
 - **[App Integration Guide](docs/APP_INTEGRATION_GUIDE.md)** - How to use packages in your apps
 - **[Publishing Guide](docs/PUBLISHING_GUIDE.md)** - How to publish new versions
 - **[Pilot Rollout Plan](docs/PILOT_ROLLOUT.md)** - Gradual adoption strategy
+- **[Cursor Rules](docs/CURSOR_RULES.md)** - Project conventions and standards (AI-enforced)
 
 ## 🏗️ Architecture
 

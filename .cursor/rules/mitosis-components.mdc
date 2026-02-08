@@ -1,0 +1,83 @@
+---
+description: Mitosis component development standards
+globs: packages/_redhorn-components/**/*.lite.tsx
+alwaysApply: false
+---
+
+# Mitosis Component Standards
+
+## File Location
+
+All source components MUST be in `packages/_redhorn-components/src/components/`.
+
+## Required JSX Pragma
+
+Every `.lite.tsx` file MUST start with:
+
+```tsx
+/** @jsxImportSource @builder.io/mitosis */
+```
+
+## Component Structure
+
+```tsx
+/** @jsxImportSource @builder.io/mitosis */
+import { useStore } from '@builder.io/mitosis';
+import styles from './ComponentName.module.css';
+
+export interface ComponentNameProps {
+  variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  children?: any;
+}
+
+export default function ComponentName(props: ComponentNameProps) {
+  const state = useStore({
+    get computedValue() {
+      return props.variant || 'primary';
+    },
+  });
+
+  return (
+    <div class={styles.component}>
+      {props.children}
+    </div>
+  );
+}
+```
+
+## Key Rules
+
+1. **Use `class` not `className`** - Mitosis uses `class`
+2. **Use `useStore` for state** - Not React hooks
+3. **Computed values in getters** - `get variantClass() { return ... }`
+4. **Keep logic simple** - Must work across all frameworks
+5. **Import CSS Modules** - Always use `.module.css`
+6. **Export TypeScript interface** - For all props
+
+## CSS Modules
+
+Always create matching `.module.css` file:
+
+```css
+.component {
+  /* Base styles */
+}
+
+.primary {
+  /* Variant styles */
+}
+```
+
+## Avoid
+
+- React-specific hooks (useState, useEffect, useRef)
+- Framework-specific APIs
+- Complex state management
+- External dependencies beyond Mitosis
+
+## After Creating Component
+
+1. Build: `npm run build:mitosis`
+2. Preview: `npm run storybook`
+3. Create MDX story in `packages/react/stories/`
