@@ -174,7 +174,7 @@ npm run build:all
 npm run storybook
 ```
 
-Opens Storybook at http://localhost:6009 showing generated React components.
+Opens Storybook at http://localhost:6011 showing generated React components.
 
 ### Adding a New Component
 

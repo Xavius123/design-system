@@ -1,54 +1,36 @@
-import { Meta, Canvas, Story, Controls, Source } from '@storybook/blocks';
-import Button from '../src/components/Button/Button';
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
 
-<Meta title="Components/Button" component={Button} />
+<Meta of={ButtonStories} />
 
 # Button
 
-Multi-framework button component generated from Mitosis. Write once, use in React, Angular, and React Native.
+Multi-framework button component generated from Mitosis. Write once, use in React, Angular, Vue, and React Native.
 
 ## Live Preview (React)
 
-<Canvas>
-  <Story name="Primary">
-    <Button variant="primary" onClick={() => alert('Clicked!')}>
-      Primary Button
-    </Button>
-  </Story>
-</Canvas>
+<Canvas of={ButtonStories.Primary} />
 
-<Canvas>
-  <Story name="All Variants">
-    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="outline">Outline</Button>
-    </div>
-  </Story>
-</Canvas>
+### All Variants
 
-<Canvas>
-  <Story name="All Sizes">
-    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-    </div>
-  </Story>
-</Canvas>
+<Canvas of={ButtonStories.Primary} />
+<Canvas of={ButtonStories.Secondary} />
+<Canvas of={ButtonStories.Ghost} />
+<Canvas of={ButtonStories.Outline} />
 
-<Canvas>
-  <Story name="Disabled">
-    <Button variant="primary" disabled>
-      Disabled Button
-    </Button>
-  </Story>
-</Canvas>
+### All Sizes
+
+<Canvas of={ButtonStories.Small} />
+<Canvas of={ButtonStories.Medium} />
+<Canvas of={ButtonStories.Large} />
+
+### Disabled State
+
+<Canvas of={ButtonStories.Disabled} />
 
 ## Props
 
-<Controls of={Button} />
+<Controls of={ButtonStories} />
 
 ---
 
@@ -66,24 +48,20 @@ npm install @redhorn/design-tokens @redhorn/react
 
 **Import tokens in your main file:**
 
-```tsx
-// src/main.tsx or src/index.tsx
+```javascript
+// src/index.js or src/main.jsx
 import '@redhorn/design-tokens/css/light';
 ```
 
 **Usage:**
 
-```tsx
+```jsx
 import { Button } from '@redhorn/react';
 
-function MyComponent() {
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
-
+function App() {
   return (
     <div>
-      <Button variant="primary" onClick={handleClick}>
+      <Button variant="primary" onClick={() => console.log('Clicked!')}>
         Click Me
       </Button>
       
@@ -101,14 +79,14 @@ function MyComponent() {
 
 **TypeScript Props:**
 
-```tsx
+```typescript
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  onClick?: (event: any) => void;
-  children?: any;
+  onClick?: (event: React.MouseEvent) => void;
+  children?: React.ReactNode;
   className?: string;
 }
 ```
@@ -126,44 +104,48 @@ npm install @redhorn/design-tokens @redhorn/angular
 **Import tokens in styles.css:**
 
 ```css
-/* src/styles.css */
 @import '@redhorn/design-tokens/css/light';
 ```
 
 **Usage:**
 
 ```typescript
+// app.component.ts
 import { Component } from '@angular/core';
-import Button from '@redhorn/angular/button';
+import { ButtonComponent } from '@redhorn/angular';
 
 @Component({
-  selector: 'app-my-component',
+  selector: 'app-root',
   standalone: true,
-  imports: [Button],
+  imports: [ButtonComponent],
   template: `
-    <div>
-      <button variant="primary" (click)="handleClick()">
-        Click Me
-      </button>
-      
-      <button variant="secondary" size="lg">
-        Large Button
-      </button>
-      
-      <button variant="outline" [disabled]="true">
-        Disabled
-      </button>
-    </div>
+    <redhorn-button 
+      variant="primary" 
+      (click)="handleClick()">
+      Click Me
+    </redhorn-button>
+    
+    <redhorn-button 
+      variant="secondary" 
+      size="lg">
+      Large Button
+    </redhorn-button>
+    
+    <redhorn-button 
+      variant="outline" 
+      [disabled]="true">
+      Disabled
+    </redhorn-button>
   `
 })
-export class MyComponent {
+export class AppComponent {
   handleClick() {
-    console.log('Button clicked!');
+    console.log('Clicked!');
   }
 }
 ```
 
-**TypeScript Props:**
+**TypeScript Interface:**
 
 ```typescript
 interface ButtonProps {
@@ -171,61 +153,6 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  onClick?: (event: any) => void;
-}
-```
-
----
-
-### React Native
-
-**Installation:**
-
-```bash
-npm install @redhorn/design-tokens @redhorn/react-native
-```
-
-**Usage:**
-
-```tsx
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { Button } from '@redhorn/react-native';
-
-export default function MyScreen() {
-  const handlePress = () => {
-    console.log('Button pressed!');
-  };
-
-  return (
-    <SafeAreaView>
-      <Button variant="primary" onPress={handlePress}>
-        Click Me
-      </Button>
-      
-      <Button variant="secondary" size="lg">
-        Large Button
-      </Button>
-      
-      <Button variant="outline" disabled>
-        Disabled
-      </Button>
-    </SafeAreaView>
-  );
-}
-```
-
-**Note:** React Native uses `onPress` instead of `onClick`.
-
-**TypeScript Props:**
-
-```typescript
-interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  onPress?: (event: any) => void;
-  children?: any;
 }
 ```
 
@@ -282,48 +209,60 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  onClick?: (event: any) => void;
-  className?: string;
 }
 ```
 
 ---
 
-## Design Tokens
+### React Native
 
-This component uses the following design tokens:
+**Installation:**
 
-- **Colors**: `--color-accent-primary`, `--color-accent-hover`, `--color-text-primary`
-- **Spacing**: `--spacing-sm`, `--spacing-md`, `--spacing-lg`
-- **Border Radius**: `--border-radius-button`
-- **Typography**: `--font-weight-button`
+```bash
+npm install @redhorn/design-tokens @redhorn/react-native
+```
 
-## Variants
+**Usage:**
 
-- **primary** - Red background, white text (brand accent)
-- **secondary** - Gray background, dark text
-- **ghost** - Transparent background, colored text
-- **outline** - Transparent background with border
+```jsx
+import React from 'react';
+import { View } from 'react-native';
+import { Button } from '@redhorn/react-native';
 
-## Sizes
+export default function App() {
+  return (
+    <View>
+      <Button 
+        variant="primary" 
+        onPress={() => console.log('Clicked!')}>
+        Click Me
+      </Button>
+      
+      <Button variant="secondary" size="lg">
+        Large Button
+      </Button>
+      
+      <Button variant="outline" disabled>
+        Disabled
+      </Button>
+    </View>
+  );
+}
+```
 
-- **sm** - Small (32px height)
-- **md** - Medium (40px height, default)
-- **lg** - Large (48px height)
+**TypeScript Props:**
 
-## Accessibility
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  onPress?: () => void;
+  children?: React.ReactNode;
+}
+```
 
-- Supports keyboard navigation (Tab, Enter, Space)
-- Proper ARIA attributes
-- Focus indicators via design tokens
-- Disabled state prevents interaction
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+---
 
 ## Source Code
 
@@ -332,5 +271,16 @@ The source component is written in Mitosis and compiled to all frameworks:
 - **Mitosis Source**: `source/redhorn-components/src/components/Button/Button.lite.tsx`
 - **React Output**: `packages/react/src/components/Button/Button.tsx`
 - **Angular Output**: `packages/angular/src/components/Button/Button.ts`
-- **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`
 - **Vue Output**: `packages/vue/src/components/Button/Button.vue`
+- **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`
+
+## Design Tokens
+
+Button uses these design tokens:
+
+- Colors: `--color-primary-*`, `--color-secondary-*`, `--color-gray-*`
+- Spacing: `--space-*`
+- Border Radius: `--radius-*`
+- Typography: `--font-size-*`, `--font-weight-*`
+
+See `packages/tokens/` for all available tokens.
