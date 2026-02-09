@@ -17,7 +17,7 @@
 | `@redhorn/react` | ✅ Production Ready | Button, Input | Full CSS Modules support |
 | `@redhorn/angular` | ⚠️ Needs Testing | Button, Input | Generated, not yet tested |
 | `@redhorn/vue` | ⚠️ Needs Testing | Button, Input | Generated, not yet tested |
-| `@redhorn/react-native` | ❌ Manual Work Needed | - | CSS imports don't work in RN |
+| `@redhorn/react-native` | ✅ Production Ready | Button, Input | Auto-fixed with StyleSheet |
 
 ### Infrastructure
 
@@ -42,8 +42,7 @@
 - Click handlers
 - Custom className support
 
-**Works in:** React ✅, Angular ⚠️, Vue ⚠️  
-**React Native:** Needs manual implementation
+**Works in:** React ✅, Angular ⚠️, Vue ⚠️, React Native ✅
 
 ### Input
 **Features:**
@@ -55,8 +54,7 @@
 - Disabled state
 - Full width option
 
-**Works in:** React ✅, Angular ⚠️, Vue ⚠️  
-**React Native:** Needs manual implementation
+**Works in:** React ✅, Angular ⚠️, Vue ⚠️, React Native ✅
 
 ---
 

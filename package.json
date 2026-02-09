@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build:tokens": "node scripts/build-tokens.js",
-    "build:mitosis": "npm run build --workspace=source/redhorn-components && node scripts/copy-css-modules.js",
+    "build:mitosis": "npm run build --workspace=source/redhorn-components && node scripts/copy-css-modules.js && node scripts/fix-react-native.js",
     "build:all": "npm run build:tokens && npm run build:mitosis",
     "validate:tokens": "node scripts/validate-tokens.js",
     "storybook": "npm run storybook --workspace=packages/react",
