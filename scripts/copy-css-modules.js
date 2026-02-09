@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
 const sourceDir = join(rootDir, 'source', 'redhorn-components', 'src', 'components');
-const targets = ['react', 'angular', 'vue', 'react-native'];
+const targets = ['react', 'angular', 'vue']; // React Native uses overrides with StyleSheet
 
 function copyCSS(srcPath, componentName) {
   const cssFile = `${componentName}.module.css`;

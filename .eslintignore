@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+storybook-static/
+
+# Generated files (from Mitosis)
+packages/react/src/components/
+packages/angular/src/components/
+packages/vue/src/components/
+packages/react-native/src/components/
+
+# Keep source files lintable
+!source/
+
+# Cache
+.eslintcache
+*.log

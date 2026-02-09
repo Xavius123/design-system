@@ -12,13 +12,13 @@ export default {
     },
     reactNative: {
       typescript: true,
-      stateType: 'useState'
+      stateType: 'useState',
+      stylesType: 'react-native' // Automatically converts CSS to StyleSheet.create()
     },
     vue: {
       typescript: true,
       api: 'composition'
     }
   },
-  dest: '../../packages/',
-  overridesDir: 'overrides'
+  dest: '../../packages/'
 }
