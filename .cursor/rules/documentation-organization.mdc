@@ -1,0 +1,51 @@
+---
+description: Documentation file organization and placement
+alwaysApply: true
+---
+
+# Documentation Organization
+
+## File Placement
+
+All new documentation files MUST go in the `docs/` folder, not the root directory.
+
+**❌ BAD:**
+```
+design-system/
+├── NEW_FEATURE_GUIDE.md      # Don't create here
+├── COMPONENT_TIPS.md          # Don't create here
+└── ARCHITECTURE_NOTES.md      # Don't create here
+```
+
+**✅ GOOD:**
+```
+design-system/
+├── README.md                  # Only exception - main readme
+├── CHANGELOG.md               # Only exception - version history
+├── CONTRIBUTING.md            # Only exception - contribution guide
+└── docs/
+    ├── NEW_FEATURE_GUIDE.md  # Create here
+    ├── COMPONENT_TIPS.md      # Create here
+    └── ARCHITECTURE_NOTES.md  # Create here
+```
+
+## Exceptions
+
+Only these files belong in the root:
+- `README.md` - Main project documentation
+- `CHANGELOG.md` - Version history
+- `CONTRIBUTING.md` - Contribution guidelines
+
+## Existing Essential Docs
+
+- `docs/MITOSIS_GUIDELINES.md` - Component development
+- `docs/APP_INTEGRATION_GUIDE.md` - App usage
+- `docs/PUBLISHING_GUIDE.md` - Release workflow
+- `docs/PILOT_ROLLOUT.md` - Rollout strategy
+
+## When Creating New Documentation
+
+1. Choose descriptive filename (e.g., `TESTING_STRATEGY.md`, `DEPLOYMENT_GUIDE.md`)
+2. Create in `docs/` folder
+3. Update README.md with link if it's important
+4. Keep docs focused and actionable

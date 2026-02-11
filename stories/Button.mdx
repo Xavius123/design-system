@@ -1,0 +1,286 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Multi-framework button component generated from Mitosis. Write once, use in React, Angular, Vue, and React Native.
+
+## Live Preview (React)
+
+<Canvas of={ButtonStories.Primary} />
+
+### All Variants
+
+<Canvas of={ButtonStories.Primary} />
+<Canvas of={ButtonStories.Secondary} />
+<Canvas of={ButtonStories.Ghost} />
+<Canvas of={ButtonStories.Outline} />
+
+### All Sizes
+
+<Canvas of={ButtonStories.Small} />
+<Canvas of={ButtonStories.Medium} />
+<Canvas of={ButtonStories.Large} />
+
+### Disabled State
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Props
+
+<Controls of={ButtonStories.Primary} />
+
+---
+
+## Installation & Usage by Framework
+
+Choose your framework below to see installation instructions and usage examples.
+
+### React
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react
+```
+
+**Import tokens in your main file:**
+
+```javascript
+// src/index.js or src/main.jsx
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```jsx
+import { Button } from '@redhorn/react';
+
+function App() {
+  return (
+    <div>
+      <Button variant="primary" onClick={() => console.log('Clicked!')}>
+        Click Me
+      </Button>
+      
+      <Button variant="secondary" size="lg">
+        Large Button
+      </Button>
+      
+      <Button variant="outline" disabled>
+        Disabled
+      </Button>
+    </div>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (event: React.MouseEvent) => void;
+  children?: React.ReactNode;
+  className?: string;
+}
+```
+
+---
+
+### Angular
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/angular
+```
+
+**Import tokens in styles.css:**
+
+```css
+@import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core';
+import { ButtonComponent } from '@redhorn/angular';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ButtonComponent],
+  template: `
+    <redhorn-button 
+      variant="primary" 
+      (click)="handleClick()">
+      Click Me
+    </redhorn-button>
+    
+    <redhorn-button 
+      variant="secondary" 
+      size="lg">
+      Large Button
+    </redhorn-button>
+    
+    <redhorn-button 
+      variant="outline" 
+      [disabled]="true">
+      Disabled
+    </redhorn-button>
+  `
+})
+export class AppComponent {
+  handleClick() {
+    console.log('Clicked!');
+  }
+}
+```
+
+**TypeScript Interface:**
+
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+}
+```
+
+---
+
+### Vue 3
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/vue
+```
+
+**Import tokens in main file:**
+
+```javascript
+// src/main.js
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```vue
+<template>
+  <div>
+    <Button variant="primary" @click="handleClick">
+      Click Me
+    </Button>
+    
+    <Button variant="secondary" size="lg">
+      Large Button
+    </Button>
+    
+    <Button variant="outline" :disabled="true">
+      Disabled
+    </Button>
+  </div>
+</template>
+
+<script setup>
+import { Button } from '@redhorn/vue';
+
+const handleClick = () => {
+  console.log('Button clicked!');
+};
+</script>
+```
+
+**TypeScript Props:**
+
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+}
+```
+
+---
+
+### React Native
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react-native
+```
+
+**Usage:**
+
+```jsx
+import React from 'react';
+import { View } from 'react-native';
+import { Button } from '@redhorn/react-native';
+
+export default function App() {
+  return (
+    <View>
+      <Button 
+        variant="primary" 
+        onPress={() => console.log('Clicked!')}>
+        Click Me
+      </Button>
+      
+      <Button variant="secondary" size="lg">
+        Large Button
+      </Button>
+      
+      <Button variant="outline" disabled>
+        Disabled
+      </Button>
+    </View>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  onPress?: () => void;
+  children?: React.ReactNode;
+}
+```
+
+---
+
+## Source Code
+
+The source component is written in Mitosis and compiled to all frameworks:
+
+- **Mitosis Source**: `source/redhorn-components/src/components/Button/Button.lite.tsx`
+- **React Output**: `packages/react/src/components/Button/Button.tsx`
+- **Angular Output**: `packages/angular/src/components/Button/Button.ts`
+- **Vue Output**: `packages/vue/src/components/Button/Button.vue`
+- **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`
+
+## Design Tokens
+
+Button uses these design tokens:
+
+- Colors: `--color-primary-*`, `--color-secondary-*`, `--color-gray-*`
+- Spacing: `--space-*`
+- Border Radius: `--radius-*`
+- Typography: `--font-size-*`, `--font-weight-*`
+
+See `packages/tokens/` for all available tokens.

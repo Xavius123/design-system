@@ -1,0 +1,68 @@
+---
+description: Build and development workflow standards
+alwaysApply: true
+---
+
+# Build Workflow Standards
+
+## Development Workflow
+
+When creating or editing components, always follow this sequence:
+
+### 1. Edit Source
+```bash
+code source/redhorn-components/src/components/Button/Button.lite.tsx
+```
+
+### 2. Generate All Frameworks
+```bash
+npm run build:mitosis
+```
+
+This generates:
+- React (packages/react/)
+- Angular (packages/angular/)
+- Vue (packages/vue/)
+- React Native (packages/react-native/)
+
+### 3. Preview in Storybook
+```bash
+npm run storybook
+```
+
+### 4. Verify All Outputs
+
+Check generated files look correct:
+- `packages/react/src/components/ComponentName/ComponentName.tsx`
+- `packages/angular/src/components/ComponentName/ComponentName.ts`
+- `packages/vue/src/components/ComponentName/ComponentName.vue`
+- `packages/react-native/src/components/ComponentName/ComponentName.tsx`
+
+## Never Edit Generated Files
+
+**❌ NEVER edit these directly:**
+- `packages/react/src/components/**/*` (generated)
+- `packages/angular/src/components/**/*` (generated)
+- `packages/vue/src/components/**/*` (generated)
+- `packages/react-native/src/components/**/*` (generated)
+
+**✅ ALWAYS edit the source:**
+- `source/redhorn-components/src/components/**/*.lite.tsx`
+
+Changes in generated files will be overwritten on next build.
+
+## Build Commands
+
+- `npm run build:tokens` - Build design tokens only
+- `npm run build:mitosis` - Generate framework components
+- `npm run build:all` - Build tokens + generate components
+- `npm run storybook` - Preview components
+
+## Publishing Workflow
+
+1. Create changeset: `npx changeset`
+2. Select ALL packages: tokens, react, angular, react-native, vue
+3. Apply versions: `npm run version`
+4. Publish: `npm run publish:all`
+
+All packages MUST version together (synchronized versions).

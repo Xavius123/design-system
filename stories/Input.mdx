@@ -1,0 +1,385 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as InputStories from './Input.stories';
+
+<Meta of={InputStories} />
+
+# Input
+
+Multi-framework input component generated from Mitosis. Write once, use in React, Angular, Vue, and React Native.
+
+## Live Preview (React)
+
+<Canvas of={InputStories.Default} />
+
+### With Error
+
+<Canvas of={InputStories.WithError} />
+
+### Password Type
+
+<Canvas of={InputStories.Password} />
+
+### With Helper Text
+
+<Canvas of={InputStories.WithHelper} />
+
+### States
+
+<Canvas of={InputStories.Required} />
+<Canvas of={InputStories.Disabled} />
+
+### Sizes
+
+<Canvas of={InputStories.Small} />
+<Canvas of={InputStories.Medium} />
+<Canvas of={InputStories.Large} />
+
+### Full Width
+
+<Canvas of={InputStories.FullWidth} />
+
+## Props
+
+<Controls of={InputStories.Default} />
+
+---
+
+## Installation & Usage by Framework
+
+Choose your framework below to see installation instructions and usage examples.
+
+### React
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react
+```
+
+**Import tokens in your main file:**
+
+```javascript
+// src/index.js or src/main.jsx
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```jsx
+import { useState } from 'react';
+import { Input } from '@redhorn/react';
+
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  return (
+    <form>
+      <Input
+        label="Email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        placeholder="you@example.com"
+      />
+      
+      <Input
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      
+      {error && (
+        <Input
+          label="Error Example"
+          value="invalid"
+          error={true}
+          errorMessage={error}
+        />
+      )}
+    </form>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  id?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+```
+
+---
+
+### Angular
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/angular
+```
+
+**Import tokens in styles.css:**
+
+```css
+@import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```typescript
+// login.component.ts
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { InputComponent } from '@redhorn/angular';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [FormsModule, InputComponent],
+  template: `
+    <form>
+      <redhorn-input 
+        label="Email" 
+        type="email"
+        [(ngModel)]="email"
+        [required]="true"
+        placeholder="you@example.com">
+      </redhorn-input>
+      
+      <redhorn-input 
+        label="Password" 
+        type="password"
+        [(ngModel)]="password"
+        [required]="true">
+      </redhorn-input>
+      
+      <redhorn-input 
+        *ngIf="errorMessage"
+        label="Error Example"
+        value="invalid"
+        [error]="true"
+        [errorMessage]="errorMessage">
+      </redhorn-input>
+    </form>
+  `
+})
+export class LoginComponent {
+  email = '';
+  password = '';
+  errorMessage = '';
+}
+```
+
+**TypeScript Interface:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+}
+```
+
+---
+
+### Vue 3
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/vue
+```
+
+**Import tokens in main file:**
+
+```javascript
+// src/main.js
+import '@redhorn/design-tokens/css/light';
+```
+
+**Usage:**
+
+```vue
+<template>
+  <form @submit.prevent="handleSubmit">
+    <Input
+      label="Email"
+      type="email"
+      v-model="email"
+      required
+      placeholder="you@example.com"
+    />
+    
+    <Input
+      label="Password"
+      type="password"
+      v-model="password"
+      required
+    />
+    
+    <Input
+      v-if="error"
+      label="Error Example"
+      value="invalid"
+      :error="true"
+      :errorMessage="error"
+    />
+  </form>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { Input } from '@redhorn/vue';
+
+const email = ref('');
+const password = ref('');
+const error = ref('');
+
+const handleSubmit = () => {
+  // Validate and submit
+};
+</script>
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  fullWidth?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+}
+```
+
+---
+
+### React Native
+
+**Installation:**
+
+```bash
+npm install @redhorn/design-tokens @redhorn/react-native
+```
+
+**Usage:**
+
+```jsx
+import React, { useState } from 'react';
+import { View, Button } from 'react-native';
+import { Input } from '@redhorn/react-native';
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  return (
+    <View>
+      <Input
+        label="Email"
+        type="email"
+        value={email}
+        onChangeText={setEmail}
+        placeholder="you@example.com"
+        required
+      />
+      
+      <Input
+        label="Password"
+        type="password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        required
+      />
+      
+      {error && (
+        <Input
+          label="Error Example"
+          value="invalid"
+          error={true}
+          errorMessage={error}
+        />
+      )}
+      
+      <Button title="Login" onPress={handleLogin} />
+    </View>
+  );
+}
+```
+
+**TypeScript Props:**
+
+```typescript
+interface InputProps {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel';
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  helperText?: string;
+  required?: boolean;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  onChangeText?: (text: string) => void;
+}
+```
+
+---
+
+## Source Code
+
+The source component is written in Mitosis and compiled to all frameworks:
+
+- **Mitosis Source**: `source/redhorn-components/src/components/Input/Input.lite.tsx`
+- **React Output**: `packages/react/src/components/Input/Input.tsx`
+- **Angular Output**: `packages/angular/src/components/Input/Input.ts`
+- **Vue Output**: `packages/vue/src/components/Input/Input.vue`
+- **React Native Output**: `packages/react-native/src/components/Input/Input.tsx`
+
+## Design Tokens
+
+Input uses these design tokens:
+
+- Colors: `--color-gray-*`, `--color-error-*`
+- Spacing: `--space-*`
+- Border Radius: `--radius-*`
+- Typography: `--font-size-*`, `--line-height-*`
+- Borders: `--border-width-*`
+
+See `packages/tokens/` for all available tokens.

@@ -1,0 +1,86 @@
+---
+description: Package organization and folder structure
+alwaysApply: true
+---
+
+# Package Structure Standards
+
+## Package Organization
+
+```
+source/
+└── redhorn-components/     ⭐ SOURCE - Edit components here
+
+packages/
+├── angular/                📦 PUBLISH - Generated output
+├── react/                  📦 PUBLISH - Generated output + Storybook
+├── react-native/           📦 PUBLISH - Generated output
+├── tokens/                 📦 PUBLISH - Design tokens
+└── vue/                    📦 PUBLISH - Generated output
+```
+
+## Source of Truth
+
+**Single source:** `source/redhorn-components/`
+
+This folder:
+- Contains Mitosis `.lite.tsx` components
+- Is NOT published to npm (private)
+- Generates all 4 framework outputs
+- Separated from published packages for clarity
+
+## Generated Packages
+
+These are **auto-generated** by Mitosis:
+- `packages/react/src/components/`
+- `packages/angular/src/components/`
+- `packages/vue/src/components/`
+- `packages/react-native/src/components/`
+
+**Never edit generated files directly.**
+
+## Published Packages
+
+These are published to public npm:
+- `@redhorn/design-tokens` - Design tokens (CSS + JS)
+- `@redhorn/react` - React components
+- `@redhorn/angular` - Angular components  
+- `@redhorn/vue` - Vue 3 components
+- `@redhorn/react-native` - React Native components
+
+## Private Packages
+
+These stay private (not published):
+- `@redhorn/redhorn-components` - Source components
+
+## New Component Location
+
+When creating new components, create in source folder:
+
+```bash
+# Create here
+mkdir source/redhorn-components/src/components/Badge
+
+# Files
+source/redhorn-components/src/components/Badge/
+├── Badge.lite.tsx       # Mitosis source
+└── Badge.module.css     # Styles
+```
+
+Then run `npm run build:mitosis` to generate outputs.
+
+## Storybook Location
+
+Storybook configuration and stories:
+
+```
+packages/react/
+├── .storybook/          # Storybook config
+│   ├── main.js
+│   └── preview.js
+└── stories/             # Component stories
+    ├── Button.mdx
+    └── Input.mdx
+```
+
+Stories are MDX format to document all 4 frameworks.

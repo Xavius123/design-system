@@ -1,0 +1,111 @@
+---
+description: Storybook documentation standards for multi-framework components
+globs: packages/react/stories/**/*.mdx
+alwaysApply: false
+---
+
+# Storybook Documentation Standards
+
+## Location
+
+All Storybook stories MUST be in `packages/react/stories/`.
+
+## MDX Format Required
+
+Use MDX format (not TSX) for component documentation to show all 4 frameworks.
+
+## Required Sections
+
+Every component MDX file MUST include:
+
+### 1. Live React Previews
+
+```mdx
+<Canvas>
+  <Story name="Primary">
+    <Button variant="primary">Click Me</Button>
+  </Story>
+</Canvas>
+```
+
+### 2. Props Documentation
+
+```mdx
+<ArgsTable of={Button} />
+```
+
+### 3. All 4 Framework Examples
+
+Include installation + usage for:
+1. React
+2. Angular
+3. Vue 3
+4. React Native
+
+### 4. Source Code References
+
+```mdx
+## Source Code
+
+- **Mitosis Source**: `packages/_redhorn-components/src/components/Button/Button.lite.tsx`
+- **React Output**: `packages/react/src/components/Button/Button.tsx`
+- **Angular Output**: `packages/angular/src/components/Button/Button.ts`
+- **Vue Output**: `packages/vue/src/components/Button/Button.vue`
+- **React Native Output**: `packages/react-native/src/components/Button/Button.tsx`
+```
+
+## Framework Section Template
+
+For each framework, include:
+
+1. Installation command
+2. Token import instructions
+3. Usage example with code
+4. TypeScript props
+
+## File Naming
+
+- Component stories: `ComponentName.mdx`
+- Match component name exactly
+- Use PascalCase
+
+## Example Structure
+
+```mdx
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/blocks';
+import ComponentName from '../src/components/ComponentName/ComponentName';
+
+<Meta title="Components/ComponentName" component={ComponentName} />
+
+# ComponentName
+
+Description...
+
+## Live Preview (React)
+
+<Canvas>
+  <Story name="Default">
+    <ComponentName />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={ComponentName} />
+
+---
+
+## Installation & Usage by Framework
+
+### React
+[Installation + usage]
+
+### Angular
+[Installation + usage]
+
+### Vue 3
+[Installation + usage]
+
+### React Native
+[Installation + usage]
+```
