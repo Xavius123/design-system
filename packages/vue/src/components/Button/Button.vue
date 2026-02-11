@@ -14,7 +14,6 @@ import { computed } from "vue";
 
 import styles from "./Button.module.css";
 
-/** @jsxImportSource @builder.io/mitosis */
 
 export interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost" | "outline";

@@ -1,7 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-/** @jsxImportSource @builder.io/mitosis */
 
 export interface InputProps {
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";

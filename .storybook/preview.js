@@ -1,5 +1,5 @@
-import '../../tokens/dist/css/light.css';
-import '../../tokens/dist/css/dark.css';
+import '../packages/tokens/dist/css/light.css';
+import '../packages/tokens/dist/css/dark.css';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {

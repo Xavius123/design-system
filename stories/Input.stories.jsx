@@ -1,4 +1,4 @@
-import Input from '../src/components/Input/Input';
+import Input from '../packages/react/src/components/Input/Input';
 
 export default {
   title: 'Components/Input',

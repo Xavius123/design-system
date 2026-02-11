@@ -20,8 +20,8 @@ const config = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@': resolve(__dirname, '../src'),
-          '@tokens': resolve(__dirname, '../../tokens/dist/css'),
+          '@': resolve(__dirname, '../packages/react/src'),
+          '@tokens': resolve(__dirname, '../packages/tokens/dist/css'),
         },
       },
       css: {

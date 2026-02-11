@@ -34,7 +34,6 @@ import { computed, ref } from "vue";
 
 import styles from "./Input.module.css";
 
-/** @jsxImportSource @builder.io/mitosis */
 
 export interface InputProps {
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search";

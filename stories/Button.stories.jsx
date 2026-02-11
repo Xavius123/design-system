@@ -1,4 +1,4 @@
-import Button from '../src/components/Button/Button';
+import Button from '../packages/react/src/components/Button/Button';
 
 export default {
   title: 'Components/Button',

@@ -1,6 +1,6 @@
 export default {
   files: 'source/redhorn-components/src/**/*.lite.tsx',
-  targets: ['react', 'angular', 'reactNative', 'vue'],
+  targets: ['react', 'angular', 'reactNative'],
   options: {
     react: { 
       stylesType: 'style-tag',
@@ -14,10 +14,10 @@ export default {
       typescript: true,
       stateType: 'useState'
     },
-    vue: {
-      typescript: true,
-      api: 'composition'
-    }
+    // vue: {
+    //   typescript: true,
+    //   api: 'composition'
+    // }
   },
   dest: 'packages',
 }
